@@ -17,8 +17,6 @@ jobs:
 
       - name: Install Bolt
         run: npm install --global bolt
-        env:
-          CI: true
 
       - name: Install Dependencies
-        run: bolt
+        run: CI=true bolt
