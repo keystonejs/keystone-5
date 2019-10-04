@@ -22,6 +22,7 @@ const keystone = new Keystone({
       await keystone.createItems(initialData);
     }
   },
+  secureCookies: false,
 });
 
 const authStrategy = keystone.createAuthStrategy({
