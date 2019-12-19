@@ -1,12 +1,18 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
+const { KnexAdapter } = require('@keystonejs/adapter-knex');
 const { Text } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 
 const keystone = new Keystone({
-  adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/todo' }),
+  name: 'Keystone To-Do List',
+  adapter: new KnexAdapter({
+    schemaName: 'public',
+    knexOptions: {
+      connection: 'postgres://keystone5:k3yst0n3@localhost:5432/keystone',
+    },
+  }),
 });
 
 keystone.createList('Todo', {

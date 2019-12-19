@@ -68,9 +68,14 @@ class KnexAdapter extends BaseKeystoneAdapter {
       listAdapter._postConnect({ rels });
     });
 
+    // Run this only if explicity configured and still never in production
     if (this.config.dropDatabase && process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'test') {
+        console.log('Knex adapter: Dropping database');
+      }
       await this.dropDatabase();
-      return this._createTables();
+    } else if (this.config.initDatabase && process.env.NODE_ENV !== 'production') {
+      await this._createTables();
     } else {
       return [];
     }
@@ -95,6 +100,9 @@ class KnexAdapter extends BaseKeystoneAdapter {
   }
 
   async _createTables() {
+    await this.dropDatabase();
+    this.knex.raw(`CREATE SCHEMA ${this.schemaName}`);
+    console.log('Knex adapter: Initialising database');
     const createResult = await pSettle(
       Object.values(this.listAdapters).map(listAdapter => listAdapter.createTable())
     );
