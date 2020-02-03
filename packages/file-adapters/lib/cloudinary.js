@@ -14,7 +14,7 @@ function uploadStream(stream, options) {
 }
 
 module.exports = class CloudinaryAdapter {
-  constructor({ cloudName, apiKey, apiSecret, folder }) {
+  constructor({ cloudName, apiKey, apiSecret, folder, uploadOptions }) {
     if (!cloudName || !apiKey || !apiSecret) {
       throw new Error('CloudinaryAdapter requires cloudName, apiKey, and apiSecret');
     }
@@ -22,6 +22,7 @@ module.exports = class CloudinaryAdapter {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
     this.folder = folder || undefined;
+    this.uploadOptions = uploadOptions || {};
   }
 
   /**
@@ -36,6 +37,8 @@ module.exports = class CloudinaryAdapter {
       api_key: this.apiKey,
       api_secret: this.apiSecret,
       cloud_name: this.cloudName,
+      // User specified overrides
+      ...this.uploadOptions
     }).then(result => ({
       // Return the relevant data for the File api
       id,
