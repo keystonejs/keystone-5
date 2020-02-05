@@ -1,0 +1,16 @@
+{
+  "name": "@keystonejs/app-admin-ui-next",
+  "description": "KeystoneJS Admin UI (Next Version)",
+  "version": "0.0.0",
+  "author": "The KeystoneJS Development Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}

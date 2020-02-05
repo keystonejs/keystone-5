@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "yarn todo dev",
+    "admin": "yarn --cwd admin",
     "blog": "yarn --cwd blog",
     "meetup": "yarn --cwd meetup",
     "todo": "yarn --cwd todo"
