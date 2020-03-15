@@ -5,7 +5,7 @@ title: Hooks
 
 # Hooks
 
-Hooks give solution developers a way to add custom logic to the framework of lists, fields and operations Keystone provides.
+Hooks give developers a way to add custom logic to the framework of lists, fields and operations Keystone provides.
 
 This document provides an overview of the concepts, patterns and function of the Keystone hook system.
 The [Hooks API docs](/docs/api/hooks.md) describe the specific arguments and usage information.
@@ -95,7 +95,7 @@ For full details of the mutation lifecycle, and where hooks fit within this, see
 2. Field defaults applied
 3. `resolveInput` called on all fields, even if they are not defined in the supplied data
 4. `validateInput` called on all fields which have a resolved value (after all `resolveInput` calls have returned)
-5. `beforeChange` called on all fields which have a resolved value (after all `beforeChange` calls have returned)
+5. `beforeChange` called on all fields which have a resolved value (after all `validateInput` calls have returned)
 6. Database operation
 7. `afterChange` called on all fields, even if their value was not changed
 
@@ -117,7 +117,7 @@ Within each hook set, the different [hook types](#hook-type) are invoked in a sp
 
 ## Gotchas
 
-The hook system is powerful but it's breadth and flexibility introduce some complexity.
+The hook system is powerful but its breadth and flexibility introduce some complexity.
 A few of the main stumbling blocks are:
 
 - The `create` and `update` operations share a single set of hooks.
