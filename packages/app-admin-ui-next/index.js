@@ -19,22 +19,27 @@ class AdminUIApp {
     this.graphiqlPath = graphiqlPath;
   }
 
+  getNextConfig() {
+    return {
+      experimental: {
+        basePath: this.adminPath,
+      },
+    };
+  }
+
   async prepareMiddleware({ dev, distDir }) {
     const app = new express();
-    const nextApp = next({ distDir, dir: srcDir, dev });
+    const nextConfig = this.getNextConfig();
+    const nextApp = next({ distDir, dir: srcDir, dev, conf: nextConfig });
     await nextApp.prepare();
     const handler = nextApp.getRequestHandler();
-    app.use(/* this.adminPath, */ handler);
+    app.use(handler);
     return app;
   }
 
   async build() {
-    return nextBuild(srcDir, {
-      assetPrefix: this.adminPath,
-      publicRuntimeConfig: {
-        basePath: this.adminPath,
-      },
-    });
+    const nextConfig = this.getNextConfig();
+    return nextBuild(srcDir, nextConfig);
   }
 }
 
