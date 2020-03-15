@@ -18,7 +18,8 @@
     "@keystonejs/app-admin-ui-next": "^0.0.0",
     "@keystonejs/app-graphql": "^5.0.1",
     "@keystonejs/fields": "^6.0.0",
-    "@keystonejs/keystone": "^5.3.0",
-    "cross-env": "^5.2.0"
-  }
+    "@keystonejs/keystone": "^6.0.0",
+    "cross-env": "^7.0.0"
+  },
+  "repository": "https://github.com/keystonejs/keystone/tree/master/demo-projects/admin"
 }

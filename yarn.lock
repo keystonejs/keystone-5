@@ -2455,38 +2455,6 @@
   dependencies:
     core-js "^2.5.7"
 
-"@keystonejs/keystone@^5.3.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@keystonejs/keystone/-/keystone-5.6.0.tgz#dd61704274bc84d86006332acd5b46cfd61d227b"
-  integrity sha512-35jo0bKE1c+5iZUHL02Bun0piXQJM4tPn7bcx3cfi3lL2cuTJ2x2+CJ6LIph+d6zI0ez09MEumeNbqIeLiCplw==
-  dependencies:
-    "@keystonejs/access-control" "^5.1.0"
-    "@keystonejs/fields" "^6.3.1"
-    "@keystonejs/logger" "^5.1.0"
-    "@keystonejs/session" "^5.1.0"
-    "@keystonejs/utils" "^5.2.1"
-    apollo-errors "^1.9.0"
-    arg "^4.1.1"
-    chalk "^2.4.2"
-    ci-info "^2.0.0"
-    cors "^2.8.4"
-    dev-null "^0.1.1"
-    endent "^1.3.0"
-    express "^4.17.1"
-    express-pino-logger "^4.0.0"
-    "falsey" "^1.0.0"
-    fast-memoize "^2.4.0"
-    fs-extra "^7.0.0"
-    globby "^9.1.0"
-    graphql "^14.6.0"
-    graphql-tag "^2.10.1"
-    graphql-type-json "^0.3.1"
-    lodash.flattendeep "^4.4.0"
-    ora "^3.4.0"
-    p-waterfall "^2.1.0"
-    pluralize "^7.0.0"
-    terminal-link "^1.3.0"
-
 "@manypkg/cli@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@manypkg/cli/-/cli-0.11.0.tgz#16d64b804d2f39cb52befd06e2cb33ab1ec846b7"
@@ -7210,13 +7178,6 @@ create-react-context@^0.3.0:
   dependencies:
     gud "^1.0.0"
     warning "^4.0.3"
-
-cross-env@^5.2.0:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.1.tgz#b2c76c1ca7add66dc874d11798466094f551b34d"
-  integrity sha512-1yHhtcfAd1r4nwQgknowuUNfIT9E8dOMMspC36g45dN+iD1blloi7xp8X/xAIDnjHWyt1uQ8PHk2fkNaym7soQ==
-  dependencies:
-    cross-spawn "^6.0.5"
 
 cross-env@^7.0.0:
   version "7.0.0"
@@ -16133,7 +16094,7 @@ next-tick@^1.0.0, next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next@^9.2.0, next@^9.2.1:
+next@^9.2.1:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/next/-/next-9.2.1.tgz#5275adfdeffc85b4a4b113466581a326390940c5"
   integrity sha512-oI68lEmBLf9Z/R81wRFbziD9v/2quPdC3nRP+dTgOYcCR9F3ylbnB+D2BKYqBCLaGNXKQDt4FuVtZLYBAea6Gw==
@@ -19389,7 +19350,7 @@ react-display-name@^0.2.3, react-display-name@^0.2.4:
   resolved "https://registry.yarnpkg.com/react-display-name/-/react-display-name-0.2.4.tgz#e2a670b81d79a2204335510c01246f4c92ff12cf"
   integrity sha512-zvU6iouW+SWwHTyThwxGICjJYCMZFk/6r/+jmOdC7ntQoPlS/Pqb81MkxaMf2bHTSq9TN3K3zX2/ayMW/jCtyA==
 
-react-dom@^16.12.0, react-dom@^16.13.0:
+react-dom@^16.13.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
   integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
@@ -19718,7 +19679,7 @@ react-window@^1.7.0:
     "@babel/runtime" "^7.0.0"
     memoize-one ">=3.1.1 <6"
 
-react@^16.12.0, react@^16.13.0:
+react@^16.13.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
   integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
