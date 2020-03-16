@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core';
 import { colors } from '@arch-ui/theme';
 import Editor from './editor';
 import { FieldContainer, FieldLabel, FieldInput } from '@arch-ui/fields';
-import { inputStyles } from '@arch-ui/input';
 
 class ErrorBoundary extends Component {
   state = {
@@ -24,9 +23,8 @@ class ErrorBoundary extends Component {
   }
 }
 
-let ContentField = ({ field, value, onChange, autoFocus, errors }) => {
+let ContentField = ({ field, value, onChange, autoFocus, errors, item }) => {
   const htmlID = `ks-content-editor-${field.path}`;
-
   return (
     <FieldContainer>
       <FieldLabel htmlFor={htmlID} field={field} errors={errors} />
@@ -57,11 +55,7 @@ let ContentField = ({ field, value, onChange, autoFocus, errors }) => {
                 onChange={onChange}
                 autoFocus={autoFocus}
                 id={htmlID}
-                css={{
-                  ...inputStyles({ isMultiline: true }),
-                  padding: '16px 32px',
-                  minHeight: 200,
-                }}
+                item={item}
               />
             )}
         </ErrorBoundary>

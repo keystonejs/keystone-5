@@ -2,12 +2,13 @@
 import { jsx } from '@emotion/core';
 import { useMemo } from 'react';
 import { Editor } from 'slate-react';
-import { Block } from 'slate';
+import { Block, Document } from 'slate';
 import { plugins as markPlugins } from './marks';
 import { type as defaultType } from './blocks/paragraph';
 import AddBlock from './add-block';
 import { useStateWithEqualityCheck } from './hooks';
 import Toolbar from './toolbar';
+import { inputStyles } from '@arch-ui/input';
 
 function getSchema(blocks) {
   const schema = {
@@ -32,18 +33,40 @@ function getSchema(blocks) {
   return schema;
 }
 
-function Stories({ value: editorState, onChange, blocks, className, id }) {
+function Stories({ value: editorState, onChange, blocks, id, item, className }) {
   let schema = useMemo(() => {
     return getSchema(blocks);
   }, [blocks]);
-
+  let { focusBlock } = editorState;
   let plugins = useMemo(() => {
     const renderNode = props => {
       let block = blocks[props.node.type];
       if (block) {
-        return <block.Node {...props} blocks={blocks} />;
+        return <block.Node {...props} blocks={blocks} item={item} />;
       }
-      return null;
+    };
+    const renderBlock = props => {
+      let block = blocks[props.node.type];
+      if (!block) return null;
+
+      return props.parent instanceof Document ? (
+        <div css={{ display: 'flex' }}>
+          <div
+            css={{
+              width: 30,
+              borderBottom: 'solid 1px #eee',
+              borderRight: 'solid 1px #eee',
+              flexGrow: 0,
+              flexShrink: 0,
+              background:
+                focusBlock && props.node && focusBlock.key === props.node.key ? '#eaeaea' : 'white',
+            }}
+          />
+          <div css={{ padding: 5, flexGrow: 1 }}>{renderNode(props)}</div>
+        </div>
+      ) : (
+        renderNode(props)
+      );
     };
     return Object.values(blocks).reduce(
       (combinedPlugins, block) => {
@@ -55,23 +78,35 @@ function Stories({ value: editorState, onChange, blocks, className, id }) {
       [
         ...markPlugins,
         {
-          renderBlock: renderNode,
+          renderBlock: renderBlock,
           renderInline: renderNode,
         },
       ]
     );
-  }, [blocks]);
+  }, [blocks, focusBlock]);
 
   let [editor, setEditor] = useStateWithEqualityCheck(null);
 
   return (
-    <div className={className} css={{ position: 'relative' }} id={id}>
+    <div
+      className={className}
+      id={id}
+      css={{
+        ...inputStyles({ isMultiline: true }),
+        padding: 0,
+        position: 'relative',
+        overflow: 'scroll',
+      }}
+    >
       <Editor
         schema={schema}
         ref={setEditor}
         plugins={plugins}
         value={editorState}
         tabIndex={0}
+        css={{
+          minHeight: 250,
+        }}
         onChange={({ value }) => {
           onChange(value);
         }}
