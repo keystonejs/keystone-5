@@ -440,4 +440,7 @@ export class KnexRelationshipInterface extends KnexFieldAdapter {
       query
     );
   }
+  satisfiesIsRequired({ value }) {
+    return value && (value.create || value.connect || value.disconnect || value.disconnectAll);
+  }
 }

@@ -1145,23 +1145,31 @@ module.exports = class List {
       actions: mapKeys(this.hooksActions, hook => hook(context)),
       operation,
     };
+
     // Check for isRequired
     const fieldValidationErrors = this.fields
-      .filter(
-        field =>
-          field.isRequired &&
-          !field.isRelationship &&
-          ((operation === 'create' &&
-            (resolvedData[field.path] === undefined || resolvedData[field.path] === null)) ||
-            (operation === 'update' &&
-              Object.prototype.hasOwnProperty.call(resolvedData, field.path) &&
-              (resolvedData[field.path] === undefined || resolvedData[field.path] === null)))
-      )
+      .filter(field => {
+        if (!field.isRequired) {
+          return false;
+        }
+
+        if (operation === 'create') {
+          return !field.satisfiesIsRequired({ value: resolvedData[field.path], operation });
+        } else if (operation === 'update') {
+          return (
+            Object.prototype.hasOwnProperty.call(resolvedData, field.path) &&
+            !field.satisfiesIsRequired({ value: resolvedData[field.path], operation })
+          );
+        }
+
+        throw new Error(`Unknown operation when enforcing ${field.path}.isRequired: ${operation}`);
+      })
       .map(f => ({
         msg: `Required field "${f.path}" is null or undefined.`,
         data: { resolvedData, operation, originalInput },
         internalData: {},
       }));
+
     if (fieldValidationErrors.length) {
       this._throwValidationFailure(fieldValidationErrors, operation, originalInput);
     }

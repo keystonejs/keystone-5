@@ -200,6 +200,9 @@ class Field {
     // By default, the default value is undefined
     return undefined;
   }
+  satisfiesIsRequired({ value }) {
+    return value !== undefined && value !== null;
+  }
 }
 
 export { Field as Implementation };
