@@ -1,4 +1,4 @@
-const globby = require('globby');
+//const globby = require('globby');
 const path = require('path');
 const cuid = require('cuid');
 const { multiAdapterRunners, setupServer } = require('@keystonejs/test-utils');
@@ -8,33 +8,25 @@ const { multiAdapterRunners, setupServer } = require('@keystonejs/test-utils');
 jest.setTimeout(60000);
 
 describe('Fields', () => {
-  const testModules = globby.sync(`packages/fields/src/types/**/test-fixtures.js`, {
-    absolute: true,
-  });
-  testModules.push(path.resolve('packages/fields/tests/test-fixtures.js'));
+  //const testModules = globby.sync(`packages/fields/src/types/**/test-fixtures.js`, {
+  //  absolute: true,
+  //});
+  //testModules.push(path.resolve('packages/fields/tests/test-fixtures.js'));
+
+  const testModules = [path.resolve('packages/fields/src/types/Relationship/test-fixtures.js')];
 
   multiAdapterRunners().map(({ runner, adapterName }) =>
     describe(`${adapterName} adapter`, () => {
       testModules.map(require).forEach(mod => {
-        const listName = 'test';
         const keystoneTestWrapper = (testFn = () => {}) =>
           runner(
-            () => {
-              const name = `Field tests for ${mod.name} ${cuid()}`;
-              const createLists = keystone => {
-                // Create a list with all the fields required for testing
-                const fields = mod.getTestFields();
-
-                keystone.createList(listName, { fields });
-              };
-              return setupServer({ name, adapterName, createLists });
-            },
-            async ({ keystone, ...rest }) => {
-              // Populate the database before running the tests
-              await keystone.createItems({ [listName]: mod.initItems() });
-
-              return testFn({ keystone, listName, adapterName, ...rest });
-            }
+            () =>
+              setupServer({
+                name: `Field tests for ${mod.name} ${cuid()}`,
+                adapterName,
+                createLists: keystone => mod.createLists({ keystone }),
+              }),
+            async args => testFn({ adapterName, ...args })
           );
 
         describe(`${mod.name} field`, () => {
@@ -44,6 +36,14 @@ describe('Fields', () => {
             });
           } else {
             test.todo('CRUD operations - tests missing');
+          }
+
+          if (mod.isRequiredTests) {
+            describe(`isRequired`, () => {
+              mod.isRequiredTests(keystoneTestWrapper);
+            });
+          } else {
+            test.todo('isRequired - tests missing');
           }
 
           if (mod.filterTests) {
