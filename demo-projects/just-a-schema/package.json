@@ -1,5 +1,5 @@
 {
-  "name": "@keystonejs/demo-project-todo",
+  "name": "@keystonejs/demo-project-relationships",
   "description": "An example KeystoneJS project showcasing a simple Todo List.",
   "private": true,
   "version": "5.1.3",
@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=production keystone start"
   },
   "dependencies": {
-    "@keystonejs/adapter-mongoose": "^5.2.1",
+    "@keystonejs/adapter-knex": "^6.3.2",
     "@keystonejs/app-admin-ui": "^5.9.2",
     "@keystonejs/app-graphql": "^5.1.2",
     "@keystonejs/app-static": "^5.1.1",
