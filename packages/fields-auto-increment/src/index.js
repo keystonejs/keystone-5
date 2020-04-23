@@ -1,4 +1,4 @@
-import { AutoIncrementImplementation, KnexAutoIncrementInterface } from './Implementation';
+import { AutoIncrementImplementation, KnexAutoIncrementInterface, PrismaAutoIncrementInterface } from './Implementation';
 import { Integer } from '@keystonejs/fields';
 
 export const AutoIncrement = {
@@ -11,6 +11,7 @@ export const AutoIncrement = {
   },
   adapters: {
     knex: KnexAutoIncrementInterface,
+    prisma: PrismaAutoIncrementInterface,
   },
 
   primaryKeyDefaults: {
@@ -18,5 +19,6 @@ export const AutoIncrement = {
       // Uniqueness, non-nullability and GraphQL type are implied
       getConfig: () => ({ type: AutoIncrement }),
     },
+    prisma: { getConfig: () => ({ type: AutoIncrement }) },
   },
 };

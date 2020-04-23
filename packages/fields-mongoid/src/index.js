@@ -30,5 +30,8 @@ export const MongoId = {
     mongoose: {
       getConfig: () => ({ type: MongoId }),
     },
+    prisma: {
+      getConfig: () => {},
+    },
   },
 };

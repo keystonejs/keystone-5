@@ -1,6 +1,7 @@
 import { Implementation } from '../../Implementation';
 import { MongooseFieldAdapter } from '@keystonejs/adapter-mongoose';
 import { KnexFieldAdapter } from '@keystonejs/adapter-knex';
+import { PrismaFieldAdapter } from '@keystonejs/adapter-prisma';
 
 export class Text extends Implementation {
   constructor(path, { isMultiline }) {
@@ -55,7 +56,7 @@ export class MongoTextInterface extends CommonTextInterface(MongooseFieldAdapter
   }
 }
 
-export class KnexTextInterface extends CommonTextInterface(KnexFieldAdapter) {
+export class KnexTextInterface extends CommonTextInterface(PrismaFieldAdapter) {
   constructor() {
     super(...arguments);
     this.isUnique = !!this.config.isUnique;
@@ -68,5 +69,11 @@ export class KnexTextInterface extends CommonTextInterface(KnexFieldAdapter) {
     else if (this.isIndexed) column.index();
     if (this.isNotNullable) column.notNullable();
     if (typeof this.defaultTo !== 'undefined') column.defaultTo(this.defaultTo);
+  }
+}
+
+export class PrismaTextInterface extends CommonTextInterface(PrismaFieldAdapter) {
+  _createModel() {
+    return [`  ${this.path} String`];
   }
 }

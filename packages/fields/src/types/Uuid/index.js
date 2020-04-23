@@ -35,6 +35,9 @@ const Uuid = {
           `ids (eg '@keystonejs/fields-mongoid').`;
       },
     },
+    prisma: {
+      getConfig: () => {}
+    }
   },
 };
 

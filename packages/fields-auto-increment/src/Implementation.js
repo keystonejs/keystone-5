@@ -1,5 +1,6 @@
 import { Implementation } from '@keystonejs/fields';
 import { KnexFieldAdapter } from '@keystonejs/adapter-knex';
+import { PrismaFieldAdapter } from '@keystonejs/adapter-prisma';
 
 export class AutoIncrementImplementation extends Implementation {
   constructor(path, { gqlType, isUnique = true, access = {}, ...config } = {}, context = {}) {
@@ -51,6 +52,63 @@ export class KnexAutoIncrementInterface extends KnexFieldAdapter {
     // Default isUnique to true if not specified
     this.isUnique = typeof this.config.isUnique === 'undefined' ? true : !!this.config.isUnique;
     this.isIndexed = !!this.config.isIndexed && !this.config.isUnique;
+  }
+
+  // Override isNotNullable defaulting logic; default to true if not specified
+  get isNotNullable() {
+    if (this._isNotNullable) return this._isNotNullable;
+    return (this._isNotNullable = !!(typeof this.knexOptions.isNotNullable === 'undefined'
+      ? true
+      : this.knexOptions.isNotNullable));
+  }
+
+  addToTableSchema(table) {
+    // The knex `increments()` schema building function always uses the column as the primary key
+    // If not isPrimaryKey use a raw `serial` instead
+    // This will only work on PostgreSQL; see README.md
+    if (this.field.isPrimaryKey) {
+      // Fair to say primary keys are always non-nullable and uniqueness is implied by primary()
+      table.increments(this.path).notNullable();
+      // TODO: Warning on invalid primary key config options?
+    } else {
+      const column = table.specificType(this.path, 'serial');
+      if (this.isUnique) column.unique();
+      else if (this.isIndexed) column.index();
+      if (this.isNotNullable) column.notNullable();
+    }
+  }
+
+  addToForeignTableSchema(table, { path, isUnique, isIndexed, isNotNullable }) {
+    if (!this.field.isPrimaryKey) {
+      throw `Can't create foreign key '${path}' on table "${table._tableName}"; ` +
+        `'${this.path}' on list '${this.field.listKey}' as is not the primary key.`;
+    }
+
+    const column = table.integer(path).unsigned();
+    if (isUnique) column.unique();
+    else if (isIndexed) column.index();
+    if (isNotNullable) column.notNullable();
+  }
+
+  getQueryConditions(dbPath) {
+    return {
+      ...this.equalityConditions(dbPath),
+      ...this.orderingConditions(dbPath),
+      ...this.inConditions(dbPath),
+    };
+  }
+}
+
+export class PrismaAutoIncrementInterface extends PrismaFieldAdapter {
+  constructor() {
+    super(...arguments);
+
+    // Default isUnique to true if not specified
+    this.isUnique = typeof this.config.isUnique === 'undefined' ? true : !!this.config.isUnique;
+    this.isIndexed = !!this.config.isIndexed && !this.config.isUnique;
+  }
+  _createModel() {
+    return [`  ${this.path} Int @id @default(autoincrement())`];
   }
 
   // Override isNotNullable defaulting logic; default to true if not specified

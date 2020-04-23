@@ -1,18 +1,19 @@
 const { Keystone } = require('@keystonejs/keystone');
-const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
+const { PrismaAdapter } = require('@keystonejs/adapter-prisma');
 const { Text } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 
 const keystone = new Keystone({
-  adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/todo' }),
+  name: 'Keystone To-Do List',
+  adapter: new PrismaAdapter(),
 });
 
 keystone.createList('Todo', {
   schemaDoc: 'A list of things which need to be done',
   fields: {
-    name: { type: Text, schemaDoc: 'This is the thing you need to do', isRequired: true },
+    name: { type: Text },
   },
 });
 
