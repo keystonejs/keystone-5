@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "next": "^9.2.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "next": "^9.3.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "repository": "https://github.com/keystonejs/keystone/tree/master/packages/app-admin-ui-next"
 }
