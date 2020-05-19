@@ -9,10 +9,9 @@ const keystone = new Keystone({
   adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/todo' }),
 });
 
-keystone.createList('Todo', {
-  schemaDoc: 'A list of things which need to be done',
+keystone.createSingleton('Setting', {
   fields: {
-    name: { type: Text, schemaDoc: 'This is the thing you need to do', isRequired: true },
+    name: { type: Text },
   },
 });
 

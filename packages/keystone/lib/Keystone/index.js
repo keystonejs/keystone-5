@@ -15,7 +15,7 @@ const {
 const { SessionManager } = require('@keystonejs/session');
 const { AppVersionProvider, appVersionMiddleware } = require('@keystonejs/app-version');
 
-const { List } = require('../ListTypes');
+const { List, Singleton } = require('../ListTypes');
 const { DEFAULT_DIST_DIR } = require('../../constants');
 const { CustomProvider, ListAuthProvider, ListCRUDProvider } = require('../providers');
 const { formatError } = require('./format-error');
@@ -248,8 +248,17 @@ module.exports = class Keystone {
     return strategy;
   }
 
-  createList(key, config, { isAuxList = false } = {}) {
-    const { getListByKey, adapter } = this;
+  createList(key, config, options) {
+    return this._createList(List, key, config, options);
+  }
+
+  createSingleton(key, config, options) {
+    return this._createList(Singleton, key, config, options);
+  }
+
+  _createList(listClass, key, config, { isAuxList = false } = {}) {
+    createList(key, config, { isAuxList = false } = {}) {
+      const { getListByKey, adapter } = this;
     const isReservedName = !isAuxList && key[0] === '_';
 
     if (isReservedName) {
