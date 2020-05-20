@@ -10,6 +10,7 @@ export default class FieldController {
       isOrderable,
       isPrimaryKey,
       isRequired,
+      isReadOnly,
       adminDoc,
       defaultValue,
       ...config
@@ -31,6 +32,7 @@ export default class FieldController {
     this.getListByKey = getListByKey;
     this.adminPath = adminPath;
     this.authStrategy = authStrategy;
+    this.isReadOnly = isReadOnly;
     this.views = views;
 
     if (typeof defaultValue !== 'function') {
