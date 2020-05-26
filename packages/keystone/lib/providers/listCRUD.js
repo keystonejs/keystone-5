@@ -52,6 +52,7 @@ class ListCRUDProvider {
       schema: meta => meta.getSchema(),
     };
 
+    // FIXME: ship this back to the list/singleton
     const listAccessResolver = {
       // access is passed in from the listMetaResolver
       create: access => access.getCreate(),
