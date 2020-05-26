@@ -1,31 +1,98 @@
 const pluralize = require('pluralize');
 const {
+  resolveAllKeys,
   mapKeys,
-  omit,
   omitBy,
-  unique,
-  intersection,
   mergeWhereClause,
   objMerge,
-  flatten,
-  zipObj,
-  createLazyDeferred,
   arrayToObject,
+  flatten,
+  upcase,
 } = require('@keystonejs/utils');
 const { parseListAccess } = require('@keystonejs/access-control');
-const {
-  preventInvalidUnderscorePrefix,
-  keyToLabel,
-  labelToPath,
-  labelToClass,
-  opToType,
-  getDefaultLabelResolver,
-  mapToFields,
-} = require('./utils');
-const { HookManager } = require('./hooks');
-const { LimitsExceededError, throwAccessDenied } = require('./graphqlErrors');
+const { logger } = require('@keystonejs/logger');
 
-const { graphqlLogger } = require('../Keystone/logger');
+const graphqlLogger = logger('graphql');
+const keystoneLogger = logger('keystone');
+
+const {
+  LimitsExceededError,
+  ValidationFailureError,
+  throwAccessDenied,
+} = require('./graphqlErrors');
+
+const preventInvalidUnderscorePrefix = str => str.replace(/^__/, '_');
+
+const keyToLabel = str => {
+  let label = str
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .split(/\s|_|\-/)
+    .filter(i => i)
+    .map(upcase)
+    .join(' ');
+
+  // Retain the leading underscore for auxiliary lists
+  if (str[0] === '_') {
+    label = `_${label}`;
+  }
+  return label;
+};
+
+const labelToPath = str =>
+  str
+    .split(' ')
+    .join('-')
+    .toLowerCase();
+
+const labelToClass = str => str.replace(/\s+/g, '');
+
+const opToType = {
+  read: 'query',
+  create: 'mutation',
+  update: 'mutation',
+  delete: 'mutation',
+};
+
+const mapNativeTypeToKeystoneType = (type, listKey, fieldPath) => {
+  const { Text, Checkbox, Float } = require('@keystonejs/fields');
+
+  const nativeTypeMap = new Map([
+    [
+      Boolean,
+      {
+        name: 'Boolean',
+        keystoneType: Checkbox,
+      },
+    ],
+    [
+      String,
+      {
+        name: 'String',
+        keystoneType: Text,
+      },
+    ],
+    [
+      Number,
+      {
+        name: 'Number',
+        keystoneType: Float,
+      },
+    ],
+  ]);
+
+  if (!nativeTypeMap.has(type)) {
+    return type;
+  }
+
+  const { name, keystoneType } = nativeTypeMap.get(type);
+
+  keystoneLogger.warn(
+    { nativeType: type, keystoneType, listKey, fieldPath },
+    `Mapped field ${listKey}.${fieldPath} from native JavaScript type '${name}', to '${keystoneType.type.type}' from the @keystonejs/fields package.`
+  );
+
+  return keystoneType;
+};
 
 module.exports = class List {
   constructor(
@@ -35,8 +102,6 @@ module.exports = class List {
       hooks = {},
       adminDoc,
       schemaDoc,
-      labelResolver,
-      labelField,
       access,
       adminConfig = {},
       itemQueryName,
@@ -49,23 +114,33 @@ module.exports = class List {
       queryLimits = {},
       cacheHint,
     },
-    { getListByKey, adapter, defaultAccess, registerType, createAuxList, isAuxList, schemaNames }
+    {
+      getListByKey,
+      queryHelper,
+      adapter,
+      defaultAccess,
+      registerType,
+      createAuxList,
+      isAuxList,
+      schemaNames,
+    }
   ) {
     this.key = key;
     this._fields = fields;
-    this._hooks = hooks;
+    this.hooks = hooks;
     this.schemaDoc = schemaDoc;
     this.adminDoc = adminDoc;
 
     // Assuming the id column shouldn't be included in default columns or sort
     const nonIdFieldNames = Object.keys(fields).filter(k => k !== 'id');
     this.adminConfig = {
+      defaultPageSize: 50,
       defaultColumns: nonIdFieldNames ? nonIdFieldNames.slice(0, 2).join(',') : 'id',
       defaultSort: nonIdFieldNames.length ? nonIdFieldNames[0] : '',
+      maximumPageSize: 1000,
       ...adminConfig,
     };
 
-    this.labelResolver = labelResolver || getDefaultLabelResolver(labelField);
     this.isAuxList = isAuxList;
     this.getListByKey = getListByKey;
     this.defaultAccess = defaultAccess;
@@ -94,23 +169,9 @@ module.exports = class List {
     this.gqlNames = {
       outputTypeName: this.key,
       itemQueryName: _itemQueryName,
-      listQueryName: `all${_listQueryName}`,
-      listQueryMetaName: `_all${_listQueryName}Meta`,
       listMetaName: preventInvalidUnderscorePrefix(`_${_listQueryName}Meta`),
-      listSortName: `Sort${_listQueryName}By`,
-      deleteMutationName: `delete${_itemQueryName}`,
       updateMutationName: `update${_itemQueryName}`,
-      createMutationName: `create${_itemQueryName}`,
-      deleteManyMutationName: `delete${_listQueryName}`,
-      updateManyMutationName: `update${_listQueryName}`,
-      createManyMutationName: `create${_listQueryName}`,
-      whereInputName: `${_itemQueryName}WhereInput`,
-      whereUniqueInputName: `${_itemQueryName}WhereUniqueInput`,
       updateInputName: `${_itemQueryName}UpdateInput`,
-      createInputName: `${_itemQueryName}CreateInput`,
-      updateManyInputName: `${_listQueryName}UpdateInput`,
-      createManyInputName: `${_listQueryName}CreateInput`,
-      relateToManyInputName: `${_itemQueryName}RelateToManyInput`,
       relateToOneInputName: `${_itemQueryName}RelateToOneInput`,
     };
 
@@ -138,23 +199,35 @@ module.exports = class List {
     }
     this.cacheHint = cacheHint;
 
+    this.hooksActions = {
+      /**
+       * @param queryString String A graphQL query string
+       * @param options.skipAccessControl Boolean By default access control _of
+       * the user making the initial request_ is still tested. Disable all
+       * Access Control checks with this flag
+       * @param options.variables Object The variables passed to the graphql
+       * query for the given queryString.
+       *
+       * @return Promise<Object> The graphql query response
+       */
+      query: queryHelper,
+    };
+
     // Tell Keystone about all the types we've seen
     Object.values(fields).forEach(({ type }) => registerType(type));
 
     this.createAuxList = (auxKey, auxConfig) =>
       createAuxList(auxKey, {
-        access: Object.entries(this.access)
-          .filter(([key]) => key !== 'internal')
-          .reduce(
-            (acc, [schemaName, access]) => ({
-              ...acc,
-              [schemaName]: Object.entries(access).reduce(
-                (acc, [op, rule]) => ({ ...acc, [op]: !!rule }), // Reduce the entries to truthy values
-                {}
-              ),
-            }),
-            {}
-          ),
+        access: Object.entries(this.access).reduce(
+          (acc, [schemaName, access]) => ({
+            ...acc,
+            [schemaName]: Object.entries(access).reduce(
+              (acc, [op, rule]) => ({ ...acc, [op]: !!rule }), // Reduce the entries to truthy values
+              {}
+            ),
+          }),
+          {}
+        ),
         ...auxConfig,
       });
   }
@@ -163,16 +236,17 @@ module.exports = class List {
     if (this.fieldsInitialised) return;
     this.fieldsInitialised = true;
 
-    let sanitisedFieldsConfig = this._fields;
+    let sanitisedFieldsConfig = mapKeys(this._fields, (fieldConfig, path) => ({
+      ...fieldConfig,
+      type: mapNativeTypeToKeystoneType(fieldConfig.type, this.key, path),
+    }));
 
     // Add an 'id' field if none supplied
     if (!sanitisedFieldsConfig.id) {
       if (typeof this.adapter.parentAdapter.getDefaultPrimaryKeyConfig !== 'function') {
-        throw new Error(
-          `No 'id' field given for the '${this.key}' list and the list adapter ` +
-            `in used (${this.adapter.key}) doesn't supply a default primary key config ` +
-            `(no 'getDefaultPrimaryKeyConfig()' function)`
-        );
+        throw `No 'id' field given for the '${this.key}' list and the list adapter ` +
+          `in used (${this.adapter.key}) doesn't supply a default primary key config ` +
+          `(no 'getDefaultPrimaryKeyConfig()' function)`;
       }
       // Rebuild the object so id is "first"
       sanitisedFieldsConfig = {
@@ -184,29 +258,21 @@ module.exports = class List {
     // Helpful errors for misconfigured lists
     Object.entries(sanitisedFieldsConfig).forEach(([fieldKey, fieldConfig]) => {
       if (!this.isAuxList && fieldKey[0] === '_') {
-        throw new Error(
-          `Invalid field name "${fieldKey}". Field names cannot start with an underscore.`
-        );
+        throw `Invalid field name "${fieldKey}". Field names cannot start with an underscore.`;
       }
       if (typeof fieldConfig.type === 'undefined') {
-        throw new Error(
-          `The '${this.key}.${fieldKey}' field doesn't specify a valid type. ` +
-            `(${this.key}.${fieldKey}.type is undefined)`
-        );
+        throw `The '${this.key}.${fieldKey}' field doesn't specify a valid type. ` +
+          `(${this.key}.${fieldKey}.type is undefined)`;
       }
       const adapters = fieldConfig.type.adapters;
       if (typeof adapters === 'undefined' || Object.entries(adapters).length === 0) {
-        throw new Error(
-          `The type given for the '${this.key}.${fieldKey}' field doesn't define any adapters.`
-        );
+        throw `The type given for the '${this.key}.${fieldKey}' field doesn't define any adapters.`;
       }
     });
 
     Object.values(sanitisedFieldsConfig).forEach(({ type }) => {
       if (!type.adapters[this.adapterName]) {
-        throw new Error(
-          `Adapter type "${this.adapterName}" does not support field type "${type.type}"`
-        );
+        throw `Adapter type "${this.adapterName}" does not support field type "${type.type}"`;
       }
     });
 
@@ -227,15 +293,17 @@ module.exports = class List {
     this.views = mapKeys(sanitisedFieldsConfig, ({ type }, path) =>
       this.fieldsByPath[path].extendAdminViews({ ...type.views })
     );
-    this.hookManager = new HookManager({
-      fields: this.fields,
-      hooks: this._hooks,
-      listKey: this.key,
-    });
   }
 
   getAdminMeta({ schemaName }) {
     const schemaAccess = this.access[schemaName];
+    const {
+      defaultPageSize,
+      defaultColumns,
+      defaultSort,
+      maximumPageSize,
+      ...adminConfig
+    } = this.adminConfig;
     return {
       key: this.key,
       // Reduce to truthy values (functions can't be passed over the webpack
@@ -250,32 +318,64 @@ module.exports = class List {
         .filter(field => field.access[schemaName].read)
         .map(field => field.getAdminMeta({ schemaName })),
       adminDoc: this.adminDoc,
-      adminConfig: this.adminConfig,
+      adminConfig: {
+        defaultPageSize,
+        defaultColumns: defaultColumns.replace(/\s/g, ''), // remove all whitespace
+        defaultSort: defaultSort,
+        maximumPageSize: Math.max(defaultPageSize, maximumPageSize),
+        ...adminConfig,
+      },
     };
   }
 
-  // FIELD HELPERS
-  // Providers
   getFieldsWithAccess({ schemaName, access }) {
     return this.fields
       .filter(({ path }) => path !== 'id') // Exclude the id fields update types
       .filter(field => field.access[schemaName][access]); // If it's globally set to false, makes sense to never let it be updated
   }
 
-  // Providers
+  /** Equivalent to getFieldsWithAccess but includes `id` fields. */
   getAllFieldsWithAccess({ schemaName, access }) {
-    // Equivalent to getFieldsWithAccess but includes `id` fields.
     return this.fields.filter(field => field.access[schemaName][access]);
   }
 
-  // Providers
   getFieldsRelatedTo(listKey) {
     return this.fields.filter(
       ({ isRelationship, refListKey }) => isRelationship && refListKey === listKey
     );
   }
 
-  // Access-control
+  // Wrap the "inner" resolver for a single output field with list-specific modifiers
+  _wrapFieldResolver(field, innerResolver) {
+    return async (item, args, context, info) => {
+      // Check access
+      const operation = 'read';
+      const access = await context.getFieldAccessControlForUser(
+        this.key,
+        field.path,
+        undefined,
+        item,
+        operation
+      );
+      if (!access) {
+        // If the client handles errors correctly, it should be able to
+        // receive partial data (for the fields the user has access to),
+        // and then an `errors` array of AccessDeniedError's
+        throwAccessDenied(opToType[operation], context, field.path, {
+          itemId: item ? item.id : null,
+        });
+      }
+
+      // Only static cache hints are supported at the field level until a use-case makes it clear what parameters a dynamic hint would take
+      if (field.config.cacheHint && info && info.cacheControl) {
+        info.cacheControl.setCacheHint(field.config.cacheHint);
+      }
+
+      // Execute the original/inner resolver
+      return innerResolver(item, args, context, info);
+    };
+  }
+
   async checkFieldAccess(operation, itemsToUpdate, context, { gqlName, ...extraInternalData }) {
     const restrictedFields = [];
     for (const { existingItem, id, data } of itemsToUpdate) {
@@ -283,13 +383,12 @@ module.exports = class List {
 
       for (const field of fields) {
         const access = await context.getFieldAccessControlForUser(
-          field.access,
           this.key,
           field.path,
           data,
           existingItem,
           operation,
-          { gqlName, itemId: id, context, ...extraInternalData }
+          { gqlName, itemId: id, ...extraInternalData }
         );
         if (!access) {
           restrictedFields.push(field.path);
@@ -304,17 +403,10 @@ module.exports = class List {
   }
 
   async checkListAccess(context, originalInput, operation, { gqlName, ...extraInternalData }) {
-    const access = await context.getListAccessControlForUser(
-      this.access,
-      this.key,
-      originalInput,
-      operation,
-      {
-        gqlName,
-        context,
-        ...extraInternalData,
-      }
-    );
+    const access = await context.getListAccessControlForUser(this.key, originalInput, operation, {
+      gqlName,
+      ...extraInternalData,
+    });
     if (!access) {
       graphqlLogger.debug(
         { operation, access, gqlName, ...extraInternalData },
@@ -329,7 +421,6 @@ module.exports = class List {
     return access;
   }
 
-  // Session
   async getAccessControlledItem(id, access, { context, operation, gqlName, info }) {
     const _throwAccessDenied = msg => {
       graphqlLogger.debug({ id, operation, access, gqlName }, msg);
@@ -378,14 +469,12 @@ module.exports = class List {
     return item;
   }
 
-  // Relationship
   async listQuery(args, context, gqlName, info, from) {
     const access = await this.checkListAccess(context, undefined, 'read', { gqlName });
 
     return this._itemsQuery(mergeWhereClause(args, access), { context, info, from });
   }
 
-  // Relationship
   async listQueryMeta(args, context, gqlName, info, from) {
     return {
       // Return these as functions so they're lazily evaluated depending
@@ -502,7 +591,33 @@ module.exports = class List {
     return results;
   }
 
-  // Mutation resolvers
+  // MUTATION HOOKS
+  _throwValidationFailure(errors, operation, data = {}) {
+    throw new ValidationFailureError({
+      data: {
+        messages: errors.map(e => e.msg),
+        errors: errors.map(e => e.data),
+        listKey: this.key,
+        operation,
+      },
+      internalData: {
+        errors: errors.map(e => e.internalData),
+        data,
+      },
+    });
+  }
+
+  _mapToFields(fields, action) {
+    return resolveAllKeys(arrayToObject(fields, 'path', action)).catch(error => {
+      if (!error.errors) {
+        throw error;
+      }
+      const errorCopy = new Error(error.message || error.toString());
+      errorCopy.errors = Object.values(error.errors);
+      throw errorCopy;
+    });
+  }
+
   _fieldsFromObject(obj) {
     return Object.keys(obj)
       .map(fieldPath => this.fieldsByPath[fieldPath])
@@ -511,7 +626,7 @@ module.exports = class List {
 
   async _resolveRelationship(data, existingItem, context, getItem, mutationState) {
     const fields = this._fieldsFromObject(data).filter(field => field.isRelationship);
-    const resolvedRelationships = await mapToFields(fields, async field => {
+    const resolvedRelationships = await this._mapToFields(fields, async field => {
       const { create, connect, disconnect, currentValue } = await field.resolveNestedOperations(
         data[field.path],
         existingItem,
@@ -548,13 +663,17 @@ module.exports = class List {
   }
 
   async _resolveDefaults({ context, originalInput }) {
-    const args = { context, originalInput };
+    const args = {
+      context,
+      originalInput,
+      actions: mapKeys(this.hooksActions, hook => hook(context)),
+    };
 
     const fieldsWithoutValues = this.fields.filter(
       field => typeof originalInput[field.path] === 'undefined'
     );
 
-    const defaultValues = await mapToFields(fieldsWithoutValues, field =>
+    const defaultValues = await this._mapToFields(fieldsWithoutValues, field =>
       field.getDefaultValue(args)
     );
 
@@ -564,6 +683,153 @@ module.exports = class List {
     };
   }
 
+  async _resolveInput(resolvedData, existingItem, context, operation, originalInput) {
+    const args = {
+      resolvedData,
+      existingItem,
+      context,
+      originalInput,
+      actions: mapKeys(this.hooksActions, hook => hook(context)),
+      operation,
+    };
+
+    // First we run the field type hooks
+    // NOTE: resolveInput is run on _every_ field, regardless if it has a value
+    // passed in or not
+    resolvedData = await this._mapToFields(this.fields, field => field.resolveInput(args));
+
+    // We then filter out the `undefined` results (they should return `null` or
+    // a value)
+    resolvedData = omitBy(resolvedData, key => typeof resolvedData[key] === 'undefined');
+
+    // Run the schema-level field hooks, passing in the results from the field
+    // type hooks
+    resolvedData = {
+      ...resolvedData,
+      ...(await this._mapToFields(
+        this.fields.filter(field => field.hooks.resolveInput),
+        field => field.hooks.resolveInput({ ...args, resolvedData })
+      )),
+    };
+
+    // And filter out the `undefined`s again.
+    resolvedData = omitBy(resolvedData, key => typeof resolvedData[key] === 'undefined');
+
+    if (this.hooks.resolveInput) {
+      // And run any list-level hook
+      resolvedData = await this.hooks.resolveInput({ ...args, resolvedData });
+      if (typeof resolvedData !== 'object') {
+        throw new Error(
+          `Expected ${
+            this.key
+          }.hooks.resolveInput() to return an object, but got a ${typeof resolvedData}: ${resolvedData}`
+        );
+      }
+    }
+
+    // Finally returning the amalgamated result of all the hooks.
+    return resolvedData;
+  }
+
+  async _validateInput(resolvedData, existingItem, context, operation, originalInput) {
+    const args = {
+      resolvedData,
+      existingItem,
+      context,
+      originalInput,
+      actions: mapKeys(this.hooksActions, hook => hook(context)),
+      operation,
+    };
+    // Check for isRequired
+    const fieldValidationErrors = this.fields
+      .filter(
+        field =>
+          field.isRequired &&
+          !field.isRelationship &&
+          ((operation === 'create' &&
+            (resolvedData[field.path] === undefined || resolvedData[field.path] === null)) ||
+            (operation === 'update' &&
+              Object.prototype.hasOwnProperty.call(resolvedData, field.path) &&
+              (resolvedData[field.path] === undefined || resolvedData[field.path] === null)))
+      )
+      .map(f => ({
+        msg: `Required field "${f.path}" is null or undefined.`,
+        data: { resolvedData, operation, originalInput },
+        internalData: {},
+      }));
+    if (fieldValidationErrors.length) {
+      this._throwValidationFailure(fieldValidationErrors, operation, originalInput);
+    }
+
+    const fields = this._fieldsFromObject(resolvedData);
+    await this._validateHook(args, fields, operation, 'validateInput');
+  }
+
+  async _validateHook(args, fields, operation, hookName) {
+    const { originalInput } = args;
+    const fieldValidationErrors = [];
+    // FIXME: Can we do this in a way where we simply return validation errors instead?
+    args.addFieldValidationError = (msg, _data = {}, internalData = {}) =>
+      fieldValidationErrors.push({ msg, data: _data, internalData });
+    await this._mapToFields(fields, field => field[hookName](args));
+    await this._mapToFields(
+      fields.filter(field => field.hooks[hookName]),
+      field => field.hooks[hookName](args)
+    );
+    if (fieldValidationErrors.length) {
+      this._throwValidationFailure(fieldValidationErrors, operation, originalInput);
+    }
+
+    if (this.hooks[hookName]) {
+      const listValidationErrors = [];
+      await this.hooks[hookName]({
+        ...args,
+        addValidationError: (msg, _data = {}, internalData = {}) =>
+          listValidationErrors.push({ msg, data: _data, internalData }),
+      });
+      if (listValidationErrors.length) {
+        this._throwValidationFailure(listValidationErrors, operation, originalInput);
+      }
+    }
+  }
+
+  async _beforeChange(resolvedData, existingItem, context, operation, originalInput) {
+    const args = {
+      resolvedData,
+      existingItem,
+      context,
+      originalInput,
+      actions: mapKeys(this.hooksActions, hook => hook(context)),
+      operation,
+    };
+    await this._runHook(args, resolvedData, 'beforeChange');
+  }
+
+  async _afterChange(updatedItem, existingItem, context, operation, originalInput) {
+    const args = {
+      updatedItem,
+      originalInput,
+      existingItem,
+      context,
+      actions: mapKeys(this.hooksActions, hook => hook(context)),
+      operation,
+    };
+    await this._runHook(args, updatedItem, 'afterChange');
+  }
+
+  // Used to apply hooks that only produce side effects
+  async _runHook(args, fieldObject, hookName) {
+    const fields = this._fieldsFromObject(fieldObject);
+    await this._mapToFields(fields, field => field[hookName](args));
+    await this._mapToFields(
+      fields.filter(field => field.hooks[hookName]),
+      field => field.hooks[hookName](args)
+    );
+
+    if (this.hooks[hookName]) await this.hooks[hookName](args);
+  }
+
+  // MUTATION RESOLVER METHODS
   async _nestedMutation(mutationState, context, mutation) {
     // Set up a fresh mutation state if we're the root mutation
     const isRootMutation = !mutationState;
@@ -593,109 +859,6 @@ module.exports = class List {
     return result;
   }
 
-  // Relationship
-  async createMutation(data, context, mutationState) {
-    const operation = 'create';
-    const gqlName = this.gqlNames.createMutationName;
-
-    await this.checkListAccess(context, data, operation, { gqlName });
-
-    const existingItem = undefined;
-
-    const itemsToUpdate = [{ existingItem, data }];
-
-    await this.checkFieldAccess(operation, itemsToUpdate, context, { gqlName });
-
-    return await this._createSingle(data, existingItem, context, mutationState);
-  }
-
-  async createManyMutation(data, context, mutationState) {
-    const operation = 'create';
-    const gqlName = this.gqlNames.createManyMutationName;
-
-    await this.checkListAccess(context, data, operation, { gqlName });
-
-    const itemsToUpdate = data.map(d => ({ existingItem: undefined, data: d.data }));
-
-    await this.checkFieldAccess(operation, itemsToUpdate, context, { gqlName });
-
-    return Promise.all(
-      data.map(d => this._createSingle(d.data, undefined, context, mutationState))
-    );
-  }
-
-  async _createSingle(originalInput, existingItem, context, mutationState) {
-    const operation = 'create';
-    return await this._nestedMutation(mutationState, context, async mutationState => {
-      const defaultedItem = await this._resolveDefaults({ context, originalInput });
-
-      // Enable resolveRelationship to perform some action after the item is created by
-      // giving them a promise which will eventually resolve with the value of the
-      // newly created item.
-      const createdPromise = createLazyDeferred();
-
-      let resolvedData = await this._resolveRelationship(
-        defaultedItem,
-        existingItem,
-        context,
-        createdPromise.promise,
-        mutationState
-      );
-
-      resolvedData = await this.hookManager.resolveInput({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
-
-      await this.hookManager.validateInput({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
-
-      await this.hookManager.beforeChange({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
-
-      let updatedItem;
-      try {
-        updatedItem = await this.adapter.create(resolvedData);
-        createdPromise.resolve(updatedItem);
-        // Wait until next tick so the promise/micro-task queue can be flushed
-        // fully, ensuring the deferred handlers get executed before we move on
-        await new Promise(res => process.nextTick(res));
-      } catch (error) {
-        createdPromise.reject(error);
-        // Wait until next tick so the promise/micro-task queue can be flushed
-        // fully, ensuring the deferred handlers get executed before we move on
-        await new Promise(res => process.nextTick(res));
-        // Rethrow the error to ensure it's surfaced to Apollo
-        throw error;
-      }
-
-      return {
-        result: updatedItem,
-        afterHook: () =>
-          this.hookManager.afterChange({
-            updatedItem,
-            existingItem,
-            context,
-            operation,
-            originalInput,
-          }),
-      };
-    });
-  }
-
   async updateMutation(id, data, context, mutationState) {
     const operation = 'update';
     const gqlName = this.gqlNames.updateMutationName;
@@ -716,148 +879,41 @@ module.exports = class List {
     return await this._updateSingle(id, data, existingItem, context, mutationState);
   }
 
-  async updateManyMutation(data, context, mutationState) {
-    const operation = 'update';
-    const gqlName = this.gqlNames.updateManyMutationName;
-    const ids = data.map(d => d.id);
-    const extraData = { gqlName, itemIds: ids };
-
-    const access = await this.checkListAccess(context, data, operation, extraData);
-
-    const existingItems = await this.getAccessControlledItems(ids, access);
-    const existingItemsById = arrayToObject(existingItems, 'id');
-
-    const itemsToUpdate = zipObj({
-      existingItem: ids.map(id => existingItemsById[id]),
-      id: ids, // itemId is taken from here in checkFieldAccess
-      data: data.map(d => d.data),
-    });
-
-    // FIXME: We should do all of these in parallel and return *all* the field access violations
-    await this.checkFieldAccess(operation, itemsToUpdate, context, extraData);
-
-    return Promise.all(
-      itemsToUpdate.map(({ existingItem, id, data }) =>
-        this._updateSingle(id, data, existingItem, context, mutationState)
-      )
-    );
-  }
-
-  async _updateSingle(id, originalInput, existingItem, context, mutationState) {
+  async _updateSingle(id, data, existingItem, context, mutationState) {
     const operation = 'update';
     return await this._nestedMutation(mutationState, context, async mutationState => {
       let resolvedData = await this._resolveRelationship(
-        originalInput,
+        data,
         existingItem,
         context,
         undefined,
         mutationState
       );
 
-      resolvedData = await this.hookManager.resolveInput({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
+      resolvedData = await this._resolveInput(resolvedData, existingItem, context, operation, data);
 
-      await this.hookManager.validateInput({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
+      await this._validateInput(resolvedData, existingItem, context, operation, data);
 
-      await this.hookManager.beforeChange({
-        resolvedData,
-        existingItem,
-        context,
-        operation,
-        originalInput,
-      });
+      await this._beforeChange(resolvedData, existingItem, context, operation, data);
 
-      const updatedItem = await this.adapter.update(id, resolvedData);
+      const newItem = await this.adapter.update(id, resolvedData);
 
       return {
-        result: updatedItem,
-        afterHook: () =>
-          this.hookManager.afterChange({
-            updatedItem,
-            existingItem,
-            context,
-            operation,
-            originalInput,
-          }),
+        result: newItem,
+        afterHook: () => this._afterChange(newItem, existingItem, context, operation, data),
       };
     });
   }
 
-  async deleteMutation(id, context, mutationState) {
-    const operation = 'delete';
-    const gqlName = this.gqlNames.deleteMutationName;
-
-    const access = await this.checkListAccess(context, undefined, operation, {
-      gqlName,
-      itemId: id,
-    });
-
-    const existingItem = await this.getAccessControlledItem(id, access, {
-      context,
-      operation,
-      gqlName,
-    });
-
-    return this._deleteSingle(existingItem, context, mutationState);
+  // MISC - CAN PROBABLY GO AWAY?
+  getFieldByPath(path) {
+    return this.fieldsByPath[path];
   }
-
-  async deleteManyMutation(ids, context, mutationState) {
-    const operation = 'delete';
-    const gqlName = this.gqlNames.deleteManyMutationName;
-
-    const access = await this.checkListAccess(context, undefined, operation, {
-      gqlName,
-      itemIds: ids,
-    });
-
-    const existingItems = await this.getAccessControlledItems(ids, access);
-
-    return Promise.all(
-      existingItems.map(existingItem => this._deleteSingle(existingItem, context, mutationState))
-    );
-  }
-
-  async _deleteSingle(existingItem, context, mutationState) {
-    const operation = 'delete';
-
-    return await this._nestedMutation(mutationState, context, async () => {
-      await this.hookManager.validateDelete({ existingItem, context, operation });
-
-      await this.hookManager.beforeDelete({ existingItem, context, operation });
-
-      await this.adapter.delete(existingItem.id);
-
-      return {
-        result: existingItem,
-        afterHook: () => this.hookManager.afterDelete({ existingItem, context, operation }),
-      };
-    });
+  getPrimaryKey() {
+    return this.fieldsByPath['id'];
   }
 
   // METHODS FOR THE LIST-CRUD PROVIDER
-  // Relationship
-  getGraphqlFilterFragment() {
-    return [
-      `where: ${this.gqlNames.whereInputName}`,
-      `search: String`,
-      `sortBy: [${this.gqlNames.listSortName}!]`,
-      `orderBy: String`,
-      `first: Int`,
-      `skip: Int`,
-    ];
-  }
-
   getGqlTypes({ schemaName }) {
     const schemaAccess = this.access[schemaName];
     const types = [];
@@ -865,26 +921,12 @@ module.exports = class List {
     // We want to include `id` fields
     // If read is globally set to false, makes sense to never show it
     const readFields = this.getAllFieldsWithAccess({ schemaName, access: 'read' });
-    if (
-      schemaAccess.read ||
-      schemaAccess.create ||
-      schemaAccess.update ||
-      schemaAccess.delete ||
-      schemaAccess.auth
-    ) {
+    if (schemaAccess.read || schemaAccess.update || schemaAccess.auth) {
       types.push(
         ...flatten(this.fields.map(field => field.getGqlAuxTypes({ schemaName }))),
         `
         """ ${this.schemaDoc || 'A keystone list'} """
         type ${this.gqlNames.outputTypeName} {
-          """
-          This virtual field will be resolved in one of the following ways (in this order):
-           1. Execution of 'labelResolver' set on the ${this.key} List config, or
-           2. As an alias to the field set on 'labelField' in the ${this.key} List config, or
-           3. As an alias to a 'name' field on the ${this.key} List (if one exists), or
-           4. As an alias to the 'id' field on the ${this.key} List.
-          """
-          _label_: String
           ${flatten(
             readFields.map(field =>
               field.schemaDoc
@@ -892,72 +934,23 @@ module.exports = class List {
                 : field.gqlOutputFields({ schemaName })
             )
           ).join('\n')}
-        }`,
-
-        // https://github.com/opencrud/opencrud/blob/master/spec/2-relational/2-2-queries/2-2-3-filters.md#boolean-expressions
-        `
-        input ${this.gqlNames.whereInputName} {
-          AND: [${this.gqlNames.whereInputName}]
-          OR: [${this.gqlNames.whereInputName}]
-
-          ${flatten(readFields.map(field => field.gqlQueryInputFields({ schemaName }))).join('\n')}
-        }`,
-        // TODO: Include other `unique` fields and allow filtering by them
-        `
-        input ${this.gqlNames.whereUniqueInputName} {
-          id: ID!
         }`
       );
-
-      const sortOptions = flatten(
-        readFields.map(({ path, isOrderable }) =>
-          // Explicitly allow sorting by id
-          isOrderable || path === 'id' ? [`${path}_ASC`, `${path}_DESC`] : []
-        )
-      );
-
-      if (sortOptions.length) {
-        types.push(`
-          enum ${this.gqlNames.listSortName} {
-            ${sortOptions.join('\n')}
-          }
-        `);
-      }
     }
 
     const updateFields = this.getFieldsWithAccess({ schemaName, access: 'update' });
     if (schemaAccess.update && updateFields.length) {
       types.push(`
         input ${this.gqlNames.updateInputName} {
-          ${flatten(updateFields.map(field => field.gqlUpdateInputFields({ schemaName }))).join(
-            '\n'
-          )}
+          ${flatten(updateFields.map(field => field.gqlUpdateInputFields)).join('\n')}
         }
       `);
       types.push(`
         input ${this.gqlNames.updateManyInputName} {
-          id: ID!
           data: ${this.gqlNames.updateInputName}
         }
       `);
     }
-
-    const createFields = this.getFieldsWithAccess({ schemaName, access: 'create' });
-    if (schemaAccess.create && createFields.length) {
-      types.push(`
-        input ${this.gqlNames.createInputName} {
-          ${flatten(createFields.map(field => field.gqlCreateInputFields({ schemaName }))).join(
-            '\n'
-          )}
-        }
-      `);
-      types.push(`
-        input ${this.gqlNames.createManyInputName} {
-          data: ${this.gqlNames.createInputName}
-        }
-      `);
-    }
-
     return types;
   }
 
@@ -971,24 +964,8 @@ module.exports = class List {
     if (schemaAccess.read) {
       queries.push(
         `
-        """ Search for all ${this.gqlNames.outputTypeName} items which match the where clause. """
-        ${this.gqlNames.listQueryName}(
-          ${this.getGraphqlFilterFragment().join('\n')}
-        ): [${this.gqlNames.outputTypeName}]`,
-
-        `
         """ Search for the ${this.gqlNames.outputTypeName} item with the matching ID. """
-        ${this.gqlNames.itemQueryName}(
-          where: ${this.gqlNames.whereUniqueInputName}!
-        ): ${this.gqlNames.outputTypeName}`,
-
-        `
-        """ Perform a meta-query on all ${
-          this.gqlNames.outputTypeName
-        } items which match the where clause. """
-        ${this.gqlNames.listQueryMetaName}(
-          ${this.getGraphqlFilterFragment().join('\n')}
-        ): _QueryMeta`,
+        ${this.gqlNames.itemQueryName}: ${this.gqlNames.outputTypeName}`,
 
         `
         """ Retrieve the meta-data for the ${this.gqlNames.itemQueryName} list. """
@@ -1006,54 +983,13 @@ module.exports = class List {
     // NOTE: We only check for truthy as it could be `true`, or a function (the
     // function is executed later in the resolver)
 
-    const createFields = this.getFieldsWithAccess({ schemaName, access: 'create' });
-    if (schemaAccess.create && createFields.length) {
-      mutations.push(`
-        """ Create a single ${this.gqlNames.outputTypeName} item. """
-        ${this.gqlNames.createMutationName}(
-          data: ${this.gqlNames.createInputName}
-        ): ${this.gqlNames.outputTypeName}
-      `);
-
-      mutations.push(`
-        """ Create multiple ${this.gqlNames.outputTypeName} items. """
-        ${this.gqlNames.createManyMutationName}(
-          data: [${this.gqlNames.createManyInputName}]
-        ): [${this.gqlNames.outputTypeName}]
-      `);
-    }
-
     const updateFields = this.getFieldsWithAccess({ schemaName, access: 'update' });
     if (schemaAccess.update && updateFields.length) {
       mutations.push(`
       """ Update a single ${this.gqlNames.outputTypeName} item by ID. """
         ${this.gqlNames.updateMutationName}(
-          id: ID!
           data: ${this.gqlNames.updateInputName}
         ): ${this.gqlNames.outputTypeName}
-      `);
-
-      mutations.push(`
-      """ Update multiple ${this.gqlNames.outputTypeName} items by ID. """
-        ${this.gqlNames.updateManyMutationName}(
-          data: [${this.gqlNames.updateManyInputName}]
-        ): [${this.gqlNames.outputTypeName}]
-      `);
-    }
-
-    if (schemaAccess.delete) {
-      mutations.push(`
-        """ Delete a single ${this.gqlNames.outputTypeName} item by ID. """
-        ${this.gqlNames.deleteMutationName}(
-          id: ID!
-        ): ${this.gqlNames.outputTypeName}
-      `);
-
-      mutations.push(`
-        """ Delete multiple ${this.gqlNames.outputTypeName} items by ID. """
-        ${this.gqlNames.deleteManyMutationName}(
-          ids: [ID!]
-        ): [${this.gqlNames.outputTypeName}]
       `);
     }
 
@@ -1062,47 +998,10 @@ module.exports = class List {
 
   gqlAuxFieldResolvers({ schemaName }) {
     const schemaAccess = this.access[schemaName];
-    if (
-      schemaAccess.read ||
-      schemaAccess.create ||
-      schemaAccess.update ||
-      schemaAccess.delete ||
-      schemaAccess.auth
-    ) {
+    if (schemaAccess.read || schemaAccess.update || schemaAccess.auth) {
       return objMerge(this.fields.map(field => field.gqlAuxFieldResolvers({ schemaName })));
     }
     return {};
-  }
-
-  // Wrap the "inner" resolver for a single output field with list-specific modifiers
-  _wrapFieldResolver(field, innerResolver) {
-    return async (item, args, context, info) => {
-      // Check access
-      const operation = 'read';
-      const access = await context.getFieldAccessControlForUser(
-        this.key,
-        field.path,
-        undefined,
-        item,
-        operation
-      );
-      if (!access) {
-        // If the client handles errors correctly, it should be able to
-        // receive partial data (for the fields the user has access to),
-        // and then an `errors` array of AccessDeniedError's
-        throwAccessDenied(opToType[operation], context, field.path, {
-          itemId: item ? item.id : null,
-        });
-      }
-
-      // Only static cache hints are supported at the field level until a use-case makes it clear what parameters a dynamic hint would take
-      if (field.config.cacheHint && info && info.cacheControl) {
-        info.cacheControl.setCacheHint(field.config.cacheHint);
-      }
-
-      // Execute the original/inner resolver
-      return innerResolver(item, args, context, info);
-    };
   }
 
   gqlFieldResolvers({ schemaName }) {
@@ -1111,8 +1010,6 @@ module.exports = class List {
       return {};
     }
     const fieldResolvers = {
-      // TODO: The `_label_` output field currently circumvents access control
-      _label_: this.labelResolver,
       ...objMerge(
         this.fields
           .filter(field => field.access[schemaName].read)
@@ -1140,12 +1037,6 @@ module.exports = class List {
     // the graphql schema
     if (schemaAccess.read) {
       resolvers = {
-        [this.gqlNames.listQueryName]: (_, args, context, info) =>
-          this.listQuery(args, context, this.gqlNames.listQueryName, info),
-
-        [this.gqlNames.listQueryMetaName]: (_, args, context, info) =>
-          this.listQueryMeta(args, context, this.gqlNames.listQueryMetaName, info),
-
         [this.gqlNames.listMetaName]: (_, args, context) => this.listMeta(context),
 
         [this.gqlNames.itemQueryName]: (_, args, context, info) =>
@@ -1154,79 +1045,6 @@ module.exports = class List {
     }
 
     return resolvers;
-  }
-
-  listMeta(context) {
-    return {
-      key: this.key,
-      name: this.key,
-      description: this.adminDoc,
-      label: this.adminUILabels.label,
-      singular: this.adminUILabels.singular,
-      plural: this.adminUILabels.plural,
-      path: this.adminUILabels.path,
-
-      // Return these as functions so they're lazily evaluated depending
-      // on what the user requested
-      // Evaluation takes place in ../providers/listCRUD.js
-      // NOTE: These could return a Boolean or a JSON object (if using the
-      // declarative syntax)
-      getAccess: () => ({
-        getCreate: () =>
-          context.getListAccessControlForUser(this.access, this.key, undefined, 'create', {
-            context,
-          }),
-        getRead: () =>
-          context.getListAccessControlForUser(this.access, this.key, undefined, 'read', {
-            context,
-          }),
-        getUpdate: () =>
-          context.getListAccessControlForUser(this.access, this.key, undefined, 'update', {
-            context,
-          }),
-        getDelete: () =>
-          context.getListAccessControlForUser(this.access, this.key, undefined, 'delete', {
-            context,
-          }),
-        getAuth: () => context.getAuthAccessControlForUser(this.access, this.key, { context }),
-      }),
-
-      getSchema: () => {
-        const queries = {
-          item: this.gqlNames.itemQueryName,
-          list: this.gqlNames.listQueryName,
-          meta: this.gqlNames.listQueryMetaName,
-        };
-
-        const mutations = {
-          create: this.gqlNames.createMutationName,
-          createMany: this.gqlNames.createManyMutationName,
-          update: this.gqlNames.updateMutationName,
-          updateMany: this.gqlNames.updateManyMutationName,
-          delete: this.gqlNames.deleteMutationName,
-          deleteMany: this.gqlNames.deleteManyMutationName,
-        };
-
-        const inputTypes = {
-          whereInput: this.gqlNames.whereInputName,
-          whereUniqueInput: this.gqlNames.whereUniqueInputName,
-          createInput: this.gqlNames.createInputName,
-          createManyInput: this.gqlNames.createManyInputName,
-          updateInput: this.gqlNames.updateInputName,
-          updateManyInput: this.gqlNames.updateManyInputName,
-        };
-
-        // NOTE: Other fields on this type are resolved in the main resolver in
-        // ../providers/listCRUD.js
-        return {
-          type: this.gqlNames.outputTypeName,
-          queries,
-          mutations,
-          inputTypes,
-          key: this.key, // Used to resolve fields
-        };
-      },
-    };
   }
 
   gqlAuxMutationResolvers() {
@@ -1238,32 +1056,40 @@ module.exports = class List {
     const schemaAccess = this.access[schemaName];
     const mutationResolvers = {};
 
-    const createFields = this.getFieldsWithAccess({ schemaName, access: 'create' });
-    if (schemaAccess.create && createFields.length) {
-      mutationResolvers[this.gqlNames.createMutationName] = (_, { data }, context) =>
-        this.createMutation(data, context);
-
-      mutationResolvers[this.gqlNames.createManyMutationName] = (_, { data }, context) =>
-        this.createManyMutation(data, context);
-    }
-
     const updateFields = this.getFieldsWithAccess({ schemaName, access: 'update' });
     if (schemaAccess.update && updateFields.length) {
       mutationResolvers[this.gqlNames.updateMutationName] = (_, { id, data }, context) =>
         this.updateMutation(id, data, context);
-
-      mutationResolvers[this.gqlNames.updateManyMutationName] = (_, { data }, context) =>
-        this.updateManyMutation(data, context);
-    }
-
-    if (schemaAccess.delete) {
-      mutationResolvers[this.gqlNames.deleteMutationName] = (_, { id }, context) =>
-        this.deleteMutation(id, context);
-
-      mutationResolvers[this.gqlNames.deleteManyMutationName] = (_, { ids }, context) =>
-        this.deleteManyMutation(ids, context);
     }
 
     return mutationResolvers;
+  }
+
+  listMeta(context) {
+    return {
+      key: this.key,
+      name: this.key,
+      // Return these as functions so they're lazily evaluated depending
+      // on what the user requested
+      // Evalutation takes place in ../Keystone/index.js
+      // NOTE: These could return a Boolean or a JSON object (if using the
+      // declarative syntax)
+      getAccess: () => ({
+        getRead: () => context.getListAccessControlForUser(this.key, undefined, 'read'),
+        getUpdate: () => context.getListAccessControlForUser(this.key, undefined, 'update'),
+        getAuth: () => context.getAuthAccessControlForUser(this.key),
+      }),
+      getSchema: () => {
+        const queries = [this.gqlNames.itemQueryName];
+
+        // NOTE: Other fields on this type are resolved in the main resolver in
+        // ../Keystone/index.js
+        return {
+          type: this.gqlNames.outputTypeName,
+          queries,
+          key: this.key,
+        };
+      },
+    };
   }
 };
