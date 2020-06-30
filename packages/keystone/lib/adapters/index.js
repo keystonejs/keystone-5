@@ -17,9 +17,10 @@ class BaseKeystoneAdapter {
     return this.listAdapters[key];
   }
 
-  async connect({ rels }) {
+  async connect({ rels, prisma }) {
     // Connect to the database
-    await this._connect({ rels }, this.config);
+    await this._connect({ prisma }, this.config);
+    this.prisma = prisma;
 
     // Set up all list adapters
     try {

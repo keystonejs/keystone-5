@@ -392,22 +392,34 @@ module.exports = class Keystone {
       let columnName;
       if (cardinality === 'N:N') {
         tableName = right
-          ? `${left.listKey}_${left.path}_${right.listKey}_${right.path}`
-          : `${left.listKey}_${left.path}_many`;
+          ? `_${left.listKey}_${left.path}_${right.listKey}_${right.path}`
+          : `_${left.listKey}_${left.path}_many`;
         if (right) {
           const leftKey = `${left.listKey}.${left.path}`;
           const rightKey = `${right.listKey}.${right.path}`;
           rel.columnNames = {
-            [leftKey]: { near: `${left.listKey}_left_id`, far: `${right.listKey}_right_id` },
-            [rightKey]: { near: `${right.listKey}_right_id`, far: `${left.listKey}_left_id` },
+            [leftKey]: { near: `A`, far: `B` },
+            [rightKey]: { near: `B`, far: `A` },
+            // [leftKey]: { near: `${left.listKey}_left_id`, far: `${right.listKey}_right_id` },
+            // [rightKey]: { near: `${right.listKey}_right_id`, far: `${left.listKey}_left_id` },
           };
         } else {
           const leftKey = `${left.listKey}.${left.path}`;
           const rightKey = `${left.config.ref}`;
-          rel.columnNames = {
-            [leftKey]: { near: `${left.listKey}_left_id`, far: `${left.config.ref}_right_id` },
-            [rightKey]: { near: `${left.config.ref}_right_id`, far: `${left.listKey}_left_id` },
-          };
+          if (left.listKey.localeCompare(left.refListKey) > 0) {
+            // left comes after right, so it's the B column
+            rel.columnNames = {
+              [leftKey]: { near: `B`, far: `A` },
+              [rightKey]: { near: `A`, far: `B` },
+            };
+          } else {
+            rel.columnNames = {
+              [leftKey]: { near: `A`, far: `B` },
+              [rightKey]: { near: `B`, far: `A` },
+              // [leftKey]: { near: `${left.listKey}_left_id`, far: `${left.config.ref}_right_id` },
+              // [rightKey]: { near: `${left.config.ref}_right_id`, far: `${left.listKey}_left_id` },
+            };
+          }
         }
       } else if (cardinality === '1:1') {
         tableName = left.listKey;
@@ -432,10 +444,12 @@ module.exports = class Keystone {
    * @return Promise<any> the result of executing `onConnect` as passed to the
    * constructor, or `undefined` if no `onConnect` method specified.
    */
-  async connect() {
-    const { adapters } = this;
+  async connect(prismaClient) {
+    const { adapters, name } = this;
     const rels = this._consolidateRelationships();
-    await resolveAllKeys(mapKeys(adapters, adapter => adapter.connect({ rels })));
+    // const prisma = new prismaClient.PrismaClient({ log: ['query'] });
+    const prisma = new prismaClient.PrismaClient();
+    await resolveAllKeys(mapKeys(adapters, adapter => adapter.connect({ rels, prisma })));
 
     if (this.eventHandlers.onConnect) {
       return this.eventHandlers.onConnect(this);
@@ -632,6 +646,143 @@ module.exports = class Keystone {
           )
       )),
     ]).filter(middleware => !!middleware);
+  }
+
+  generatePrismaSchema() {
+    const rels = this._consolidateRelationships();
+    // console.log(rels);
+    // console.log(this.lists);
+
+    // const fields = [];
+    const foo = this.listsArray.map(list => {
+      // console.log(list.fields.filter(f => !f.isRelationship).map(f => f.constructor.name));
+      const scalarFields = flatten(list.fields
+        .filter(f => !f.isRelationship)
+        .filter(f => f.path !== 'id')
+        .map(f => f.getPrismaSchema()));
+        // .map(f => `${f.path}      ${f.constructor.name === 'Integer' ? 'Int' : 'String'}?`)
+        // .filter(x => x);
+      const relFields = [
+        ...flatten(
+          list.fields
+            .filter(f => f.isRelationship)
+            .map(f => {
+              const r = rels.find(r => r.left === f || r.right === f);
+              // console.log({ r });
+              const isLeft = r.left === f;
+              // console.log({ isLeft });
+              if (r.cardinality === '1:N') {
+                if (isLeft) {
+                  return [
+                    `${f.path}    ${r.left.refListKey}[]    @relation("${r.tableName}${r.columnName}")`,
+                  ];
+                } else {
+                  return [
+                    `${f.path}    ${r.right.refListKey}?    @relation("${r.tableName}${r.columnName}", fields: [${r.columnName}Id], references: [id])`,
+                    `${f.path}Id  Int? @map("${r.columnName}")`,
+                  ];
+                }
+              } else if (r.cardinality === 'N:1') {
+                if (!isLeft) {
+                  return [
+                    `${f.path}    ${r.right.refListKey}[]    @relation("${r.tableName}${r.columnName}")`,
+                  ];
+                } else {
+                  return [
+                    `${f.path}    ${r.left.refListKey}?    @relation("${r.tableName}${r.columnName}", fields: [${r.columnName}Id], references: [id])`,
+                    `${f.path}Id  Int? @map("${r.columnName}")`,
+                  ];
+                }
+              } else if (r.cardinality === '1:1') {
+                // console.log({ r, isLeft });
+                if (isLeft) {
+                  return [
+                    `${f.path}    ${r.left.refListKey}?    @relation("${r.tableName}${r.columnName}", fields: [${r.columnName}Id], references: [id])`,
+                    `${f.path}Id  Int? @map("${r.columnName}")`,
+                  ];
+                } else {
+                  return [
+                    `${f.path}    ${r.right.refListKey}?      @relation("${r.tableName}${r.columnName}")`,
+                  ];
+                }
+              } else if (r.cardinality === 'N:N') {
+                const tableName = r.tableName.slice(1);
+                if (isLeft) {
+                  return [
+                    `${f.path}    ${r.left.refListKey}[]    @relation("${tableName}", references: [id])`,
+                  ];
+                } else {
+                  return [
+                    `${f.path}    ${r.right.refListKey}[]    @relation("${tableName}", references: [id])`,
+                  ];
+                }
+              }
+            })
+        ),
+        ...flatten(
+          rels
+            .filter(({ right }) => !right)
+            .filter(({ left }) => left.refListKey === list.key)
+            .filter(({ cardinality }) => cardinality === 'N:N')
+            .map(r => {
+              // console.log({ r });
+              const tableName = r.tableName.slice(1);
+              return [
+                `from_${r.left.path}    ${r.left.listKey}[]    @relation("${tableName}", references: [id])`,
+              ];
+            })
+        ),
+      ];
+
+      const fields = [...scalarFields, ...relFields];
+      return `model ${list.key} {
+  id          Int      @id @default(autoincrement())
+  ${fields.join('\n  ')}
+}`;
+    });
+    const header = `datasource postgresql {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
+generator client {
+  provider = "prisma-client-js"
+  output = "generated-client"
+}
+`;
+    // console.log(header + foo.join('\n'));
+    return header + foo.join('\n');
+
+    //     return `datasource postgresql {
+    //   url      = env("DATABASE_URL")
+    //   provider = "postgresql"
+    // }
+    // generator client {
+    //   provider = "prisma-client-js"
+    //   output = "generated-client"
+    // }
+    // model User {
+    //   id        Int      @id @default(autoincrement())
+    //   createdAt DateTime @default(now())
+    //   email     String   @unique
+    //   name      String?
+    //   role      Role     @default(USER)
+    //   posts     Post[]
+    // }
+    // model Post {
+    //   id        Int      @id @default(autoincrement())
+    //   createdAt DateTime @default(now())
+    //   updatedAt DateTime @updatedAt
+    //   published Boolean  @default(false)
+    //   title     String
+    //   author    User?    @relation(fields: [authorId], references: [id])
+    //   authorId  Int?
+    // }
+    // enum Role {
+    //   USER
+    //   ADMIN
+    //   OTHER
+    // }
+    // `;
   }
 
   async prepare({

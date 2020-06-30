@@ -8,6 +8,10 @@ export class Float extends Implementation {
     this.isOrderable = true;
   }
 
+  getPrismaSchema() {
+    return [`${this.path}      Float?`];
+  }
+
   gqlOutputFields() {
     return [`${this.path}: Float`];
   }

@@ -7,6 +7,9 @@ export class Checkbox extends Implementation {
     super(...arguments);
     this.isOrderable = true;
   }
+  getPrismaSchema() {
+    return [`${this.path}      Boolean?`];
+  }
 
   gqlOutputFields() {
     return [`${this.path}: Boolean`];

@@ -350,9 +350,9 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
                 // See that it actually stored the group ID on the Event record
                 const event = await findOne(`EventTo${group.name}`, { title: 'A thing' });
                 expect(event).toBeTruthy();
-                expect(event.group).toBeTruthy();
+                expect(event.groupId).toBeTruthy();
 
-                const _group = await findById(group.name, event.group);
+                const _group = await findById(group.name, event.groupId);
                 expect(_group).toBeTruthy();
                 expect(_group.name).toBe(groupName);
               })

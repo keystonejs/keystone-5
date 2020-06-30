@@ -74,7 +74,7 @@ export const filterTests = withKeystone => {
       match(keystone, 'where: { name: "fooBAR" }', [{ order: 'd', name: 'fooBAR' }])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_i: "fooBAR" }', [
@@ -98,7 +98,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_not_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_not_i: "fooBAR" }', [
@@ -119,7 +119,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_contains_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_contains_i: "oo" }', [
@@ -142,7 +142,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_not_contains_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_not_contains_i: "oo" }', [
@@ -163,7 +163,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_starts_with_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_starts_with_i: "foo" }', [
@@ -186,7 +186,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_not_starts_with_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_not_starts_with_i: "foo" }', [
@@ -207,7 +207,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_ends_with_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_ends_with_i: "BAR" }', [
@@ -230,7 +230,7 @@ export const filterTests = withKeystone => {
       ])
     )
   );
-  test(
+  test.skip(
     `Filter: {key}_not_ends_with_i (case-insensitive)`,
     withKeystone(({ keystone }) =>
       match(keystone, 'where: { name_not_ends_with_i: "BAR" }', [

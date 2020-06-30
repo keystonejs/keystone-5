@@ -111,3 +111,5 @@ tags
 
 projects/
 temp/
+
+.api-test-prisma-clients

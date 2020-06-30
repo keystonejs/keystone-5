@@ -7,10 +7,9 @@ describe('Fields', () => {
     absolute: true,
   });
   testModules.push(path.resolve('packages/fields/tests/test-fixtures.js'));
-
   multiAdapterRunners().map(({ runner, adapterName }) =>
     describe(`${adapterName} adapter`, () => {
-      testModules.map(require).forEach(mod => {
+      testModules.filter(m => m.includes('Float') || true).map(require).forEach(mod => {
         const listName = 'test';
         const keystoneTestWrapper = (testFn = () => {}) =>
           runner(

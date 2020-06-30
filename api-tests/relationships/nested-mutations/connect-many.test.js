@@ -349,29 +349,13 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
         }
       }`,
           });
+          expect(errors).toBe(undefined);
           expect(data).toMatchObject({
             updateUsers: [
-              {
-                id: expect.any(String),
-                notes: [
-                  {
-                    id: createNote.id,
-                    content: noteContent,
-                  },
-                ],
-              },
-              {
-                id: expect.any(String),
-                notes: [
-                  {
-                    id: createNote2.id,
-                    content: noteContent2,
-                  },
-                ],
-              },
+              { id: expect.any(String), notes: [{ id: createNote.id, content: noteContent }] },
+              { id: expect.any(String), notes: [{ id: createNote2.id, content: noteContent2 }] },
             ],
           });
-          expect(errors).toBe(undefined);
         })
       );
     });

@@ -8,6 +8,10 @@ export class Integer extends Implementation {
     this.isOrderable = true;
   }
 
+  getPrismaSchema() {
+    return [`${this.path}      Int?`];
+  }
+
   gqlOutputFields() {
     return [`${this.path}: Int`];
   }

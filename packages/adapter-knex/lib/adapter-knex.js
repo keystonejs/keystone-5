@@ -66,6 +66,7 @@ class KnexAdapter extends BaseKeystoneAdapter {
     this.rels = rels;
     Object.values(this.listAdapters).forEach(listAdapter => {
       listAdapter._postConnect({ rels });
+      listAdapter.prisma = this.prisma;
     });
 
     if (!this.config.dropDatabase || process.env.NODE_ENV === 'production') {
@@ -209,6 +210,7 @@ class KnexAdapter extends BaseKeystoneAdapter {
 
   disconnect() {
     this.knex.destroy();
+    this.prisma.disconnect();
   }
 
   // This will drop all the tables in the backing database. Use wisely.
@@ -476,6 +478,7 @@ class KnexListAdapter extends BaseListAdapter {
             .where(matchCol, item.id)
             .returning(selectCol)
         ).map(x => x[selectCol].toString());
+        // console.log('b');
 
         // Delete what needs to be deleted
         const needsDelete = currentRefIds.filter(x => !newValues.includes(x));
@@ -555,14 +558,23 @@ class KnexListAdapter extends BaseListAdapter {
   ////////// Queries //////////
 
   async _itemsQuery(args, { meta = false, from = {} } = {}) {
+    // console.log('QUERY');
+    // console.log(this);
+    const modelName = this.key.slice(0, 1).toLowerCase() + this.key.slice(1);
+    // console.log({ modelName, args, meta, from });
     const query = new QueryBuilder(this, args, { meta, from }).get();
     const results = await query;
-
+    // console.log({ modelName });
+    const model = this.prisma[modelName];
+    // console.log(this.prisma);
+    // console.log({ model });
+    // const prismaResult = await model.count(prismaFilter({ args, meta, from }));
+    const filter = prismaFilter({ listAdapter: this, args, meta, from });
+    // console.log({ filter });
+    let ret;
     if (meta) {
+      let count = await model.count(filter);
       const { first, skip } = args;
-      const ret = results[0];
-      let count = ret.count;
-
       // Adjust the count as appropriate
       if (skip !== undefined) {
         count -= skip;
@@ -572,11 +584,182 @@ class KnexListAdapter extends BaseListAdapter {
       }
       count = Math.max(0, count); // Don't want to go negative from a skip!
       return { count };
+    } else {
+      ret = await model.findMany(filter);
     }
+    // console.log({ results });
+    // console.log({ ret });
+    // console.log(ret);
+    return ret;
+    // console.log({ prismaResult });
+    // if (meta) {
+    //   const { first, skip } = args;
+    //   const ret = results[0];
+    //   let count = ret.count;
+
+    //   // Adjust the count as appropriate
+    //   if (skip !== undefined) {
+    //     count -= skip;
+    //   }
+    //   if (first !== undefined) {
+    //     count = Math.min(count, first);
+    //   }
+    //   count = Math.max(0, count); // Don't want to go negative from a skip!
+    //   return { count };
+    // }
 
     return results;
   }
 }
+
+const prismaFilter = ({
+  listAdapter,
+  args: { where = {}, first, skip, sortBy, orderBy },
+  meta,
+  from,
+}) => {
+  const ret = {};
+  const allWheres = processWheres(where, listAdapter);
+
+  // console.log({ allWheres });
+  if (allWheres) {
+    ret.where = allWheres;
+  }
+
+  if (from.fromId) {
+    if (!ret.where) {
+      ret.where = {};
+    }
+    const a = from.fromList.adapter.fieldAdaptersByPath[from.fromField];
+    if (a.rel.cardinality === 'N:N') {
+      const { near } = from.fromList.adapter._getNearFar(a);
+      // console.log({ near, far });
+      if (a.rel.right) {
+        // two-sided
+        const f = near === 'B' ? a.rel.left : a.rel.right;
+        ret.where[f.path] = { some: { id: Number(from.fromId) } };
+      } else {
+        const p = a !== a.rel.left ? `from_${a.rel.left.path}` : a.rel.left.path;
+        ret.where[p] = { some: { id: Number(from.fromId) } };
+      }
+    } else {
+      const { columnName } = a.rel;
+      ret.where[columnName] = { id: Number(from.fromId) };
+    }
+  }
+
+  // Add query modifiers as required
+  if (!meta) {
+    if (first !== undefined) {
+      // SELECT ... LIMIT <first>
+      ret.take = first;
+    }
+    if (skip !== undefined) {
+      // SELECT ... OFFSET <skip>
+      ret.skip = skip;
+    }
+    if (orderBy !== undefined) {
+      // SELECT ... ORDER BY <orderField>
+      const [orderField, orderDirection] = orderBy.split('_');
+      const sortKey = listAdapter.fieldAdaptersByPath[orderField].sortKey || orderField;
+      ret.orderBy = { [sortKey]: orderDirection.toLowerCase() };
+    }
+    if (sortBy !== undefined) {
+      // SELECT ... ORDER BY <orderField>[, <orderField>, ...]
+      if (!ret.orderBy) ret.orderBy = {};
+      sortBy.forEach(s => {
+        const [orderField, orderDirection] = s.split('_');
+        const sortKey = listAdapter.fieldAdaptersByPath[orderField].sortKey || orderField;
+        ret.orderBy[sortKey] = orderDirection.toLowerCase();
+      });
+    }
+  }
+
+  listAdapter.fieldAdapters
+    .filter(a => a.isRelationship && a.rel.cardinality === '1:1' && a.rel.right === a.field)
+    .forEach(({ path }) => {
+      if (!ret.include) ret.include = {};
+      ret.include[path] = true;
+    });
+
+  // console.log(ret);
+  return ret;
+};
+
+const processWheres = (where, listAdapter) => {
+  const wheres = [];
+  for (const [condition, value] of Object.entries(where)) {
+    // See if any of our fields know what to do with this condition
+    // console.log({ condition });
+    const [path, ..._conditionType] = condition.split('_');
+    const conditionType = _conditionType.join('_');
+    let fieldAdapter = listAdapter.fieldAdaptersByPath[path];
+    // FIXME: ask the field adapter if it supports the condition type
+    const supported = fieldAdapter && fieldAdapter.getQueryConditions()[path];
+    if (supported) {
+      // console.log({ conditionType, value });
+      let ct = conditionType || 'equals';
+      const negate = ct.startsWith('not_');
+      if (negate) ct = ct.slice(4);
+      // console.log({ negate, ct });
+      if (ct === 'starts_with') ct = 'startsWith';
+      if (ct === 'ends_with') ct = 'endsWith';
+      if (ct === 'not_in') ct = 'notIn';
+      if (negate) {
+        wheres.push({
+          OR: [
+            {
+              NOT: {
+                [fieldAdapter.dbPath]: {
+                  [ct]:
+                    path === 'id'
+                      ? ct === 'in'
+                        ? value.map(x => Number(x))
+                        : Number(value)
+                      : value,
+                },
+              },
+            },
+            {
+              [fieldAdapter.dbPath]: null,
+            },
+          ],
+        });
+      } else {
+        wheres.push({
+          [fieldAdapter.dbPath]: {
+            [ct]: path === 'id' ? (ct === 'in' ? value.map(x => Number(x)) : Number(value)) : value,
+          },
+        });
+      }
+    } else if (path === 'AND' || path === 'OR') {
+      wheres.push({ [path]: value.map(w => processWheres(w, listAdapter)) });
+    } else {
+      let fieldAdapter = listAdapter.fieldAdaptersByPath[condition];
+      // We have a relationship field
+      if (fieldAdapter) {
+        // Non-many relationship. Traverse the sub-query, using the referenced list as a root.
+        const otherListAdapter = listAdapter.getListAdapterByKey(fieldAdapter.refListKey);
+        wheres.push({ [path]: processWheres(value, otherListAdapter) });
+      } else {
+        // Many relationship
+        const [p, constraintType] = condition.split('_');
+        fieldAdapter = listAdapter.fieldAdaptersByPath[p];
+        const otherList = fieldAdapter.refListKey;
+        const otherListAdapter = listAdapter.getListAdapterByKey(otherList);
+        wheres.push({ [p]: { [constraintType]: processWheres(value, otherListAdapter) } });
+      }
+    }
+  }
+  // console.log(where, wheres[0]);
+  if (wheres.length === 0) {
+    return;
+  } else if (wheres.length === 1) {
+    return wheres[0];
+  } else {
+    return { AND: wheres };
+  }
+};
 
 class QueryBuilder {
   constructor(

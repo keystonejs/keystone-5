@@ -55,6 +55,10 @@ class Field {
     return parseFieldAccess(args);
   }
 
+  getPrismaSchema() {
+    return [`${this.path}      String?`];
+  }
+
   // Field types should replace this if they want to any fields to the output type
   gqlOutputFields() {
     return [];

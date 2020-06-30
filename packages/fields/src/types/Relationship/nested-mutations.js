@@ -113,11 +113,13 @@ async function resolveNestedMany({
     // This will resolve access control, etc for us.
     // In the future, when WhereUniqueInput accepts more than just an id,
     // this will also resolve those queries for us too.
+    // console.log('----');
     const [connectedItems, connectErrors] = await _runActions(
       where => refList.itemQuery({ where }, context, refList.gqlNames.itemQueryName),
       input.connect,
       ['connect']
     );
+    // console.log({ connectErrors });
 
     // Create related item. Will check for access control itself, no need to do anything extra here.
     // NOTE: We don't check for read access control on the returned ids as the

@@ -127,10 +127,19 @@ export class Relationship extends Implementation {
       return {
         [this.path]: (item, _, context, info) => {
           // No ID set, so we return null for the value
-          if (!item[this.path]) {
+          const foo = item[`${this.path}Id`] ? `${this.path}Id` : this.path;
+          if (!item[foo]) {
             return null;
           }
-          const filteredQueryArgs = { where: { id: item[this.path].toString() } };
+          let id;
+          if (Array.isArray(item[foo])) {
+            id = item[foo][0];
+          } else if (typeof item[foo] === 'object') {
+            id = item[foo].id.toString();
+          } else {
+            id = item[foo].toString();
+          }
+          const filteredQueryArgs = { where: { id: id.toString() } };
           // We do a full query to ensure things like access control are applied
           return refList
             .listQuery(filteredQueryArgs, context, refList.gqlNames.listQueryName, info)
@@ -209,7 +218,16 @@ export class Relationship extends Implementation {
         : [];
       currentValue = currentValue.map(({ id }) => id.toString());
     } else {
-      currentValue = item && item[this.path];
+      const foo = item && item[`${this.path}Id`] ? `${this.path}Id` : this.path;
+      let id;
+      if (item && Array.isArray(item[foo])) {
+        id = item[foo][0];
+      } else if (item && typeof item[foo] === 'object') {
+        id = item[foo] && item[foo].id;
+      } else {
+        id = item && item[foo];
+      }
+      currentValue = id;
       currentValue = currentValue && currentValue.toString();
     }
 

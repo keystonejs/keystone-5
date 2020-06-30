@@ -8,6 +8,7 @@
   "repository": "https://github.com/keystonejs/keystone",
   "homepage": "https://github.com/keystonejs/keystone",
   "scripts": {
+    "prisma": "prisma",
     "dev": "yarn demo todo dev",
     "demo": "yarn --cwd ./demo-projects",
     "website": "manypkg run website",

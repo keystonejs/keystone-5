@@ -1,3 +1,6 @@
+const crypto = require('crypto');
+const fs = require('fs');
+const { execSync } = require('child_process');
 const express = require('express');
 const supertest = require('supertest-light');
 const MongoDBMemoryServer = require('mongodb-memory-server-core').default;
@@ -165,6 +168,38 @@ function getDelete(keystone) {
   return (list, id) => keystone.getListByKey(list).adapter.delete(id);
 }
 
+function getPrismaClient(keystone) {
+  // Generate the prisma schema
+  const prismaSchema = keystone.generatePrismaSchema();
+  // console.log({ prismaSchema });
+
+  // Compute the hash
+  const hash = crypto
+    .createHash('sha256')
+    .update(prismaSchema)
+    .digest('hex');
+  // console.log(hash);
+
+  // See if there is a prisma client available for this hash
+  const base = '.api-test-prisma-clients';
+  const path = `${base}/${hash}`;
+  if (!fs.existsSync(path)) {
+    // mkdir
+    fs.mkdirSync(path, { recursive: true });
+
+    // write prisma file
+    fs.writeSync(fs.openSync(`${path}/schema.prisma`, 'w'), prismaSchema);
+
+    // generate prisma client
+    execSync(`yarn prisma generate --schema ${path}/schema.prisma`);
+  }
+
+  // Load the client
+  const prismaClient = require(`../../../${base}/${hash}/generated-client`);
+
+  return prismaClient;
+}
+
 function _keystoneRunner(adapterName, tearDownFunction) {
   return function(setupKeystoneFn, testFn) {
     return async function() {
@@ -182,7 +217,9 @@ function _keystoneRunner(adapterName, tearDownFunction) {
       const setup = await setupKeystoneFn(adapterName);
       const { keystone } = setup;
 
-      await keystone.connect();
+      const prismaClient = getPrismaClient(keystone);
+
+      await keystone.connect(prismaClient);
 
       try {
         await testFn({
@@ -204,7 +241,8 @@ function _keystoneRunner(adapterName, tearDownFunction) {
 function _before(adapterName) {
   return async function(setupKeystone) {
     const { keystone, app } = await setupKeystone(adapterName);
-    await keystone.connect();
+    const prismaClient = getPrismaClient(keystone);
+    await keystone.connect(prismaClient);
     return { keystone, app };
   };
 }
@@ -218,12 +256,12 @@ function _after(tearDownFunction) {
 
 function multiAdapterRunners(only) {
   return [
-    {
-      runner: _keystoneRunner('mongoose', teardownMongoMemoryServer),
-      adapterName: 'mongoose',
-      before: _before('mongoose'),
-      after: _after(teardownMongoMemoryServer),
-    },
+    // {
+    //   runner: _keystoneRunner('mongoose', teardownMongoMemoryServer),
+    //   adapterName: 'mongoose',
+    //   before: _before('mongoose'),
+    //   after: _after(teardownMongoMemoryServer),
+    // },
     {
       runner: _keystoneRunner('knex', () => {}),
       adapterName: 'knex',

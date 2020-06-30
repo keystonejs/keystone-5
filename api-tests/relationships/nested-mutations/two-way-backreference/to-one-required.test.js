@@ -54,7 +54,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
 
           const company = await findById('Company', companyId);
           // Everything should now be connected. 1:1 has a single connection on the first list defined.
-          expect(company.location.toString()).toBe(locationId.toString());
+          expect(company.locationId.toString()).toBe(locationId.toString());
         })
       );
     });
