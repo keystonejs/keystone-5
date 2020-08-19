@@ -34,7 +34,8 @@ let AddBlock = ({ editorState, editor, blocks }) => {
       return;
     }
 
-    if (!blocks || !blocks.length) return;
+    // if (!blocks || !blocks.length) return;
+    if (!blocks || !Object.keys(blocks).length) return;
 
     if (elm && editor && editor.el.contains(elm)) {
       iconEle.style.top = `${elm.offsetTop + elm.offsetHeight / 2}px`;
