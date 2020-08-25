@@ -23,8 +23,8 @@ const GROUPS = [
   'blog',
   'tutorials',
   'guides',
+  'API',
   'discussions',
-  'api',
   'list-plugins',
   'road-map',
 ];
@@ -78,7 +78,16 @@ const createDocsPages = async ({ createPage, graphql }) =>
       return Boolean(!draft);
     });
 
+    let navGroups = {};
+
     pages.forEach(({ node: { id, fields } }) => {
+      if (!navGroups[fields.navGroup]) {
+        navGroups[fields.navGroup] = [{ node: { id, fields } }];
+      } else {
+        navGroups[fields.navGroup].push({ node: { id, fields } });
+      }
+
+      // navGroups.add(fields.navGroup)
       createPage({
         path: `${fields.slug}`,
         component: path.resolve(`src/templates/docs.js`),
@@ -88,12 +97,21 @@ const createDocsPages = async ({ createPage, graphql }) =>
         }, // additional data can be passed via context
       });
     });
+
+    Object.entries(navGroups).forEach(([baseSlug, pages]) => {
+      createPaginatedPages({
+        edges: { pages, slug: baseSlug },
+        createPage: createPage,
+        pageTemplate: 'src/templates/pageList.js',
+        pathPrefix: baseSlug, // This is optional and defaults to an empty string if not used
+      });
+    });
   });
 
 const createBlogPages = async ({ createPage, graphql }) =>
   graphql(`
     {
-      allMdx(filter: { fields: { navGroup: { eq: "blog" } } }) {
+      allMdx(filter: { fields: { navGroup: { eq: "${'blog'}" } } }) {
         edges {
           node {
             id

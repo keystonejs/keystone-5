@@ -99,6 +99,7 @@ const Wrapper = props => (
         borderRadius: borderRadius,
         maxWidth: '100%',
         width: '100%',
+        backgroundColor: 'rebeccapurple',
 
         // hide the arrow
         '::before': {
