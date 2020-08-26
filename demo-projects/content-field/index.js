@@ -1,18 +1,12 @@
 //imports for Keystone app core
 const { Keystone } = require('@keystonejs/keystone');
-const { KnexAdapter } = require('@keystonejs/adapter-knex');
+const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { Post } = require('./schema');
 
 const keystone = new Keystone({
-  adapter: new KnexAdapter({
-    schemaName: process.env.PG_DB_SCHEMA_NAME,
-    knexOptions: {
-      client: 'postgres',
-      connection: process.env.PG_DB_URI,
-    },
-  }),
+  adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/todo' }),
 });
 
 keystone.createList('Post', Post);
