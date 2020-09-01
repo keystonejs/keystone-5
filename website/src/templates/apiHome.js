@@ -6,10 +6,10 @@ import { globalStyles } from '@arch-ui/theme';
 import { BlogLayout, Content } from './layout';
 import { HomepageFooter } from '../components/homepage/HomepageFooter';
 import { Container } from '../components';
-import { Sidebar } from '../components/Sidebar';
+import { SidebarBlog } from '../components/SidebarBlog';
 
-const Blog = ({ pageContext, uri }) => {
-  const { group, index, first, last, pageCount, name } = pageContext;
+const Blog = ({ pageContext, ...rest }) => {
+  const { group, index, first, last, pageCount } = pageContext;
   const previousUrl = index - 1 == 1 ? '/' : (index - 1).toString();
   const nextUrl = (index + 1).toString();
 
@@ -19,7 +19,7 @@ const Blog = ({ pageContext, uri }) => {
         {({ sidebarIsVisible, toggleSidebar }) => (
           <Fragment>
             <Container hasGutters={false} css={{ display: 'flex' }}>
-              <Sidebar />
+              <SidebarBlog isVisible={sidebarIsVisible} toggleSidebar={toggleSidebar} />
               <Content css={{ paddingRight: '2rem' }}>
                 <Global styles={globalStyles} />
                 <h1
@@ -27,16 +27,15 @@ const Blog = ({ pageContext, uri }) => {
                     fontSize: '4rem',
                     padding: '0.5rem 1rem',
                     '@media min-width: 800px': { padding: '2rem 4rem' },
-                    textTransform: 'capitalize',
                   }}
                 >
-                  {name}
+                  Keystone Blog
                 </h1>
                 {group.map(({ node }) => {
-                  const { fields, id } = node;
+                  const { fields } = node;
                   return (
                     <article
-                      key={id}
+                      key={node.id}
                       css={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -55,7 +54,7 @@ const Blog = ({ pageContext, uri }) => {
                         }}
                       >
                         <a
-                          href={fields.slug}
+                          href={node.fields.slug}
                           css={{
                             fontSize: '2.75rem',
                             fontWeight: 'bold',
@@ -67,6 +66,11 @@ const Blog = ({ pageContext, uri }) => {
                         >
                           {fields.pageTitle}
                         </a>
+                        <p css={{ margin: 0, marginTop: '0.75rem', padding: 0, fontSize: '.8rem' }}>
+                          By <strong>{fields.author || 'Keystone'}</strong>, Published on{' '}
+                          {fields.date}
+                        </p>
+
                         <p css={{ lineHeight: '1.5' }}>
                           <a
                             href={node.fields.slug}
@@ -75,11 +79,11 @@ const Blog = ({ pageContext, uri }) => {
                               ':hover': { color: '#222', textDecoration: 'none' },
                             }}
                           >
-                            {fields.description || node.excerpt}
+                            {fields.description}
                           </a>
                         </p>
                         <a
-                          href={fields.slug}
+                          href={node.fields.slug}
                           css={{
                             textTransform: 'uppercase',
                             display: 'flex',
@@ -88,10 +92,9 @@ const Blog = ({ pageContext, uri }) => {
                             ':hover': {
                               color: '#444',
                             },
-                            textTransform: 'capitalize',
                           }}
                         >
-                          Read {fields.pageTitle}
+                          Continue Reading{' '}
                           <svg
                             css={{ width: 12, height: 12, margin: '0 5px' }}
                             aria-hidden="true"
@@ -115,10 +118,10 @@ const Blog = ({ pageContext, uri }) => {
                   Page {index} of {pageCount}
                 </p>
                 {!first && (
-                  <a href={`${uri}/${previousUrl === '/' ? '' : previousUrl}`}>Newer posts</a>
+                  <a href={`/blog/${previousUrl === '/' ? '' : previousUrl}`}>Newer posts</a>
                 )}
                 {!first && ' / '}
-                {!last && <a href={`${uri}/${nextUrl}`}>More {name}</a>}
+                {!last && <a href={`/blog/${nextUrl}`}>Older posts</a>}
                 <HomepageFooter />
               </Content>
             </Container>

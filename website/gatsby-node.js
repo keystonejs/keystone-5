@@ -46,8 +46,10 @@ const createDocsPages = async ({ createPage, graphql }) =>
         edges {
           node {
             id
+            excerpt
             fields {
               slug
+              description
               navGroup
               navSubGroup
               workspaceSlug
@@ -81,10 +83,12 @@ const createDocsPages = async ({ createPage, graphql }) =>
     let navGroups = {};
 
     pages.forEach(({ node: { id, fields } }) => {
-      if (!navGroups[fields.navGroup]) {
-        navGroups[fields.navGroup] = [{ node: { id, fields } }];
-      } else {
-        navGroups[fields.navGroup].push({ node: { id, fields } });
+      if (fields.navGroup) {
+        if (!navGroups[fields.navGroup]) {
+          navGroups[fields.navGroup] = [{ node: { id, fields } }];
+        } else {
+          navGroups[fields.navGroup].push({ node: { id, fields } });
+        }
       }
 
       // navGroups.add(fields.navGroup)
@@ -100,10 +104,11 @@ const createDocsPages = async ({ createPage, graphql }) =>
 
     Object.entries(navGroups).forEach(([baseSlug, pages]) => {
       createPaginatedPages({
-        edges: { pages, slug: baseSlug },
+        edges: pages,
+        pathPrefix: slugify(baseSlug),
         createPage: createPage,
-        pageTemplate: 'src/templates/pageList.js',
-        pathPrefix: baseSlug, // This is optional and defaults to an empty string if not used
+        context: { name: baseSlug },
+        pageTemplate: baseSlug === 'API' ? 'src/templates/apiHome.js' : 'src/templates/pageList.js',
       });
     });
   });
