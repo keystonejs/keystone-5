@@ -8,6 +8,7 @@ export const exampleValue = () => '1990-12-31T12:34:56.789Z';
 export const exampleValue2 = () => '2000-01-20T00:08:00.000Z';
 export const supportsUnique = true;
 export const fieldName = 'lastOnline';
+export const unSupportedAdapterList = ['prisma_sqlite'];
 
 export const getTestFields = () => ({ name: { type: Text }, lastOnline: { type } });
 

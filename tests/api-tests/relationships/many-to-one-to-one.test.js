@@ -128,7 +128,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
   describe(`Adapter: ${adapterName}`, () => {
     describe(`One-to-one relationships`, () => {
       describe('Read', () => {
-        test(
+        test.skip(
           'Where A',
           runner(setupKeystone, async ({ keystone }) => {
             await createInitialData(keystone);
@@ -144,7 +144,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             expect(data.allOwners[0].id).toEqual(owner.id);
           })
         );
-        test(
+        test.skip(
           'Where B',
           runner(setupKeystone, async ({ keystone }) => {
             await createInitialData(keystone);
@@ -159,7 +159,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             expect(data.allCustodians.length).toEqual(2);
           })
         );
-        test(
+        test.skip(
           'Where C',
           runner(setupKeystone, async ({ keystone }) => {
             await createInitialData(keystone);
@@ -175,7 +175,7 @@ multiAdapterRunners().map(({ runner, adapterName }) =>
             expect(data.allOwners[0].id).toEqual(owner.id);
           })
         );
-        test(
+        test.skip(
           'Where D',
           runner(setupKeystone, async ({ keystone }) => {
             await createInitialData(keystone);

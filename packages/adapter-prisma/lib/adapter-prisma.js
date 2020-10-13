@@ -38,10 +38,13 @@ class PrismaAdapter extends BaseKeystoneAdapter {
     // TODO: Should we default to 'public' or null?
     if (this.provider === 'postgresql') {
       return this.dbSchemaName ? `${this.url}?schema=${this.dbSchemaName}` : this.url;
+    } else if (this.provider === 'sqlite') {
+      return this.url;
     }
   }
 
   _runPrismaCmd(cmd) {
+    // console.log({ cmd });
     return execSync(`yarn prisma ${cmd} --schema ${this.schemaPath}`, {
       env: { ...process.env, DATABASE_URL: this._url() },
       encoding: 'utf-8',
@@ -215,6 +218,9 @@ class PrismaAdapter extends BaseKeystoneAdapter {
   }
 
   async postConnect({ rels }) {
+    // console.log('TRY TO MAKE EXCLUSIVE');
+    // await this.prisma.$queryRaw('pragma locking_mode = EXCLUSIVE;');
+    // console.log('WIN?');
     Object.values(this.listAdapters).forEach(listAdapter => {
       listAdapter._postConnect({ rels, prisma: this.prisma });
     });
@@ -250,6 +256,13 @@ class PrismaAdapter extends BaseKeystoneAdapter {
         // If we're in prototype mode then we need to rebuild the tables after a reset
         this._runPrismaCmd(`migrate reset --force --preview-feature`);
         this._runPrismaCmd(`db push --force --preview-feature`);
+      }
+    } else if (this.provider === 'sqlite') {
+      const tables = await this.prisma.$queryRaw(
+        "SELECT name FROM sqlite_master WHERE type='table';"
+      );
+      for (const { name } of tables) {
+        await this.prisma.$queryRaw(`DELETE FROM "${name}";`);
       }
     } else {
       this._runPrismaCmd(`migrate reset --force --preview-feature`);

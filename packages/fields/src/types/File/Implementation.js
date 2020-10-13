@@ -26,6 +26,7 @@ export class File extends Implementation {
   gqlOutputFields() {
     return [`${this.path}: ${this.graphQLOutputType}`];
   }
+
   gqlQueryInputFields() {
     return [...this.equalityInputFields('String'), ...this.inInputFields('String')];
   }
@@ -133,7 +134,7 @@ const CommonFileInterface = superclass =>
     getQueryConditions(dbPath) {
       return {
         ...this.equalityConditions(dbPath),
-        ...this.inConditions(dbPath),
+        ...this.inConditions(dbPath), // FIXME: Factor this out for Prisma Adapter
       };
     }
   };
@@ -179,6 +180,11 @@ export class KnexFileInterface extends CommonFileInterface(KnexFieldAdapter) {
 export class PrismaFileInterface extends CommonFileInterface(PrismaFieldAdapter) {
   constructor() {
     super(...arguments);
+    if (this.listAdapter.parentAdapter.provider === 'sqlite') {
+      throw new Error(
+        `PrismaAdapter provider "sqlite" does not support field type "${this.field.constructor.name}"`
+      );
+    }
 
     // Error rather than ignoring invalid config
     // We totally can index these values, it's just not trivial. See issue #1297

@@ -98,6 +98,11 @@ export class KnexDateTimeUtcInterface extends KnexFieldAdapter {
 export class PrismaDateTimeUtcInterface extends PrismaFieldAdapter {
   constructor() {
     super(...arguments);
+    if (this.listAdapter.parentAdapter.provider === 'sqlite') {
+      throw new Error(
+        `PrismaAdapter provider "sqlite" does not support field type "${this.field.constructor.name}"`
+      );
+    }
     this.isUnique = !!this.config.isUnique;
     this.isIndexed = !!this.config.isIndexed && !this.config.isUnique;
   }
