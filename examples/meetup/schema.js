@@ -11,8 +11,7 @@ const {
   Select,
   Text,
 } = require('@keystonejs/fields');
-const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
-const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
+const { CloudinaryImage, CloudinaryAdapter } = require('@keystonejs/fields-cloudinary-image');
 const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
 
 const cloudinaryAdapter = new CloudinaryAdapter({

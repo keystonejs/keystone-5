@@ -1,7 +1,7 @@
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-import { CloudinaryAdapter } from '@keystonejs/file-adapters';
+import { CloudinaryAdapter } from './cloudinary';
 import { Text } from '@keystonejs/fields';
 import cloudinary from 'cloudinary';
 import { Upload } from 'graphql-upload';

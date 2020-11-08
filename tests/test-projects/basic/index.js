@@ -15,7 +15,7 @@ const {
   Decimal,
 } = require('@keystonejs/fields');
 const { Content } = require('@keystonejs/fields-content');
-const { CloudinaryAdapter, LocalFileAdapter } = require('@keystonejs/file-adapters');
+const { LocalFileAdapter } = require('@keystonejs/file-adapters');
 const { Markdown } = require('@keystonejs/fields-markdown');
 const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
 const { Color } = require('@keystonejs/fields-color');
@@ -24,7 +24,7 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
 const { graphql } = require('graphql');
 const { OEmbed, IframelyOEmbedAdapter } = require('@keystonejs/fields-oembed');
-const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
+const { CloudinaryImage, CloudinaryAdapter } = require('@keystonejs/fields-cloudinary-image');
 const { Unsplash } = require('@keystonejs/fields-unsplash');
 
 const MockOEmbedAdapter = require('./mocks/oembed-adapter');

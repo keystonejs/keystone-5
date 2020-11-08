@@ -9,7 +9,8 @@ const {
   Password,
   CloudinaryImage,
 } = require('@keystonejs/fields');
-const { CloudinaryAdapter, LocalFileAdapter } = require('@keystonejs/file-adapters');
+const { CloudinaryImage, CloudinaryAdapter } = require('@keystonejs/fields-cloudinary-image');
+const { LocalFileAdapter } = require('@keystonejs/file-adapters');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { StaticApp } = require('@keystonejs/app-static');
