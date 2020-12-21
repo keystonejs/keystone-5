@@ -106,7 +106,7 @@ describe.each(
           </paragraph>
         </editor>
       );
-
+      editor.removeMark('keyboard');
       editor.insertText(shortcut.slice(-1));
       expect(editor).toEqualEditor(
         <editor>
@@ -119,6 +119,7 @@ describe.each(
         </editor>
       );
     });
+
     test('does match when first and second characters in the start shortcut are in different text nodes', () => {
       let editor = makeEditor(
         <editor>
@@ -145,6 +146,30 @@ describe.each(
       );
     });
   }
+  test('matches when characters in the end shortcut are in different text nodes to the previous character', () => {
+    let editor = makeEditor(
+      <editor>
+        <paragraph>
+          <text>{shortcut}thing</text>
+          <text keyboard>
+            {shortcut.slice(0, -1)}
+            <cursor />
+          </text>
+        </paragraph>
+      </editor>
+    );
+    editor.insertText(shortcut.slice(-1));
+    expect(editor).toEqualEditor(
+      <editor>
+        <paragraph>
+          <text {...{ [markName]: true }}>
+            thing
+            <cursor />
+          </text>
+        </paragraph>
+      </editor>
+    );
+  });
   test('matches when the shortcut appears in an invalid position after the valid position in the same text node', () => {
     let editor = makeEditor(
       <editor>

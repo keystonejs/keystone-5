@@ -3,9 +3,9 @@ import { ReactEditor } from 'slate-react';
 import { DocumentFeatures } from '../views';
 
 export const allMarkdownShortcuts = {
-  bold: ['**', '__'],
-  italic: ['*', '_'],
-  strikethrough: ['~~'],
+  // bold: ['**', '__'],
+  // italic: ['*', '_'],
+  // strikethrough: ['~~'],
   code: ['`'],
 };
 
@@ -14,9 +14,9 @@ function applyMark(
   selectionPoint: Point,
   mark: string,
   shortcutText: string,
-  startRange: [Point, Point]
+  startOfStartPoint: Point
 ) {
-  const startPointRef = Editor.pointRef(editor, startRange[0]);
+  const startPointRef = Editor.pointRef(editor, startOfStartPoint);
 
   const selectionPointRef = Editor.pointRef(editor, selectionPoint);
 
@@ -26,7 +26,7 @@ function applyMark(
     {
       match: Text.isText,
       split: true,
-      at: { anchor: startRange[0], focus: selectionPoint },
+      at: { anchor: startOfStartPoint, focus: selectionPoint },
     }
   );
   const startPointAfterMarkSet = startPointRef.unref();
@@ -36,12 +36,8 @@ function applyMark(
   const selectionPointAfterMarkSet = selectionPointRef.unref();
   if (selectionPointAfterMarkSet) {
     Transforms.delete(editor, {
-      at: {
-        anchor: Editor.before(editor, selectionPointAfterMarkSet, {
-          distance: shortcutText.length,
-        })!,
-        focus: selectionPointAfterMarkSet,
-      },
+      at: Editor.before(editor, selectionPointAfterMarkSet),
+      distance: shortcutText.length,
     });
   }
 }
@@ -100,31 +96,37 @@ export const withMarks = (enabledMarks: DocumentFeatures['inlineMarks'], editor:
       for (const [mark, shortcuts] of Object.entries(selectedMarkdownShortcuts)) {
         for (const shortcutText of shortcuts!) {
           if (text === shortcutText[shortcutText.length - 1]) {
-            const before = Editor.before(editor, editor.selection.anchor, {
-              unit: 'offset',
-              distance: shortcutText.length + 1,
-            });
-            if (!before) continue;
-            const beforeEndOfShortcutString = Editor.string(editor, {
-              anchor: editor.selection.anchor,
-              focus: before,
-            });
-            const hasWhitespaceBeforeEndOfShortcut = /\s/.test(beforeEndOfShortcutString[0]);
-            const endOfShortcutContainsExpectedContent =
-              shortcutText === beforeEndOfShortcutString.slice(1);
-
-            if (hasWhitespaceBeforeEndOfShortcut || !endOfShortcutContainsExpectedContent) {
-              continue;
-            }
-
             const startOfBlock = Editor.start(
               editor,
               Editor.above(editor, { match: node => Editor.isBlock(editor, node) })![1]
             );
 
+            const beforeEndOfShortcutString = Editor.string(editor, {
+              anchor: editor.selection.anchor,
+              focus: startOfBlock,
+            });
+            const hasWhitespaceBeforeEndOfShortcut = /\s/.test(
+              beforeEndOfShortcutString[beforeEndOfShortcutString.length - shortcutText.length - 1]
+            );
+            const endOfShortcutContainsExpectedContent =
+              shortcutText === beforeEndOfShortcutString.slice(-shortcutText.length);
+
+            if (hasWhitespaceBeforeEndOfShortcut || !endOfShortcutContainsExpectedContent) {
+              continue;
+            }
+
+            let startOfStartOfShortcut = Editor.before(editor, editor.selection.anchor, {
+              unit: 'offset',
+              distance: shortcutText.length,
+            });
+
+            if (!startOfStartOfShortcut) {
+              continue;
+            }
+
             const strToMatchOn = Editor.string(editor, {
               anchor: startOfBlock,
-              focus: before,
+              focus: startOfStartOfShortcut,
             });
             // TODO: use regex probs
             for (const [offsetFromStartOfBlock] of [...strToMatchOn].reverse().entries()) {
@@ -153,7 +155,7 @@ export const withMarks = (enabledMarks: DocumentFeatures['inlineMarks'], editor:
 
               const contentBetweenShortcuts = Editor.string(editor, {
                 anchor: endOfStartOfShortcut,
-                focus: Editor.after(editor, before)!,
+                focus: startOfStartOfShortcut,
               });
 
               if (
@@ -176,10 +178,13 @@ export const withMarks = (enabledMarks: DocumentFeatures['inlineMarks'], editor:
               ) {
                 continue;
               }
-              applyMark(editor, editor.selection.anchor, mark, shortcutText, [
-                startOfStartOfShortcut,
-                endOfStartOfShortcut,
-              ]);
+              applyMark(
+                editor,
+                editor.selection.anchor,
+                mark,
+                shortcutText,
+                startOfStartOfShortcut
+              );
               return;
             }
           }
