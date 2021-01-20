@@ -132,6 +132,9 @@ function validateComponentBlockProps(
     }
     return;
   }
+  // the as any is here to make sure ts still emits an error here
+  // SO I REMEMBER TO FIX THIS
+  if ((prop as any).kind === 'array') return true;
   assertNever(prop);
 }
 

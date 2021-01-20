@@ -1,12 +1,14 @@
+/** @jsx jsx */
 import { useKeystone } from '@keystone-next/admin-ui/context';
 import { RelationshipSelect } from '@keystone-next/fields/types/relationship/views/RelationshipSelect';
-import { Stack } from '@keystone-ui/core';
+import { Stack, jsx } from '@keystone-ui/core';
 import { FieldContainer, FieldLabel } from '@keystone-ui/fields';
-import React, { Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { ComponentPropField, RelationshipData, ComponentBlock } from '../../component-blocks';
 import { useDocumentFieldRelationships, Relationships } from '../relationship';
 import { RelationshipValues, onConditionalChange, assertNever } from './utils';
 import { Button as KeystoneUIButton } from '@keystone-ui/button';
+import { insertInitialValues } from './initial-values';
 
 function FormValueContent({
   props,
@@ -137,6 +139,46 @@ function FormValueContent({
             </FieldContainer>
           );
         }
+        if (prop.kind === 'array') {
+          const innerPath = path.concat(key);
+          return (
+            <div css={{ border: '2px solid red' }}>
+              {value[key].map((val: any, i: number) => (
+                <FormValueContent
+                  forceValidation={forceValidation}
+                  path={innerPath}
+                  props={{
+                    [i]: prop.field,
+                  }}
+                  relationshipValues={relationshipValues}
+                  stringifiedPropPathToAutoFocus={stringifiedPropPathToAutoFocus}
+                  value={{
+                    [i]: val,
+                  }}
+                  onChange={newVal => {
+                    onChange({
+                      ...value,
+                      [key]: value[key].map((x: any, index: number) =>
+                        index === i ? newVal[i] : x
+                      ),
+                    });
+                  }}
+                  onRelationshipValuesChange={onRelationshipValuesChange}
+                />
+              ))}
+              <button
+                onClick={() => {
+                  // THIS WILL BREAK FOR RELATIONSHIPS
+                  const blockProps = {};
+                  insertInitialValues(blockProps, { value: prop.field }, [], [], {}, relationships);
+                  onChange({ ...value, [key]: [...value[key], (blockProps as any).value] });
+                }}
+              >
+                Add new thing
+              </button>
+            </div>
+          );
+        }
         const newPath = path.concat(key);
         return (
           <Fragment key={key}>
@@ -166,6 +208,8 @@ function getChildProps(prop: ComponentPropField, value: any): Record<string, Com
     return {};
   } else if (prop.kind === 'object') {
     return prop.value;
+  } else if (prop.kind === 'array') {
+    return Object.fromEntries(value.map((x: any, i: any) => [i, prop.field]));
   } else {
     assertNever(prop);
     // TypeScript should understand that this will never happen but for some reason it doesn't

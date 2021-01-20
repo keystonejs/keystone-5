@@ -64,6 +64,8 @@ export function insertInitialValues(
           ? []
           : null,
       };
+    } else if (val.kind) {
+      blockProps[key] = [];
     } else {
       assertNever(val);
     }

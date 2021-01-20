@@ -94,6 +94,21 @@ function _buildPreviewProps(
           });
         },
       };
+    } else if (val.kind === 'array') {
+      previewProps[key] = [];
+      _buildPreviewProps(
+        previewProps[key],
+        Object.fromEntries(formProps[key].map((_: any, i: number) => [i, val.field])),
+        formProps[key],
+        childrenByPath,
+        path.concat(key),
+        relationshipValues,
+        relationships,
+        onRelationshipValuesChange,
+        value => {
+          onFormPropsChange({ ...formProps, [key]: value });
+        }
+      );
     } else {
       assertNever(val);
     }

@@ -54,6 +54,11 @@ type BlockFormattingConfig = {
   softBreaks?: 'inherit';
 };
 
+export type ArrayField<Field extends ComponentPropField> = {
+  kind: 'array';
+  field: Field;
+};
+
 export type ChildField = {
   kind: 'child';
   options:
@@ -110,7 +115,8 @@ export type ComponentPropField =
   | FormField<any, any>
   | ObjectField
   | ConditionalField<any, any, any>
-  | RelationshipField<'one' | 'many'>;
+  | RelationshipField<'one' | 'many'>
+  | ArrayField<any>;
 
 export const fields = {
   text({
@@ -319,6 +325,9 @@ export const fields = {
   object<Value extends Record<string, ComponentPropField>>(value: Value): ObjectField<Value> {
     return { kind: 'object', value };
   },
+  array<Field extends ComponentPropField>(field: Field): ArrayField<Field> {
+    return { kind: 'array', field };
+  },
   conditional<
     Discriminant extends string | boolean,
     ConditionalValue extends [Discriminant] extends [boolean]
@@ -410,6 +419,8 @@ export type ExtractPropFromComponentPropFieldForPreview<
         onChange(relationshipData: readonly HydratedRelationshipData[]): void;
       };
     }[Cardinality]
+  : Prop extends ArrayField<infer Field>
+  ? ExtractPropFromComponentPropFieldForPreview<Field>[]
   : never;
 
 type ExtractPropFromComponentPropFieldForToolbar<Prop extends ComponentPropField> = Prop extends [
@@ -448,6 +459,8 @@ type ExtractPropFromComponentPropFieldForToolbar<Prop extends ComponentPropField
         onChange(relationshipData: readonly HydratedRelationshipData[]): void;
       };
     }[Cardinality]
+  : Prop extends ArrayField<infer Field>
+  ? ExtractPropFromComponentPropFieldForToolbar<Field>[]
   : never;
 
 export type HydratedRelationshipData = {

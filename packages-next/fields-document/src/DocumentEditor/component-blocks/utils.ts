@@ -28,6 +28,14 @@ function _findChildPropPaths(
           path.concat(key)
         )
       );
+    } else if (val.kind === 'array') {
+      paths.push(
+        ..._findChildPropPaths(
+          value[key],
+          Object.fromEntries(value[key].map((x: any, i: number) => [i, val.field])),
+          path.concat(key)
+        )
+      );
     } else {
       assertNever(val);
     }
@@ -215,6 +223,9 @@ export function getChildFieldAtPropPath(
   if (prop.kind === 'object') {
     return getChildFieldAtPropPath(restOfPath, values[key], prop.value);
   }
+  if (prop.kind === 'array') {
+    return getChildFieldAtPropPath(restOfPath, values[key], { [key]: prop.field });
+  }
   return prop;
 }
 
@@ -239,6 +250,9 @@ export function clientSideValidateProp(prop: ComponentPropField, value: any): bo
           return false;
         }
       }
+      return true;
+    }
+    case 'array' as any: {
       return true;
     }
   }

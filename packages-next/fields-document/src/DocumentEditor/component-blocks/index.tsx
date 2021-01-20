@@ -49,6 +49,13 @@ export function getPlaceholderTextForPropPath(
       formProps[prop]
     );
   }
+  if (field.kind === 'array') {
+    return getPlaceholderTextForPropPath(
+      propPath.slice(1),
+      Object.fromEntries(formProps[prop].map((_: any, i: number) => [i, field.field])),
+      formProps[prop]
+    );
+  }
   return field.options.placeholder;
 }
 

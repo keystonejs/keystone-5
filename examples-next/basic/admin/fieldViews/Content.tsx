@@ -7,7 +7,15 @@ import { AlertOctagonIcon } from '@keystone-ui/icons/icons/AlertOctagonIcon';
 import { CheckCircleIcon } from '@keystone-ui/icons/icons/CheckCircleIcon';
 import { Trash2Icon } from '@keystone-ui/icons/icons/Trash2Icon';
 import { Tooltip } from '@keystone-ui/tooltip';
-import { component, fields, NotEditable } from '@keystone-next/fields-document/component-blocks';
+import {
+  component,
+  ComponentPropField,
+  ConditionalField,
+  fields,
+  FormField,
+  NotEditable,
+  ObjectField,
+} from '@keystone-next/fields-document/component-blocks';
 import {
   ToolbarButton,
   ToolbarGroup,
@@ -20,6 +28,19 @@ const noticeIconMap = {
   warning: AlertTriangleIcon,
   success: CheckCircleIcon,
 };
+
+const clientShowcase = fields.object({
+  // NEED AN IMAGE FIELD
+  // could do inline image selection?
+  // probably give it some estimated dimensions
+  // and then just render some element that the field gives you
+  clientLogo: fields.url({ label: 'Client Logo' }),
+  clientName: fields.conditional(fields.checkbox({ label: 'Include Client Name' }), {
+    false: fields.empty(),
+    true: fields.child({ kind: 'inline', placeholder: 'Client' }),
+  }),
+  content: fields.child({ kind: 'inline', placeholder: 'Content' }),
+});
 
 export const componentBlocks = {
   hero: component({
@@ -294,4 +315,107 @@ export const componentBlocks = {
     },
     chromeless: true,
   }),
+  whatWeDo: component({
+    component: props => (
+      <div css={{ backgroundColor: '#1D263B', color: 'white' }}>
+        <h1>
+          <small>{props.heading}</small>
+          <br />
+          <span>{props.title}</span>
+        </h1>
+        <p>{props.body}</p>
+        <div>
+          {props.items.map((x, i) => (
+            <div key={i}>
+              <span>Image: {x.image.value}</span>
+              <p>{x.content}</p>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div>
+            <h1
+              contentEditable={
+                props.clientShowcase.left.clientName.discriminant ? undefined : false
+              }
+            >
+              <img src={props.clientShowcase.left.clientLogo.value} />
+              {props.clientShowcase.left.clientName.discriminant
+                ? props.clientShowcase.left.clientName.value
+                : null}
+            </h1>
+            <p> {props.clientShowcase.left.content}</p>
+          </div>
+          <div>
+            <h1
+              contentEditable={
+                props.clientShowcase.right.clientName.discriminant ? undefined : false
+              }
+            >
+              <img src={props.clientShowcase.right.clientLogo.value} />
+              {props.clientShowcase.right.clientName.discriminant
+                ? props.clientShowcase.right.clientName.value
+                : null}
+            </h1>
+            <p> {props.clientShowcase.right.content}</p>
+          </div>
+        </div>
+      </div>
+    ),
+    label: 'What we do Item',
+    props: {
+      // color: fields.select({ ...whatever }),
+      heading: fields.child({
+        kind: 'inline',
+        placeholder: 'Heading',
+      }),
+      title: fields.child({
+        kind: 'inline',
+        placeholder: 'Title',
+      }),
+      body: fields.child({ kind: 'inline', placeholder: 'Body' }),
+      items: fields.array(
+        fields.object({
+          content: fields.child({ kind: 'inline', placeholder: 'Content' }),
+          image: fields.url({ label: 'Image' }),
+        })
+      ),
+      clientShowcase: fields.object({
+        left: clientShowcase,
+        right: clientShowcase,
+      }),
+    },
+  }),
+  linkedListThing: component({
+    component: () => null,
+    label: 'Linked List',
+    props: {
+      list: linkedList(fields.text({ label: 'some content' })),
+    },
+  }),
 };
+
+type LinkedListField<Field extends ComponentPropField> = ConditionalField<
+  boolean,
+  {
+    false: FormField<undefined, undefined>;
+    true: ObjectField<{
+      value: Field;
+      next: LinkedListField<Field>;
+    }>;
+  },
+  undefined
+>;
+
+function linkedList<Field extends ComponentPropField>(field: Field): LinkedListField<Field> {
+  const linkedListThing = fields.conditional(fields.checkbox({ label: 'Another Item' }), {
+    true: fields.object({
+      value: field,
+      get next() {
+        return linkedListThing;
+      },
+    }),
+    false: fields.empty(),
+  });
+  return linkedListThing;
+}
