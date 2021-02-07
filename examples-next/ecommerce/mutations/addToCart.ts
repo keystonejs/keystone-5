@@ -15,6 +15,7 @@ export default async function addToCart(
   // 2. Query the users current cart, to see if they already have that item
   const allCartItems = await context.lists.CartItem.findMany({
     where: { user: { id: userId }, product: { id: productId } },
+    returnFields: 'id quantity',
   });
 
   // 3. Check if that item is already in their cart and increment by 1 if it is
