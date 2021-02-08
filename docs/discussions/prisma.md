@@ -39,31 +39,31 @@ We would like to have full support for all Keystone field types, and are working
 | Keystone Type        |         Prisma Type         |
 | :------------------- | :-------------------------: |
 | **Core fields**      |                             |
-| `CalendarDay`        |          `DateTime`         |
+| `CalendarDay`        |         `DateTime`          |
 | `Checkbox`           |          `Boolean`          |
 | `DateTime`           |    `DateTime` + `String`    |
-| `DateTimeUtc`        |          `DateTime`         |
+| `DateTimeUtc`        |         `DateTime`          |
 | `Decimal`            |            `N/A`            |
-| `File`               |            `Json`           |
+| `File`               |           `Json`            |
 | `Float`              |           `Float`           |
 | `Integer`            |            `Int`            |
-| `Password`           |           `String`          |
+| `Password`           |          `String`           |
 | `Relationship`       |         `@relation`         |
 | `Select`             | `Enum` \| `Int` \| `String` |
-| `Slug`               |           `String`          |
-| `Text`               |           `String`          |
-| `Url`                |           `String`          |
-| `Uuid`               |           `String`          |
+| `Slug`               |          `String`           |
+| `Text`               |          `String`           |
+| `Url`                |          `String`           |
+| `Uuid`               |          `String`           |
 | `Virtual`            |            `N/A`            |
 | **Extra fields**     |                             |
-| `Color`              |           `String`          |
+| `Color`              |          `String`           |
 | `Content`            |         `@relation`         |
 | `AuthedRelationship` |         `@relation`         |
 | `AutoIncrement`      |            `Int`            |
-| `CloudinaryImage`    |            `Json`           |
-| `GoogleLocation`     |            `Json`           |
-| `Markdown`           |           `String`          |
-| `MongoId`            |           `String`          |
-| `OEmbed`             |            `Json`           |
-| `Unsplash`           |            `Json`           |
-| `Wysiwyg`            |           `String`          |
+| `CloudinaryImage`    |           `Json`            |
+| `GoogleLocation`     |           `Json`            |
+| `Markdown`           |          `String`           |
+| `MongoId`            |          `String`           |
+| `OEmbed`             |           `Json`            |
+| `Unsplash`           |           `Json`            |
+| `Wysiwyg`            |          `String`           |
