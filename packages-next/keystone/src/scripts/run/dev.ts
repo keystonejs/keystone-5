@@ -35,7 +35,7 @@ export const dev = async ({ dotKeystonePath, projectAdminPath }: StaticPaths, sc
     await saveSchemaAndTypes(graphQLSchema, keystone, dotKeystonePath);
 
     console.log('✨ Connecting to the database');
-    await keystone.connect({ context: createContext().sudo() });
+    await keystone.connect({ context: (await createContext()).sudo() });
 
     console.log('✨ Generating Admin UI code');
     await generateAdminUI(config, graphQLSchema, keystone, projectAdminPath);

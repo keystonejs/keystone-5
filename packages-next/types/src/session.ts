@@ -1,6 +1,6 @@
 import type { JSONValue } from './utils';
 import type { ServerResponse, IncomingMessage } from 'http';
-import { CreateContext } from '.';
+import { KeystoneContext } from './core';
 
 export type SessionStrategy<StoredSessionData, StartSessionData = never> = {
   connect?: () => Promise<void>;
@@ -10,19 +10,19 @@ export type SessionStrategy<StoredSessionData, StartSessionData = never> = {
   start: (args: {
     res: ServerResponse;
     data: StoredSessionData | StartSessionData;
-    createContext: CreateContext;
+    context: KeystoneContext;
   }) => Promise<string>;
   // resets the cookie via res
   end: (args: {
     req: IncomingMessage;
     res: ServerResponse;
-    createContext: CreateContext;
+    context: KeystoneContext;
   }) => Promise<void>;
   // -- this one is invoked at the start of every request
   // reads the token, gets the data, returns it
   get: (args: {
     req: IncomingMessage;
-    createContext: CreateContext;
+    sudoContext: KeystoneContext;
   }) => Promise<StoredSessionData | undefined>;
 };
 

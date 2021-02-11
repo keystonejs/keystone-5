@@ -6,20 +6,19 @@ import { ApolloServer } from 'apollo-server-express';
 import { graphqlUploadExpress } from 'graphql-upload';
 // @ts-ignore
 import { formatError } from '@keystonejs/keystone/lib/Keystone/format-error';
-import type { KeystoneConfig, SessionImplementation, CreateContext } from '@keystone-next/types';
+import type { KeystoneConfig, SessionStrategy, CreateContext } from '@keystone-next/types';
 import { createAdminUIServer } from '@keystone-next/admin-ui/system';
-import { implementSession } from '../session';
 
-const addApolloServer = ({
+const addApolloServer = <SessionType>({
   server,
   graphQLSchema,
   createContext,
-  sessionImplementation,
+  sessionStrategy,
 }: {
   server: express.Express;
   graphQLSchema: GraphQLSchema;
-  createContext: CreateContext;
-  sessionImplementation?: SessionImplementation;
+  createContext: CreateContext<SessionType>;
+  sessionStrategy?: SessionStrategy<SessionType>;
 }) => {
   const apolloServer = new ApolloServer({
     uploads: false,
@@ -28,10 +27,7 @@ const addApolloServer = ({
     playground: { settings: { 'request.credentials': 'same-origin' } },
     formatError, // TODO: this needs to be discussed
     context: async ({ req, res }: { req: IncomingMessage; res: ServerResponse }) =>
-      createContext({
-        sessionContext: await sessionImplementation?.createSessionContext(req, res, createContext),
-        req,
-      }),
+      createContext({ skipAccessControl: false, req, res, sessionStrategy }),
     // FIXME: support for apollo studio tracing
     // ...(process.env.ENGINE_API_KEY || process.env.APOLLO_KEY
     //   ? { tracing: true }
@@ -57,7 +53,7 @@ const addApolloServer = ({
 export const createExpressServer = async (
   config: KeystoneConfig,
   graphQLSchema: GraphQLSchema,
-  createContext: CreateContext,
+  createContext: CreateContext<any>,
   dev: boolean,
   projectAdminPath: string
 ) => {
@@ -73,20 +69,14 @@ export const createExpressServer = async (
     server.use(cors(corsConfig));
   }
 
-  const sessionImplementation = config.session ? implementSession(config.session()) : undefined;
+  const sessionStrategy = config.session ? config.session() : undefined;
 
   console.log('✨ Preparing GraphQL Server');
-  addApolloServer({ server, graphQLSchema, createContext, sessionImplementation });
+  addApolloServer({ server, graphQLSchema, createContext, sessionStrategy });
 
   console.log('✨ Preparing Next.js app');
   server.use(
-    await createAdminUIServer(
-      config.ui,
-      createContext,
-      dev,
-      projectAdminPath,
-      sessionImplementation
-    )
+    await createAdminUIServer(config.ui, createContext, dev, projectAdminPath, sessionStrategy)
   );
 
   return server;

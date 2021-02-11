@@ -66,7 +66,7 @@ async function setupFromConfig({
   config = initConfig(config);
 
   const { keystone, createContext } = createSystem(config, path.resolve('.keystone'), '');
-  return { keystone, context: createContext().sudo() };
+  return { keystone, context: (await createContext()).sudo() };
 }
 
 async function setupServer({
