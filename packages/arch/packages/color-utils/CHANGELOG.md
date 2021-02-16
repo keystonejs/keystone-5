@@ -1,5 +1,11 @@
 # @arch-ui/color-utils
 
+## 0.0.3
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
 ## 0.0.2
 
 ### Patch Changes

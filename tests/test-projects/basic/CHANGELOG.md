@@ -1,5 +1,29 @@
 # @keystonejs/cypress-project-basic
 
+## 7.0.3
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @keystonejs/adapter-prisma@3.0.2
+  - @keystonejs/app-admin-ui@7.4.1
+  - @keystonejs/app-graphql@6.2.2
+  - @keystonejs/app-static@5.1.4
+  - @arch-ui/fields@3.0.6
+  - @keystonejs/fields@22.0.1
+  - @keystonejs/fields-cloudinary-image@2.1.5
+  - @keystonejs/fields-color@1.0.11
+  - @keystonejs/fields-content@9.0.7
+  - @keystonejs/fields-markdown@5.2.15
+  - @keystonejs/fields-oembed@3.1.5
+  - @keystonejs/fields-unsplash@3.2.1
+  - @keystonejs/fields-wysiwyg-tinymce@5.3.17
+  - @keystonejs/file-adapters@7.0.9
+  - @keystonejs/keystone@19.2.1
+  - @keystonejs/server-side-graphql-client@2.0.1
+
 ## 7.0.2
 
 ### Patch Changes

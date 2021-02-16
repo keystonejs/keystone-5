@@ -1,5 +1,21 @@
 # @keystonejs/benchmarks
 
+## 5.1.31
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84), [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @keystonejs/adapter-knex@13.0.2
+  - @keystonejs/adapter-mongoose@11.0.2
+  - @keystonejs/app-graphql@6.2.2
+  - @keystonejs/fields@22.0.1
+  - @keystonejs/keystone@19.2.1
+  - @keystonejs/server-side-graphql-client@2.0.1
+  - @keystonejs/session@8.2.1
+  - @keystonejs/test-utils@13.0.0
+
 ## 5.1.30
 
 ### Patch Changes

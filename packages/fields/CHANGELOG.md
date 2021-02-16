@@ -1,5 +1,37 @@
 # @keystonejs/fields
 
+## 22.0.1
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84), [`15b1132d2`](https://github.com/keystonejs/keystone-5/commit/15b1132d20d13f79bbf1707e1897b31da887c2b7)]:
+  - @keystonejs/access-control@7.0.1
+  - @keystonejs/adapter-knex@13.0.2
+  - @keystonejs/adapter-mongoose@11.0.2
+  - @keystonejs/adapter-prisma@3.0.2
+  - @keystonejs/app-admin-ui@7.4.1
+  - @arch-ui/alert@0.0.19
+  - @arch-ui/button@0.0.23
+  - @arch-ui/controls@0.1.10
+  - @arch-ui/day-picker@1.0.6
+  - @arch-ui/drawer@0.0.26
+  - @arch-ui/fields@3.0.6
+  - @arch-ui/filters@0.0.21
+  - @arch-ui/input@0.1.12
+  - @arch-ui/layout@0.2.15
+  - @arch-ui/loading@0.0.19
+  - @arch-ui/lozenge@0.0.18
+  - @arch-ui/options@0.0.25
+  - @arch-ui/popout@0.0.24
+  - @arch-ui/select@0.1.10
+  - @arch-ui/theme@0.0.12
+  - @arch-ui/tooltip@0.1.15
+  - @arch-ui/typography@0.0.19
+  - @keystonejs/server-side-graphql-client@2.0.1
+  - @keystonejs/utils@6.0.2
+
 ## 22.0.0
 
 ### Major Changes

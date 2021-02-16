@@ -1,5 +1,16 @@
 # @keystonejs/access-control
 
+## 7.0.1
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+* [`15b1132d2`](https://github.com/keystonejs/keystone-5/commit/15b1132d20d13f79bbf1707e1897b31da887c2b7) Thanks [@timleslie](https://github.com/timleslie)! - Updated types to be parameterised by imperative argument type.
+
+* Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @keystonejs/utils@6.0.2
+
 ## 7.0.0
 
 ### Major Changes

@@ -1,5 +1,16 @@
 # @keystonejs/app-graphql
 
+## 6.2.2
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @keystonejs/app-graphql-playground@5.1.10
+  - @keystonejs/session@8.2.1
+  - @keystonejs/utils@6.0.2
+
 ## 6.2.1
 
 ### Patch Changes
