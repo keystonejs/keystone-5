@@ -13,8 +13,6 @@ import { KnexAdapter } from '@keystonejs/adapter-knex';
 import { MongooseAdapter } from '@keystonejs/adapter-mongoose';
 // @ts-ignore
 import { PrismaAdapter } from '@keystonejs/adapter-prisma';
-import { initConfig, createSystem } from '@keystone-next/keystone';
-import type { KeystoneConfig, BaseKeystone, KeystoneContext } from '@keystone-next/types';
 
 export type AdapterName = 'mongoose' | 'knex' | 'prisma_postgresql';
 
@@ -45,29 +43,6 @@ const argGenerator = {
     enableLogging: false,
   }),
 };
-
-async function setupFromConfig({
-  adapterName,
-  config,
-}: {
-  adapterName: AdapterName;
-  config: KeystoneConfig;
-}) {
-  if (adapterName === 'knex') {
-    const adapterArgs = await argGenerator[adapterName]();
-    config.db = { adapter: adapterName, url: adapterArgs.knexOptions.connection, ...adapterArgs };
-  } else if (adapterName === 'mongoose') {
-    const adapterArgs = await argGenerator[adapterName]();
-    config.db = { adapter: adapterName, url: adapterArgs.mongoUri, mongooseOptions: adapterArgs };
-  } else if (adapterName === 'prisma_postgresql') {
-    const adapterArgs = await argGenerator[adapterName]();
-    config.db = { adapter: adapterName, ...adapterArgs };
-  }
-  config = initConfig(config);
-
-  const { keystone, createContext } = createSystem(config, path.resolve('.keystone'), '');
-  return { keystone, context: createContext().sudo() };
-}
 
 async function setupServer({
   adapterName,
@@ -187,7 +162,7 @@ async function teardownMongoMemoryServer() {
   mongoServer = null;
 }
 
-type Setup = { keystone: Keystone<string> | BaseKeystone; context: KeystoneContext };
+type Setup = { keystone: Keystone<string>; context: any };
 
 function _keystoneRunner(adapterName: AdapterName, tearDownFunction: () => Promise<void> | void) {
   return function (
@@ -261,4 +236,4 @@ function multiAdapterRunners(only = process.env.TEST_ADAPTER) {
   ].filter(a => typeof only === 'undefined' || a.adapterName === only);
 }
 
-export { setupServer, setupFromConfig, multiAdapterRunners, networkedGraphqlRequest };
+export { setupServer, multiAdapterRunners, networkedGraphqlRequest };

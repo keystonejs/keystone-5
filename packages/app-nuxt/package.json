@@ -11,5 +11,5 @@
     "express": "^4.17.1",
     "nuxt": "^2.14.12"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/app-nuxt"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/app-nuxt"
 }

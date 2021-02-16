@@ -33,5 +33,5 @@
   },
   "main": "dist/fields-markdown.cjs.js",
   "module": "dist/fields-markdown.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/fields-markdown"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-markdown"
 }

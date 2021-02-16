@@ -5,8 +5,8 @@
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "main": "dist/fields-authed-relationship.cjs.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/fields-authed-relationship",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-authed-relationship",
+  "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
     "node": ">=10.0.0"
   },

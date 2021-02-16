@@ -25,5 +25,5 @@
     "react-scrolllock": "^5.0.1"
   },
   "module": "dist/drawer.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/arch/packages/drawer"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/drawer"
 }

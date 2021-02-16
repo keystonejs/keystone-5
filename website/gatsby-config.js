@@ -19,10 +19,7 @@ async function getPackagePlugins() {
     ...packages
       .filter(({ packageJson }) => !packageJson.private)
       .filter(({ dir }) => fs.existsSync(dir))
-      .filter(
-        ({ dir }) =>
-          !dir.includes('arch') && !dir.includes('packages-next') && !dir.includes('design-system')
-      )
+      .filter(({ dir }) => !dir.includes('arch'))
       .map(({ dir, packageJson }) => ({
         resolve: 'gatsby-source-filesystem',
         options: {

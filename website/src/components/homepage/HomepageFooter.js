@@ -16,7 +16,7 @@ const HomepageFooter = () => (
   >
     <Container>
       <GitHubButton
-        href="https://github.com/keystonejs/keystone"
+        href="https://github.com/keystonejs/keystone-5"
         data-size="large"
         data-show-count="true"
         aria-label="Star keystonejs/keystone on GitHub"
@@ -37,7 +37,7 @@ const HomepageFooter = () => (
           and{' '}
           <a
             css={{ color: colors.N80 }}
-            href="https://github.com/keystonejs/keystone/blob/master/CONTRIBUTING.md#contributors"
+            href="https://github.com/keystonejs/keystone-5/blob/master/CONTRIBUTING.md#contributors"
             rel="noopener noreferrer"
             target="_blank"
           >

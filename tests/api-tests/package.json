@@ -8,11 +8,9 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/tests/api-tests",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/tests/api-tests",
+  "homepage": "https://github.com/keystonejs/keystone-5",
   "devDependencies": {
-    "@keystone-next/fields": "*",
-    "@keystone-next/keystone": "*",
     "@keystonejs/adapter-knex": "*",
     "@keystonejs/adapter-mongoose": "*",
     "@keystonejs/app-graphql": "*",

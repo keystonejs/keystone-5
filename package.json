@@ -5,15 +5,14 @@
   "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "repository": "https://github.com/keystonejs/keystone",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "repository": "https://github.com/keystonejs/keystone-5",
+  "homepage": "https://github.com/keystonejs/keystone-5",
   "scripts": {
     "prisma": "prisma",
     "dev": "yarn demo todo dev",
     "demo": "yarn --cwd ./examples",
     "website": "manypkg run @keystonejs/website",
     "arch-docs": "manypkg run arch/docs",
-    "docs-next": "manypkg run @keystone-next/website dev",
     "coverage": "cross-env DISABLE_LOGGING=true NODE_ENV=test jest --maxWorkers=1 --coverage",
     "cypress:run": "status=0; yarn workspace @keystonejs/cypress-project-basic run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-login run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-twitter-login run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-access-control run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-client-validation run cypress:run || status=$?; exit $status",
     "cypress:open": "status=0; yarn workspace @keystonejs/cypress-project-basic run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-login run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-twitter-login run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-access-control run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-client-validation run cypress:open || status=$?; exit $status",
@@ -35,7 +34,7 @@
     "version-packages": "changeset version && node .github/write-release-count.js",
     "build": "preconstruct build",
     "prepare": "manypkg check && preconstruct dev && yarn run --silent contributing-guide",
-    "contributing-guide": "is-ci && exit 0 || chalk -t \"{bold 📝 Contributing to KeystoneJS?}\" && link \"🔗 Read the full Contributing Guide\" \"https://github.com/keystonejs/keystone/blob/master/CONTRIBUTING.md\"",
+    "contributing-guide": "is-ci && exit 0 || chalk -t \"{bold 📝 Contributing to KeystoneJS?}\" && link \"🔗 Read the full Contributing Guide\" \"https://github.com/keystonejs/keystone-5/blob/master/CONTRIBUTING.md\"",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "heroku-postbuild": "yarn build && yarn workspace @keystonejs/demo-project-blog build",
@@ -149,12 +148,7 @@
       "examples/*",
       "website",
       "packages/create-keystone-app/example-projects/*",
-      "projects/*",
-      "examples-next/*",
-      "packages-next/*",
-      "design-system/packages/*",
-      "design-system/website",
-      "docs-next"
+      "projects/*"
     ],
     "nohoist": [
       "**/cypress-multi-reporters"
@@ -180,9 +174,7 @@
       "packages/fields-wysiwyg-tinymce",
       "packages/fields-content",
       "packages/fields-color",
-      "packages/fields",
-      "packages-next/*",
-      "design-system/packages/*"
+      "packages/fields"
     ],
     "distFilenameStrategy": "unscoped-package-name"
   },

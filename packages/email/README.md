@@ -7,7 +7,7 @@ title: Keystone email
 # Keystone email
 
 Send emails via various transports, rendered with Express-compatible
-renderers. Powered by [`keystone-email`](https://github.com/keystonejs/keystone-email).
+renderers. Powered by [`keystone-email`](https://github.com/keystonejs/keystone-5-email).
 
 ## Installation
 
@@ -19,13 +19,13 @@ npm install @keystonejs/email
 
 ## Transports
 
-See [`keystone-email`](https://github.com/keystonejs/keystone-email) for supported
+See [`keystone-email`](https://github.com/keystonejs/keystone-5-email) for supported
 transports and options.
 
 ## Renderers
 
 Express-compatible renderers should work out of the box
-(as long as [they export an `__express` key](https://github.com/keystonejs/keystone-email/issues/8))
+(as long as [they export an `__express` key](https://github.com/keystonejs/keystone-5-email/issues/8))
 
 ### React / jsx
 
@@ -145,4 +145,4 @@ Under the hood, `keystone-email` will call `require(<renderer>)`, then use the
 `__express` export. ie; any compatible express renderer should work as long as
 it's in your dependencies.
 
-See [`keystone-email`](https://github.com/keystonejs/keystone-email) for more.
+See [`keystone-email`](https://github.com/keystonejs/keystone-5-email) for more.

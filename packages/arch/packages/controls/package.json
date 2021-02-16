@@ -21,5 +21,5 @@
     "react-radios": "^1.1.0"
   },
   "module": "dist/controls.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/arch/packages/controls"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/controls"
 }
