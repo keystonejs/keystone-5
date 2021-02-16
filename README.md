@@ -1,4 +1,11 @@
 <div align="center">
+  <h1>⚠️ Maintenance Mode</h1>
+  <p>Keystone 5 has moved into maintenance mode. Head over to <a href="https://github.com/keystonejs/keystone"><code>keystonejs</code></a> for the current release of Keystone.</p>
+  <br>
+</div>
+<br>
+
+<div align="center">
   <img src="website/static/readme-header.png" width="557">
   <h1>KeystoneJS</h1>
   <br>
