@@ -148,9 +148,7 @@
       "examples/*",
       "website",
       "packages/create-keystone-app/example-projects/*",
-      "projects/*",
-      "design-system/packages/*",
-      "design-system/website"
+      "projects/*"
     ],
     "nohoist": [
       "**/cypress-multi-reporters"
@@ -176,8 +174,7 @@
       "packages/fields-wysiwyg-tinymce",
       "packages/fields-content",
       "packages/fields-color",
-      "packages/fields",
-      "design-system/packages/*"
+      "packages/fields"
     ],
     "distFilenameStrategy": "unscoped-package-name"
   },
