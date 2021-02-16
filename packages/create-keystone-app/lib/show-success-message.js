@@ -38,7 +38,7 @@ ${c.bold('  Before you run Keystone you will need to initialise the tables in yo
   - Edit ${c.bold(`${projectDir}${path.sep}index.js`)} to customize your app.
   - ${terminalLink('Open the Admin UI', 'http://localhost:3000/admin')}
   - ${terminalLink('Read the docs', 'https://keystonejs.com')}
-  - ${terminalLink('Star Keystone on GitHub', 'https://github.com/keystonejs/keystone')}
+  - ${terminalLink('Star Keystone on GitHub', 'https://github.com/keystonejs/keystone-5')}
 `);
 };
 

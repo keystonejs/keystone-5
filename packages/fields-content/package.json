@@ -54,5 +54,5 @@
   },
   "main": "dist/fields-content.cjs.js",
   "module": "dist/fields-content.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/fields-content"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-content"
 }

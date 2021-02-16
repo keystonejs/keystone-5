@@ -11,5 +11,5 @@
     "cors": "^2.8.5",
     "graphql": "^15.5.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/types"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/types"
 }

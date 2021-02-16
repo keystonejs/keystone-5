@@ -44,5 +44,5 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/examples/blog"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/examples/blog"
 }

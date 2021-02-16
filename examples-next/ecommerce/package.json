@@ -38,5 +38,5 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/examples-next/ecommerce"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/examples-next/ecommerce"
 }

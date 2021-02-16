@@ -35,6 +35,6 @@ We hope you like it!
 
 If you have trouble running these examples, or find a bug, please open an issue and tag it with the `new interfaces` tag on GitHub.
 
-Otherwise if you want to ask questions or talk to us about what we're up to, start a [discussion](https://github.com/keystonejs/keystone/discussions)!
+Otherwise if you want to ask questions or talk to us about what we're up to, start a [discussion](https://github.com/keystonejs/keystone-5/discussions)!
 
 Also [follow @keystonejs on twitter](https://twitter.com/keystonejs) for updates.

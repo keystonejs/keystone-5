@@ -47,5 +47,5 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/docs-next"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/docs-next"
 }

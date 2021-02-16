@@ -6,5 +6,5 @@
   "license": "MIT",
   "main": "dist/color-utils.cjs.js",
   "module": "dist/color-utils.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/arch/packages/color-utils"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/color-utils"
 }

@@ -30,7 +30,7 @@ export const Page = ({ children, isProse }: { children: ReactNode; isProse?: boo
           </h2>
           <div className="flex items-center">
             <a
-              href="https://github.com/keystonejs/keystone"
+              href="https://github.com/keystonejs/keystone-5"
               target="_blank"
               className="mr-4 text-gray-700 hover:text-gray-900"
             >

@@ -26,5 +26,5 @@
       "views/index.tsx"
     ]
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/cloudinary"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/cloudinary"
 }

@@ -45,7 +45,7 @@ You can read more about the current support in our [Prisma Adapter - Production 
 
 ## How can I help?
 
-We would love to get feedback on the Prisma adapter while we work towards being production ready. [Give it a try](/docs/guides/prisma.md) and if you have any feedback, please open an issue or PR on [Github](https://github.com/keystonejs/keystone) 🙏
+We would love to get feedback on the Prisma adapter while we work towards being production ready. [Give it a try](/docs/guides/prisma.md) and if you have any feedback, please open an issue or PR on [Github](https://github.com/keystonejs/keystone-5) 🙏
 
 ## Q&A
 

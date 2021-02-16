@@ -66,5 +66,5 @@
       "scripts/index.ts"
     ]
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/keystone"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/keystone"
 }

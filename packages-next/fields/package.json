@@ -43,5 +43,5 @@
       "types/relationship/views/RelationshipSelect.tsx"
     ]
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/fields"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/fields"
 }

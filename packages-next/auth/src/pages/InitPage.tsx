@@ -95,7 +95,7 @@ const Welcome = ({ value }: { value: any }) => {
         <Stack across gap="small">
           <IconTwitter title="Twitter Logo" />
           <IconGithub
-            href="https://github.com/keystonejs/keystone"
+            href="https://github.com/keystonejs/keystone-5"
             target="_blank"
             title="Github"
           />

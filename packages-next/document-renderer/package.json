@@ -10,5 +10,5 @@
   "devDependencies": {
     "react": "^17.0.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/document-renderer"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/document-renderer"
 }

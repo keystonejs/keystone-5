@@ -89,7 +89,7 @@ const AuthenticatedItem = ({ item }: { item: { id: string; label: string } }) =>
           <PopoverLink target="_blank" href="/api/graphql">
             API Explorer
           </PopoverLink>
-          <PopoverLink target="_blank" href="https://github.com/keystonejs/keystone">
+          <PopoverLink target="_blank" href="https://github.com/keystonejs/keystone-5">
             GitHub Repository
           </PopoverLink>
           <PopoverLink target="_blank" href="https://www.keystonejs.com/documentation">

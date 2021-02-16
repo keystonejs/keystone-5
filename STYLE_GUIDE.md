@@ -110,7 +110,7 @@ It's important to remember that the Markdown files within this project are used 
 
 - As raw Markdown in a local dev environment (eg. in editor, search/grep'ing, etc.)
 - Published on the [Keystone website](https://keystonejs.com/)
-- Published on the [GitHub repo](https://github.com/keystonejs/keystone)
+- Published on the [GitHub repo](https://github.com/keystonejs/keystone-5)
 - Published on NPM (only effects package `README.md` docs)
 
 For links to work across these mediums, certain rules for URLs formulation must be followed:
@@ -119,7 +119,7 @@ For links to work across these mediums, certain rules for URLs formulation must 
   - Eg. `See the secion on [Foo Config](#foo-config).`
 - Links to _other files in the monorepo_ must use..
   - An absolute file path from the monorepo root
-    - Eg. `/docs/api/hooks.md` (**not** `https://www.keystonejs.com/guides/hooks` or `https://github.com/keystonejs/keystone/blob/master/docs/guides/hooks.md`, etc.)
+    - Eg. `/docs/api/hooks.md` (**not** `https://www.keystonejs.com/guides/hooks` or `https://github.com/keystonejs/keystone-5/blob/master/docs/guides/hooks.md`, etc.)
   - The full filename, include the extension
     - Eg. `/docs/guides/access-control.md` (**not** `/docs/guides/access-control`)
 - Links to `README.md` files must be explicit; they cannot rely on the GitHub behaviour that uses `README.md` at a sort of "index" for a directory

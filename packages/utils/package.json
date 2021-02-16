@@ -4,8 +4,8 @@
   "version": "6.0.1",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "homepage": "https://github.com/keystonejs/keystone",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/utils",
+  "homepage": "https://github.com/keystonejs/keystone-5",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/utils",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
   "engines": {

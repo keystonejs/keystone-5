@@ -20,5 +20,5 @@
     "@primer/octicons-react": "^11.3.0"
   },
   "module": "dist/pill.esm.js",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/arch/packages/pill"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/pill"
 }

@@ -3,5 +3,5 @@ contact_links:
     url: http://community.keystonejs.com/
     about: If you have a question related to Keystone. Reach out to the community at http://community.keystonejs.com/
   - name: Feature Request
-    url: https://github.com/keystonejs/keystone/discussions/
+    url: https://github.com/keystonejs/keystone-5/discussions/
     about: Discuss or request a feature in Keystone 5.

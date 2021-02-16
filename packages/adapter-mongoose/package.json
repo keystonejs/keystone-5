@@ -20,5 +20,5 @@
     "mongodb-memory-server-core": "^6.9.3",
     "pluralize": "^8.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/adapter-mongoose"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/adapter-mongoose"
 }

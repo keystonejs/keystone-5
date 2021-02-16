@@ -17,5 +17,5 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/session"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/session"
 }

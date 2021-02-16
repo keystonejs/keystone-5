@@ -16,5 +16,5 @@
     "cuid": "^2.1.8",
     "prisma": "2.16.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/adapter-prisma"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/adapter-prisma"
 }

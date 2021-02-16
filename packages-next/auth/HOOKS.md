@@ -4,7 +4,7 @@ See:
 
 - The current [hooks API ref](https://www.keystonejs.com/api/hooks#authentication-hooks)
 - The current [hooks guide](https://www.keystonejs.com/guides/hooks)
-- The [PR that added auth hooks](https://github.com/keystonejs/keystone/pull/2039) (I thought there'd be more relevant discussion in here but there isn't really)
+- The [PR that added auth hooks](https://github.com/keystonejs/keystone-5/pull/2039) (I thought there'd be more relevant discussion in here but there isn't really)
 
 Currently:
 

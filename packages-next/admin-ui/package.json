@@ -55,5 +55,5 @@
       "next-config.ts"
     ]
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/admin-ui"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/admin-ui"
 }

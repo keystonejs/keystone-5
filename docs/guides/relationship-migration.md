@@ -196,4 +196,4 @@ This will allow you to verify that your application is working correctly with th
 ## Summary
 
 Congratulations, you have upgraded your Keystone system to the new and improved data schema!
-If you experience any issues with the above process, please [create an issue](https://github.com/keystonejs/keystone/issues) on Github and we will endeavour to help you out.
+If you experience any issues with the above process, please [create an issue](https://github.com/keystonejs/keystone-5/issues) on Github and we will endeavour to help you out.

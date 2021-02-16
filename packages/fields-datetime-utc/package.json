@@ -4,8 +4,8 @@
   "version": "7.0.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/fields-datetime-utc",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-datetime-utc",
+  "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
     "node": ">=10.0.0"
   }

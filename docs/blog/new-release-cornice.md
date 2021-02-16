@@ -7,7 +7,7 @@ order: 0.5
 tags: release
 [meta]-->
 
-> For full release notes see: [Our versioning PR](https://github.com/keystonejs/keystone/pull/3642)
+> For full release notes see: [Our versioning PR](https://github.com/keystonejs/keystone-5/pull/3642)
 
 ## An intro to release posts
 

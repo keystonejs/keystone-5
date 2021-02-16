@@ -19,5 +19,5 @@
     "@emotion/react": "11.1.5",
     "facepaint": "^1.2.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/design-system/packages/core"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/design-system/packages/core"
 }

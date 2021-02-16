@@ -31,7 +31,7 @@ In particular, we have come a long way with our support for complex relationship
 By keeping a consistent schema, users have been able to stay up to date with Keystone updates without having to make changes to their data.
 
 Unfortunately we have now outgrown this original schema.
-More and more we are finding that [certain bugs](https://github.com/keystonejs/keystone/issues/1362) are hard to fix, and [certain features](https://github.com/keystonejs/keystone/issues/313) difficult to implement, because of the limitations of our initial design.
+More and more we are finding that [certain bugs](https://github.com/keystonejs/keystone-5/issues/1362) are hard to fix, and [certain features](https://github.com/keystonejs/keystone-5/issues/313) difficult to implement, because of the limitations of our initial design.
 While it has served us well, it's time for an upgrade.
 
 ## The problem
@@ -47,7 +47,7 @@ This means we stored duplicated data in the database, but we could very quickly 
 Unfortunately, this trade off is no longer working in our favour.
 Maintaining the denormalised data is now more complex than generating queries against normalised data.
 We are finding that some reported bugs are difficult to resolve due to the complex nature of resolving denormalised data.
-There are also more sophisticated relationship patterns, such as [ordered relationships](https://github.com/keystonejs/keystone/issues/313), which are too difficult to implement in the current schema.
+There are also more sophisticated relationship patterns, such as [ordered relationships](https://github.com/keystonejs/keystone-5/issues/313), which are too difficult to implement in the current schema.
 
 ## The solution
 

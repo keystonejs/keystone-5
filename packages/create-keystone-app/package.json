@@ -29,5 +29,5 @@
     "prompts": "^2.4.0",
     "terminal-link": "^2.1.1"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/create-keystone-app"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app"
 }

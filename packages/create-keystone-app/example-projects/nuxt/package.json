@@ -14,8 +14,8 @@
     "start": "cross-env NODE_ENV=production keystone start",
     "create-tables": "cross-env keystone create-tables"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/create-keystone-app/example-projects/nuxt",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app/example-projects/nuxt",
+  "homepage": "https://github.com/keystonejs/keystone-5",
   "dependencies": {
     "@keystonejs/adapter-mongoose": "^11.0.1",
     "@keystonejs/app-admin-ui": "^7.4.0",

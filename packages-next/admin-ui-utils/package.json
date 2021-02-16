@@ -22,5 +22,5 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/admin-ui-utils"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/admin-ui-utils"
 }

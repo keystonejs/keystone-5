@@ -56,7 +56,7 @@
     "slate-history": "^0.60.3",
     "slate-react": "npm:slate-react@^0.60.3"
   },
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages-next/fields-document",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages-next/fields-document",
   "devDependencies": {
     "@testing-library/react": "^11.2.5",
     "array.prototype.flat": "^1.2.4",
