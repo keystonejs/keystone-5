@@ -13,7 +13,6 @@
     "demo": "yarn --cwd ./examples",
     "website": "manypkg run @keystonejs/website",
     "arch-docs": "manypkg run arch/docs",
-    "docs-next": "manypkg run @keystone-next/website dev",
     "coverage": "cross-env DISABLE_LOGGING=true NODE_ENV=test jest --maxWorkers=1 --coverage",
     "cypress:run": "status=0; yarn workspace @keystonejs/cypress-project-basic run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-login run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-twitter-login run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-access-control run cypress:run || status=$?; yarn workspace @keystonejs/cypress-project-client-validation run cypress:run || status=$?; exit $status",
     "cypress:open": "status=0; yarn workspace @keystonejs/cypress-project-basic run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-login run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-twitter-login run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-access-control run cypress:open || status=$?; yarn workspace @keystonejs/cypress-project-client-validation run cypress:open || status=$?; exit $status",
@@ -150,11 +149,8 @@
       "website",
       "packages/create-keystone-app/example-projects/*",
       "projects/*",
-      "examples-next/*",
-      "packages-next/*",
       "design-system/packages/*",
-      "design-system/website",
-      "docs-next"
+      "design-system/website"
     ],
     "nohoist": [
       "**/cypress-multi-reporters"
@@ -181,7 +177,6 @@
       "packages/fields-content",
       "packages/fields-color",
       "packages/fields",
-      "packages-next/*",
       "design-system/packages/*"
     ],
     "distFilenameStrategy": "unscoped-package-name"

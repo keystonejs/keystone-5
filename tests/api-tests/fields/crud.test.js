@@ -9,7 +9,7 @@ import {
   updateItem,
 } from '@keystonejs/server-side-graphql-client';
 
-const testModules = globby.sync(`{packages,packages-next}/**/src/**/test-fixtures.js`, {
+const testModules = globby.sync(`{packages}/**/src/**/test-fixtures.js`, {
   absolute: true,
 });
 testModules.push(path.resolve('packages/fields/tests/test-fixtures.js'));
