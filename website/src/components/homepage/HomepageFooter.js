@@ -43,7 +43,7 @@ const HomepageFooter = () => (
           >
             Contributors
           </a>{' '}
-          around the world!
+          around the world.
         </p>
         <p css={{ color: colors.N40, fontSize: '0.875rem' }}>
           Keystone v4 has moved to{' '}
