@@ -162,7 +162,7 @@ async function teardownMongoMemoryServer() {
   mongoServer = null;
 }
 
-type Setup = { keystone: Keystone<string> | BaseKeystone; context: KeystoneContext };
+type Setup = { keystone: Keystone<string>; context: any };
 
 function _keystoneRunner(adapterName: AdapterName, tearDownFunction: () => Promise<void> | void) {
   return function (

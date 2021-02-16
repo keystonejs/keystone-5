@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.13",
+    "@types/cookie": "^0.4.0",
     "@types/express-session": "^1.17.3",
     "cookie": "^0.4.1",
     "cookie-signature": "^1.1.0",
