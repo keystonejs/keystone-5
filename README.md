@@ -1,6 +1,7 @@
 <div align="center">
   <h1>⚠️ Maintenance Mode</h1>
-  <p>Keystone 5 has moved into maintenance mode. Head over to <a href="https://github.com/keystonejs/keystone"><code>keystonejs</code></a> for the current release of Keystone.</p>
+  <p>Keystone 5 has moved into maintenance mode!</p>
+  <p>Head over to <a href="https://next.keystonejs.com/roadmap">Keystone Next</a> to see what's next on our roadmap.</p>
   <br>
 </div>
 <br>
