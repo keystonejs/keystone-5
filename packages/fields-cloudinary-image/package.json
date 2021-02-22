@@ -7,7 +7,7 @@
   "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-cloudinary-image",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v10.23.3"
   },
   "dependencies": {
     "@arch-ui/button": "^0.0.22",
