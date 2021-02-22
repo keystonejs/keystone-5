@@ -620,11 +620,12 @@ class QueryBuilder {
     this._addWheres(w => this._query.andWhere(w), listAdapter, where, baseTableAlias);
 
     // TODO: Implement configurable search fields for lists
-    const searchField = listAdapter.fieldAdaptersByPath['name'];
+    const searchFieldName = listAdapter.config.searchField || 'name';
+    const searchField = listAdapter.fieldAdaptersByPath[searchFieldName];
     if (search !== undefined && searchField) {
       if (searchField.fieldName === 'Text') {
         const f = escapeRegExp;
-        this._query.andWhere(`${baseTableAlias}.name`, '~*', f(search));
+        this._query.andWhere(`${baseTableAlias}.${searchFieldName}`, '~*', f(search));
       } else {
         this._query.whereRaw('false'); // Return no results
       }
@@ -822,7 +823,7 @@ class QueryBuilder {
               .from(`${tableName} as ${subBaseTableAlias}`);
             // We need to filter out nulls before passing back to the top level query
             // otherwise postgres will give very incorrect answers.
-            subQuery.whereNotNull(columnName);
+            subQuery.whereNotNull(`${subBaseTableAlias}.${columnName}`);
           } else {
             const { near, far } = listAdapter._getNearFar(fieldAdapter);
             otherTableAlias = `${subBaseTableAlias}__${p}`;
