@@ -1,5 +1,5 @@
 <div align="center" style="padding-bottom: .3em; border-bottom: 1px solid var(--color-border-secondary);">
-  <h1 style="border-bottom: none;">⚠️ Maintenance Mode</h1>
+  <h1 style="border-bottom: none !important;">⚠️ Maintenance Mode</h1>
   <p>Keystone 5 has moved into maintenance mode!</p>
   <p>Head over to <a href="https://next.keystonejs.com/roadmap">Keystone Next</a> to see what's next on our roadmap.</p>
   <br>
