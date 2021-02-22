@@ -4,19 +4,19 @@
 
 > This should only ever be done by a very short list of core contributors
 
-Releasing is a two-step process. The first step updates the packages, and the second step publishes updated packages to npm.
+Releasing is a two-step process. The first step updates the packages, and the second step publishes updated packages to NPM.
 
 ### Update Packages (automatic)
 
-This step is handled for us by the Changesets GitHub Action. As PRs are opened
-against `master`, the bot will open and update a PR which generates the
+This step is handled for us by the [Release GitHub Action](https://github.com/keystonejs/keystone-5/actions/workflows/release.yml). As PRs are opened
+against `master`, this action will open and update a PR which generates the
 appropriate `CHANGELOG.md` entries and `package.json` version bumps.
 
-Once ready for a release, merge the bot's PR into `master`.
+Once ready for a release, merge the generated PR into `master`.
 
 ### Publish Packages
 
-Once the version changes are merged back in to master, to do a manual release:
+Once the version changes are merged back in to `master`, to do a manual release:
 
 ```sh
 git checkout master && \
