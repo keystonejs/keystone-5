@@ -1,4 +1,12 @@
 <div align="center">
+  <h1>⚠️ Maintenance Mode</h1>
+  <p>Keystone 5 has moved into maintenance mode!</p>
+  <p>Head over to <a href="https://next.keystonejs.com/roadmap">Keystone Next</a> to see what's next on our roadmap.</p>
+  <br>
+</div>
+<br>
+
+<div align="center">
   <img src="website/static/readme-header.png" width="557">
   <h1>KeystoneJS</h1>
   <br>
