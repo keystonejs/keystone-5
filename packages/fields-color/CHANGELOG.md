@@ -1,5 +1,17 @@
 # @keystonejs/fields-color
 
+## 1.0.11
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @arch-ui/button@0.0.23
+  - @arch-ui/fields@3.0.6
+  - @arch-ui/popout@0.0.24
+  - @keystonejs/fields@22.0.1
+
 ## 1.0.10
 
 ### Patch Changes
