@@ -1,5 +1,23 @@
 # @keystonejs/api-tests
 
+## 9.1.0
+
+### Minor Changes
+
+- [`f88f3976b`](https://github.com/keystonejs/keystone-5/commit/f88f3976b2d29d3bd3521d1ae2d9109a4a688cfc) [#9](https://github.com/keystonejs/keystone-5/pull/9) Thanks [@timleslie](https://github.com/timleslie)! - Added support for configuring the field to use for `search` filtering via the `searchField` list adapter config option.
+
+### Patch Changes
+
+- [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84) [#2](https://github.com/keystonejs/keystone-5/pull/2) Thanks [@bladey](https://github.com/bladey)! - Updated repository URL in package.json.
+
+- Updated dependencies [[`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84), [`04bf1e4bb`](https://github.com/keystonejs/keystone-5/commit/04bf1e4bb0223f4e2e06664bbc9e95c51118eb84)]:
+  - @keystonejs/auth-password@6.0.2
+  - @keystonejs/fields@22.0.1
+  - @keystonejs/fields-authed-relationship@1.0.18
+  - @keystonejs/list-plugins@8.0.1
+  - @keystonejs/test-utils@13.0.0
+  - @keystonejs/utils@6.0.2
+
 ## 9.0.0
 
 ### Major Changes
