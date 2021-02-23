@@ -16,7 +16,7 @@ const HomepageFooter = () => (
   >
     <Container>
       <GitHubButton
-        href="https://github.com/keystonejs/keystone"
+        href="https://github.com/keystonejs/keystone-5"
         data-size="large"
         data-show-count="true"
         aria-label="Star keystonejs/keystone on GitHub"
