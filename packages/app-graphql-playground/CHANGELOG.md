@@ -1,5 +1,17 @@
 # @keystonejs/app-graphql-playground
 
+## 5.2.0
+
+### Minor Changes
+
+- [`345a5f0f6`](https://github.com/keystonejs/keystone-5/commit/345a5f0f66a34c75696230ad2fcfb7a2eac86cb4) [#23](https://github.com/keystonejs/keystone-5/pull/23) Thanks [@bladey](https://github.com/bladey)! - Keystone 5 is now in a 6 to 12 month active maintenance phase, packages will no longer have active development releases. For more information please read our Keystone 5 and beyond post located here - https://github.com/keystonejs/keystone-5/issues/21
+
+### Patch Changes
+
+- Updated dependencies [[`345a5f0f6`](https://github.com/keystonejs/keystone-5/commit/345a5f0f66a34c75696230ad2fcfb7a2eac86cb4)]:
+  - @keystonejs/session@8.3.0
+  - @keystonejs/utils@6.1.0
+
 ## 5.1.10
 
 ### Patch Changes
