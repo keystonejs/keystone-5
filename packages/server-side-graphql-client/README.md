@@ -5,6 +5,8 @@ title: Server-side graphQL client
 
 # Server-side graphQL client
 
+> This is the last active development release of this package as **Keystone 5** is now in a 6 to 12 month active maintenance phase. For more information please read our [Keystone 5 and beyond](https://github.com/keystonejs/keystone-5/issues/21) post.
+
 This library provides wrapper functions around `keystone.executeGraphQL` to make it easier to run server-side queries and mutations without needing to write boilerplate GraphQL.
 
 Creating a new `User` item would be written as follows using `keystone.executeGraphQL`:
