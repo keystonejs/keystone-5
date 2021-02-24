@@ -6,6 +6,8 @@ title: AutoIncrement
 
 # AutoIncrement
 
+> This is the last active development release of this package as **Keystone 5** is now in a 6 to 12 month active maintenance phase. For more information please read our [Keystone 5 and beyond](https://github.com/keystonejs/keystone-5/issues/21) post.
+
 An automatically incrementing integer with support for the Knex adapter. It's important to note that this type:
 
 - Has [important limitations](#limitations) due to varying support from the underlying DB platform

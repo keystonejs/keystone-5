@@ -6,6 +6,8 @@ title: File adapters
 
 # File adapters
 
+> This is the last active development release of this package as **Keystone 5** is now in a 6 to 12 month active maintenance phase. For more information please read our [Keystone 5 and beyond](https://github.com/keystonejs/keystone-5/issues/21) post.
+
 The `File` field type can support files hosted in a range of different contexts, e.g. in the local filesystem, or on a cloud based file server.
 
 Different contexts are supported by different file adapters. This package contains the built-in file adapters supported by KeystoneJS.

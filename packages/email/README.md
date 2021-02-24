@@ -6,6 +6,8 @@ title: Keystone email
 
 # Keystone email
 
+> This is the last active development release of this package as **Keystone 5** is now in a 6 to 12 month active maintenance phase. For more information please read our [Keystone 5 and beyond](https://github.com/keystonejs/keystone-5/issues/21) post.
+
 Send emails via various transports, rendered with Express-compatible
 renderers. Powered by [`keystone-email`](https://github.com/keystonejs/keystone-5-email).
 
