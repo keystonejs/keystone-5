@@ -12,7 +12,7 @@
     "@keystonejs/keystone": "^19.3.0",
     "@keystonejs/utils": "^6.1.0",
     "cuid": "^2.1.8",
-    "mongoose": "^5.11.16",
+    "mongoose": "^5.11.18",
     "p-settle": "^4.1.1"
   },
   "devDependencies": {
