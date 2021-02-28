@@ -20678,9 +20678,9 @@ react-copy-to-clipboard@^5.0.1:
     prop-types "^15.5.8"
 
 react-day-picker@^8.0.0-beta.3:
-  version "8.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-8.0.0-beta.16.tgz#5930c58e46a26d5b530fe44b35b1858ced0b04a7"
-  integrity sha512-vl1/sjcX9CrHHpQkD6bUYJ4a/0u1Wzix7Qjj2/V1C/56n4Ch1OKwT+RL40oRc1q/gXKDxb8UByw/NAZl6hgi/g==
+  version "8.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-8.0.0-beta.3.tgz#4e6c3f734d8f810e62f40c43193561fb889b2a89"
+  integrity sha512-qvasG5iH6M+Ix3HAtCiSum6xbngG5re5F2bZN3VRof7FAl3LJbNcq+5geEITSLRt5uo3IsXF5eFvG6Ggpzw8og==
 
 react-dev-utils@^4.2.3:
   version "4.2.3"
@@ -24617,9 +24617,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typescript@^4.1.5:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.2.tgz#1450f020618f872db0ea17317d16d8da8ddb8c4c"
-  integrity sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.5.tgz#123a3b214aaff3be32926f0d8f1f6e704eb89a72"
+  integrity sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
 
 ua-parser-js@^0.7.18, ua-parser-js@^0.7.24:
   version "0.7.24"
