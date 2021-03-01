@@ -9,7 +9,7 @@
   "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-mongoid",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v10.24.0"
   },
   "dependencies": {
     "@arch-ui/input": "^0.1.12",
