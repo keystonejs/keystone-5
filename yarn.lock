@@ -5410,10 +5410,10 @@ autoprefixer@^9.6.0, autoprefixer@^9.6.1:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-aws-sdk@^2.853.0:
-  version "2.853.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.853.0.tgz#4428565e7c5d81ab0dec685ee48d9044e04da3e9"
-  integrity sha512-3cifeifeMHKtpvQ6OcrA9j34BEdvWmLlSGzZU/mZf9nYcV+22PPXjwpVhPh9BvfC2S77upKNbMgnkv4u50aQKw==
+aws-sdk@^2.854.0:
+  version "2.854.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.854.0.tgz#531525cdfdfc774232d86619d2c2c2ae3e1a71a8"
+  integrity sha512-Ex/YJcRB4avEW64UZ7uJ7aBxN8qFPuoSaG7YpLWUGJv+p9Vsqm0v0IqmMo7O5/s2LpIXRG8mLi3UbNZYz2iGhg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -9761,7 +9761,7 @@ eslint@^5.6.0:
     table "^5.2.3"
     text-table "^0.2.0"
 
-eslint@^7.20.0:
+eslint@^7.21.0:
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.21.0.tgz#4ecd5b8c5b44f5dedc9b8a110b01bbfeb15d1c83"
   integrity sha512-W2aJbXpMNofUp0ztQaF40fveSsJBjlSCSWpy//gzfTvwC+USs/nceBrKmlJOiM8r1bLwP2EuYkCqArn/6QTIgg==
@@ -16726,7 +16726,7 @@ mjml-raw@4.8.1:
     lodash "^4.17.15"
     mjml-core "4.8.1"
 
-mjml-react@^1.1.1:
+mjml-react@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mjml-react/-/mjml-react-1.2.0.tgz#8d1d2ed21704fea66e9f19cb3f30c10657f08a8c"
   integrity sha512-9FvdafjzDzUOqNkZ/mNvdP5wWojPsqH6HdWLt5qMZWN3VSOT4kFfc4M1ifXN071E8UvlzuzPQ5kvzhmktuvexg==
