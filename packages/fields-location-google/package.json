@@ -12,7 +12,7 @@
   "dependencies": {
     "@arch-ui/fields": "^3.0.6",
     "@arch-ui/select": "^0.1.10",
-    "@babel/runtime": "^7.12.18",
+    "@babel/runtime": "^7.13.9",
     "@emotion/core": "^10.1.1",
     "@keystonejs/adapter-knex": "^13.2.0",
     "@keystonejs/adapter-mongoose": "^11.2.0",
