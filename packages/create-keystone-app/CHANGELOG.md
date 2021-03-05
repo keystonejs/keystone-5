@@ -1,5 +1,11 @@
 # create-keystone-app
 
+## 3.5.1
+
+### Patch Changes
+
+- [`080252105`](https://github.com/keystonejs/keystone-5/commit/080252105b59d2a1844993e5e576a95a815b4bd0) [#41](https://github.com/keystonejs/keystone-5/pull/41) Thanks [@bladey](https://github.com/bladey)! - Updated create-keystone-app endpoints to the new keystone-5 repository.
+
 ## 3.5.0
 
 ### Minor Changes

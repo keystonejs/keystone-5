@@ -1,5 +1,11 @@
 # @keystonejs/keystone
 
+## 19.3.1
+
+### Patch Changes
+
+- [`6ff2bbe15`](https://github.com/keystonejs/keystone-5/commit/6ff2bbe150f140a013f2145f866f43fe185518eb) [#39](https://github.com/keystonejs/keystone-5/pull/39) Thanks [@timleslie](https://github.com/timleslie)! - Added explicit handling of `null` values for relationship fields in `create` and `update` mutations.
+
 ## 19.3.0
 
 ### Minor Changes
