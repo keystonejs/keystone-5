@@ -11,7 +11,7 @@ let cachedLatestVersionCommit;
 const getLatestVersionCommit = async () => {
   if (cachedLatestVersionCommit === undefined) {
     let commits = await got
-      .get('https://api.github.com/repos/keystonejs/keystone/commits?path=.github/release-count')
+      .get('https://api.github.com/repos/keystonejs/keystone-5/commits?path=.github/release-count')
       .json();
     if (!commits.length) {
       throw new Error(
@@ -26,7 +26,7 @@ const getLatestVersionCommit = async () => {
 const writeDirectoryFromGitHubToFs = async (from, to) => {
   const latestVersionCommit = await getLatestVersionCommit();
   const { tree } = await got(
-    `https://api.github.com/repos/keystonejs/keystone/git/trees/${latestVersionCommit}?recursive=1`
+    `https://api.github.com/repos/keystonejs/keystone-5/git/trees/${latestVersionCommit}?recursive=1`
   ).json();
   await Promise.all(
     tree.map(async item => {
@@ -35,7 +35,7 @@ const writeDirectoryFromGitHubToFs = async (from, to) => {
         await fs.ensureDir(path.dirname(pathToWrite));
         await pipeline(
           got.stream(
-            `https://raw.githubusercontent.com/keystonejs/keystone/${latestVersionCommit}/${item.path}`
+            `https://raw.githubusercontent.com/keystonejs/keystone-5/${latestVersionCommit}/${item.path}`
           ),
           fs.createWriteStream(pathToWrite)
         );
@@ -48,7 +48,7 @@ const getExampleProjects = async () => {
   let latestVersionCommit = await getLatestVersionCommit();
   try {
     let { body: rawConfig } = await got.get(
-      `https://raw.githubusercontent.com/keystonejs/keystone/${latestVersionCommit}/packages/create-keystone-app/example-projects/examples.json`
+      `https://raw.githubusercontent.com/keystonejs/keystone-5/${latestVersionCommit}/packages/create-keystone-app/example-projects/examples.json`
     );
     let parsedConfig;
     try {
