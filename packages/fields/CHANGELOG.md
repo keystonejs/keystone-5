@@ -1,5 +1,11 @@
 # @keystonejs/fields
 
+## 22.1.1
+
+### Patch Changes
+
+- [`a6e033bc3`](https://github.com/keystonejs/keystone-5/commit/a6e033bc3693da3d898a400562d518d2c1d11f9d) [#37](https://github.com/keystonejs/keystone-5/pull/37) Thanks [@timleslie](https://github.com/timleslie)! - Pinned dependency `react-day-picker` to `8.0.0-beta.3`.
+
 ## 22.1.0
 
 ### Minor Changes
