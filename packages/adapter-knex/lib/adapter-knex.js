@@ -1,6 +1,6 @@
 const { versionGreaterOrEqualTo } = require('@keystonejs/utils');
 
-const knex = require('knex');
+const { knex } = require('knex');
 const pSettle = require('p-settle');
 const { BaseKeystoneAdapter, BaseListAdapter, BaseFieldAdapter } = require('@keystonejs/keystone');
 
