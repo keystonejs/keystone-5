@@ -16,7 +16,7 @@
     "@arch-ui/layout": "^0.2.15",
     "@arch-ui/loading": "^0.0.19",
     "@arch-ui/theme": "^0.0.12",
-    "@babel/runtime": "^7.13.9",
+    "@babel/runtime": "^7.13.10",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
     "@primer/octicons-react": "^11.3.0",
