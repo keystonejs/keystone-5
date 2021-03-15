@@ -14,7 +14,7 @@
     "@arch-ui/input": "^0.1.12",
     "@arch-ui/theme": "^0.0.12",
     "@babel/runtime": "^7.13.9",
-    "@emotion/core": "^10.1.1",
+    "@emotion/core": "^11.0.0",
     "@keystonejs/fields": "^22.1.0",
     "@primer/octicons-react": "^11.3.0",
     "@tinymce/tinymce-react": "^3.10.3",
