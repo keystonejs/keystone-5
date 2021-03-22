@@ -12,7 +12,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
+    "@apollo/client": "^3.3.12",
     "@arch-ui/alert": "^0.0.19",
     "@arch-ui/button": "^0.0.23",
     "@arch-ui/controls": "^0.1.10",
@@ -54,7 +54,7 @@
     "lodash.groupby": "^4.6.0",
     "lodash.isequal": "^4.5.0",
     "luxon": "^1.26.0",
-    "mongoose": "^5.12.1",
+    "mongoose": "^5.12.2",
     "p-settle": "^4.1.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -68,7 +68,7 @@
     "@keystonejs/app-static": "*",
     "@keystonejs/file-adapters": "*",
     "@keystonejs/test-utils": "*",
-    "globby": "^11.0.2",
+    "globby": "^11.0.3",
     "graphql-upload": "^11.0.0",
     "mime": "^2.5.2"
   },
