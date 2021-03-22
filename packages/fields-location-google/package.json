@@ -20,7 +20,7 @@
     "@keystonejs/fields": "^22.1.0",
     "cuid": "^2.1.8",
     "google-maps-react": "^2.0.6",
-    "mongoose": "^5.11.20",
+    "mongoose": "^5.12.1",
     "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-toast-notifications": "^2.4.3"
