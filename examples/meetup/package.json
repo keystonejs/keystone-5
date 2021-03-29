@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=production keystone start"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.12",
+    "@apollo/client": "^3.3.13",
     "@emotion/core": "^10.1.1",
     "@keystonejs/adapter-mongoose": "^11.1.0",
     "@keystonejs/app-admin-ui": "^7.4.1",
@@ -42,8 +42,8 @@
     "lodash.uniqby": "^4.7.0",
     "next": "10.0.9",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-toast-notifications": "^2.4.3",
     "react-use-form-state": "^0.13.2",
     "uuid": "^8.3.2"
