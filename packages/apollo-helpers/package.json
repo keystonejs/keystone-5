@@ -11,7 +11,7 @@
     "build": "echo 'noop - see the Keystone package.json#build script'"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.12",
+    "@apollo/client": "^3.3.13",
     "@babel/runtime": "^7.13.10",
     "@jesstelford/apollo-cache-invalidation": "^0.0.3-gh3-gh5",
     "@types/react": "^17.0.3",
@@ -25,10 +25,10 @@
     "react-adopt": "^0.6.0"
   },
   "peerDependencies": {
-    "react": "^17.0.1"
+    "react": "^17.0.2"
   },
   "devDependencies": {
-    "react": "^17.0.1"
+    "react": "^17.0.2"
   },
   "main": "dist/apollo-helpers.cjs.js",
   "module": "dist/apollo-helpers.esm.js",
