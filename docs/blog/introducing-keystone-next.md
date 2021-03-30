@@ -6,7 +6,6 @@ author: The Keystone Team
 order: 0.3
 [meta]-->
 
-
 Keystone 5 has officially moved into active maintenance mode as we push towards the next major new version of KeystoneJS.
 
 ## What is Keystone Next?
@@ -19,7 +18,7 @@ There is a lot to do, and with a larger than ever team at [Thinkmill](https://th
 
 ## What happens to Keystone 5?
 
-Keystone 5 remains production-ready in active maintenance mode and now lives at [keystonejs/keystone-5](https://github.com/keystonejs/keystone-5). 
+Keystone 5 remains production-ready in active maintenance mode and now lives at [keystonejs/keystone-5](https://github.com/keystonejs/keystone-5).
 
 ### What does maintenance mode entail?
 
