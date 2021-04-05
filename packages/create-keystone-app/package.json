@@ -26,7 +26,7 @@
     "fs-extra": "^9.1.0",
     "got": "^11.8.2",
     "kleur": "^4.1.4",
-    "prompts": "^2.4.0",
+    "prompts": "^2.4.1",
     "terminal-link": "^2.1.1"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app"
