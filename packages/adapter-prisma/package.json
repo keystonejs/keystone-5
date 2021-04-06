@@ -12,7 +12,7 @@
     "@keystonejs/keystone": "^19.3.0",
     "@keystonejs/utils": "^6.1.0",
     "@prisma/client": "2.16.1",
-    "@prisma/sdk": "2.16.1",
+    "@prisma/sdk": "2.20.0",
     "cuid": "^2.1.8",
     "prisma": "2.16.1"
   },
