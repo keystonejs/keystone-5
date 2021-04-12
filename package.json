@@ -147,7 +147,7 @@
       "tests/benchmarks",
       "examples/*",
       "website",
-      "packages/create-keystone-app/example-projects/*",
+      "packages/create-keystone-5-app/example-projects/*",
       "projects/*"
     ],
     "nohoist": [
@@ -199,7 +199,7 @@
       "!packages/apollo-helpers/**",
       "!packages/app-admin-ui/client/**",
       "!packages/arch/**",
-      "!packages/create-keystone-app/templates/**",
+      "!packages/create-keystone-5-app/templates/**",
       "!packages/core/tests/default-entry/index.js",
       "!packages/fields/**/views/**",
       "!packages/fields/**/test-fixtures.js",

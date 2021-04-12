@@ -7,7 +7,7 @@ order: 1
 
 # GraphQL API Introduction
 
-_Before you begin:_ This guide assumes you have a running instance of Keystone with the GraphQL App configured, and a list with some data to query. (Get started in 5min by running `npx create-keystone-app` and select the `Starter` project)
+_Before you begin:_ This guide assumes you have a running instance of Keystone with the GraphQL App configured, and a list with some data to query. (Get started in 5min by running `npx create-keystone-5-app` and select the `Starter` project)
 
 Examples in this guide will refer to a `Users` list, however the queries, mutations and methods listed here would be the same for any Keystone list.
 
