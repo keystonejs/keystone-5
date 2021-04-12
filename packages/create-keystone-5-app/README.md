@@ -15,7 +15,7 @@ A CLI for Keystone to help generate starter apps.
 ### Interactive
 
 ```shell
-yarn create keystone-app my-app
+yarn create keystone-5-app my-app
 ```
 
 and follow the prompts.
@@ -27,7 +27,7 @@ One such example is creating a Docker image with a generated Keystone app built 
 See the list of possible arguments in the **Arguments** section below.
 
 ```shell
-npm init keystone-app --name "My App" --template "starter" --database "MongoDB" --connection-string mongodb://localhost/MyApp --test-connection false my-app
+npm init keystone-5-app --name "My App" --template "starter" --database "MongoDB" --connection-string mongodb://localhost/MyApp --test-connection false my-app
 ```
 
 The app generation will fall back to interactive prompts if any of the arguments are

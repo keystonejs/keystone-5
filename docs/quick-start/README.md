@@ -44,9 +44,9 @@ Follow the [database setup](/docs/quick-start/adapters.md) instructions to insta
 To create a new Keystone application, run the following command in your terminal:
 
 ```shell allowCopy=false showLanguage=false
-npm init keystone-app my-app
+npm init keystone-5-app my-app
 # or
-yarn create keystone-app my-app
+yarn create keystone-5-app my-app
 ```
 
 You'll be prompted with a few questions:
