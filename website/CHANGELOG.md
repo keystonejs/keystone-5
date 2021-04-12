@@ -1,5 +1,11 @@
 # @keystonejs/website
 
+## 6.0.2
+
+### Patch Changes
+
+- [#71](https://github.com/keystonejs/keystone-5/pull/71) [`f6bcedea8`](https://github.com/keystonejs/keystone-5/commit/f6bcedea89fd2fc322acdbc53a19a75bf150d423) Thanks [@raveling](https://github.com/raveling)! - Add blog post for Keystone Next. Update Roadmap. Add Next link in sidebar.
+
 ## 6.0.1
 
 ### Patch Changes

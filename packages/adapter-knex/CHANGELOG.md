@@ -1,5 +1,11 @@
 # @keystonejs/adapter-knex
 
+## 13.3.0
+
+### Minor Changes
+
+- [#49](https://github.com/keystonejs/keystone-5/pull/49) [`1419336eb`](https://github.com/keystonejs/keystone-5/commit/1419336ebf6ebd0778c109c700ac92a882c46233) Thanks [@renovate](https://github.com/apps/renovate)! - Updated `knex` dependency to `^0.95.1`.
+
 ## 13.2.0
 
 ### Minor Changes
