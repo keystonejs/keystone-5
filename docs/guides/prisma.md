@@ -37,10 +37,10 @@ Please consult the [PostgreSQL docs](https://www.postgresql.org/docs/) for more 
 We'll start by creating a new Keystone application using `yarn create`. Run the following command:
 
 ```
-yarn create keystone-app my-app
+yarn create keystone-5-app my-app
 ```
 
-> **Note:** Alternatively, you can also run `npm create keystone-app my-app` if you prefer using npm or Yarn.
+> **Note:** Alternatively, you can also run `npm create keystone-5-app my-app` if you prefer using npm or Yarn.
 
 1. Call your project `my-app`
 2. Select `Prisma (Experimental)` as your database type.

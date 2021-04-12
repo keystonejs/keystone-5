@@ -68,7 +68,7 @@ module.exports = {
 };
 ```
 
-> **Tip:** A similar setup can be achieved by running the Keystone CLI `yarn create keystone-app` and selecting `Starter (Users + Authentication)`.
+> **Tip:** A similar setup can be achieved by running the Keystone CLI `yarn create keystone-5-app` and selecting `Starter (Users + Authentication)`.
 > This starter project has a `User` list, `PasswordAuthStrategy` and seeding of the database already configured. For now, we will proceed manually.
 
 ## Creating items

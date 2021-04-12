@@ -4,7 +4,7 @@
   "private": true,
   "version": "6.0.1",
   "author": "The KeystoneJS Development Team",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-app/example-projects/starter",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-5-app/example-projects/starter",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "license": "MIT",
   "engines": {
