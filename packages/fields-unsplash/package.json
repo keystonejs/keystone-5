@@ -7,7 +7,7 @@
   "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-unsplash",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v10.24.1"
   },
   "dependencies": {
     "@apollo/client": "^3.3.14",

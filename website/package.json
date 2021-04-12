@@ -8,7 +8,7 @@
   "homepage": "https://github.com/keystonejs/keystone-5",
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v10.24.1"
   },
   "scripts": {
     "start": "gatsby develop",
