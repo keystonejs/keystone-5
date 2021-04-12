@@ -2,7 +2,7 @@
   "name": "@keystonejs/example-projects-todo",
   "description": "An example KeystoneJS project showcasing a simple Todo List with a Keystone StaticApp front-end.",
   "private": true,
-  "version": "5.0.26",
+  "version": "5.0.27",
   "author": "The KeystoneJS Development Team",
   "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/create-keystone-5-app/example-projects/todo",
   "homepage": "https://github.com/keystonejs/keystone-5",

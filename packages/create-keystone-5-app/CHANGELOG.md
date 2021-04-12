@@ -1,5 +1,11 @@
 # create-keystone-5-app
 
+## 4.0.0
+
+### Major Changes
+
+- [#82](https://github.com/keystonejs/keystone-5/pull/82) [`a5afc00d9`](https://github.com/keystonejs/keystone-5/commit/a5afc00d98b1dff831e2648a0cbba0a11187a61e) Thanks [@bladey](https://github.com/bladey)! - Renaming create-keystone-app to create-keystone-5-app to make name available for Keystone Next to use in the near future.
+
 ## 3.5.2
 
 ### Patch Changes
