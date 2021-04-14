@@ -10,5 +10,5 @@
   "dependencies": {
     "next": "10.0.9"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/app-next"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-next"
 }

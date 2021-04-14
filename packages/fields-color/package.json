@@ -25,7 +25,7 @@
   },
   "main": "dist/fields-color.cjs.js",
   "module": "dist/fields-color.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-color",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-color",
   "preconstruct": {
     "entrypoints": [
       "index.js",

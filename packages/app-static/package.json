@@ -17,5 +17,5 @@
   "devDependencies": {
     "express": "^4.17.1"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/app-static"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-static"
 }
