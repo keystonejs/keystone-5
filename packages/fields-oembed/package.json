@@ -4,7 +4,7 @@
   "version": "3.2.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-oembed",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-oembed",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
     "node": ">=10.0.0"

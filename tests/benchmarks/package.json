@@ -11,7 +11,7 @@
   "scripts": {
     "go": "node fixtures/index.js"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/tests/benchmarks",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/tests/benchmarks",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "dependencies": {
     "@keystonejs/adapter-knex": "^13.1.0",

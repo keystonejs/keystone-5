@@ -18,5 +18,5 @@
     "@emotion/styled": "^10.0.27"
   },
   "module": "dist/badge.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/badge"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/badge"
 }
