@@ -1,5 +1,19 @@
 # @keystonejs/api-tests
 
+## 9.1.1
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/auth-password@6.1.1
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/fields-authed-relationship@1.1.1
+  - @keystonejs/list-plugins@8.1.1
+  - @keystonejs/test-utils@13.1.1
+  - @keystonejs/utils@6.1.1
+
 ## 9.1.0
 
 ### Minor Changes

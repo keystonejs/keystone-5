@@ -1,5 +1,15 @@
 # @keystonejs/app-graphql-playground
 
+## 5.2.1
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/session@8.3.1
+  - @keystonejs/utils@6.1.1
+
 ## 5.2.0
 
 ### Minor Changes

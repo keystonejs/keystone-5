@@ -1,5 +1,43 @@
 # @keystonejs/app-admin-ui
 
+## 7.5.1
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @arch-ui/alert@0.0.20
+  - @arch-ui/badge@0.0.19
+  - @arch-ui/button@0.0.24
+  - @arch-ui/card@0.0.17
+  - @arch-ui/color-utils@0.0.4
+  - @arch-ui/common@0.0.14
+  - @arch-ui/confirm@0.0.25
+  - @arch-ui/controls@0.1.11
+  - @arch-ui/dialog@0.0.27
+  - @arch-ui/drawer@0.0.27
+  - @arch-ui/dropdown@0.0.24
+  - @arch-ui/fields@3.0.7
+  - @arch-ui/hooks@0.0.13
+  - @arch-ui/input@0.1.13
+  - @arch-ui/layout@0.2.16
+  - @arch-ui/loading@0.0.20
+  - @arch-ui/lozenge@0.0.19
+  - @arch-ui/navbar@0.1.14
+  - @arch-ui/options@0.0.26
+  - @arch-ui/pagination@0.0.28
+  - @arch-ui/pill@0.1.20
+  - @arch-ui/popout@0.0.25
+  - @arch-ui/select@0.1.11
+  - @arch-ui/theme@0.0.13
+  - @arch-ui/tooltip@0.1.16
+  - @arch-ui/typography@0.0.20
+  - @keystonejs/field-views-loader@6.1.1
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/session@8.3.1
+  - @keystonejs/utils@6.1.1
+
 ## 7.5.0
 
 ### Minor Changes

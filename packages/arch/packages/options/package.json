@@ -1,7 +1,7 @@
 {
   "name": "@arch-ui/options",
   "description": "Options UI as used in @keystonejs Admin UI.",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/options.cjs.js",
@@ -12,8 +12,8 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@arch-ui/common": "^0.0.13",
-    "@arch-ui/theme": "^0.0.12",
+    "@arch-ui/common": "^0.0.14",
+    "@arch-ui/theme": "^0.0.13",
     "@babel/runtime": "^7.13.10",
     "@emotion/core": "^10.1.1",
     "@primer/octicons-react": "^11.3.0",
