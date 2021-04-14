@@ -154,6 +154,9 @@
       "**/cypress-multi-reporters"
     ]
   },
+  "manypkg": {
+    "defaultBranch": "main"
+  },
   "preconstruct": {
     "packages": [
       "packages/arch/packages/*",
