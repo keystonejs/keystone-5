@@ -5,7 +5,7 @@
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "homepage": "https://github.com/keystonejs/keystone-5",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/server-side-graphql-client",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/server-side-graphql-client",
   "engines": {
     "node": ">=10.0.0"
   },

@@ -37,7 +37,7 @@ const HomepageFooter = () => (
           and{' '}
           <a
             css={{ color: colors.N80 }}
-            href="https://github.com/keystonejs/keystone/blob/master/CONTRIBUTING.md#contributors"
+            href="https://github.com/keystonejs/keystone/blob/main/CONTRIBUTING.md#contributors"
             rel="noopener noreferrer"
             target="_blank"
           >

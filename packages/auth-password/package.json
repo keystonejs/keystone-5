@@ -11,5 +11,5 @@
     "@keystonejs/fields": "^22.1.0",
     "@keystonejs/session": "^8.3.0"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/auth-password"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/auth-password"
 }

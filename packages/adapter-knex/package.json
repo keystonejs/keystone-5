@@ -15,5 +15,5 @@
     "p-settle": "^4.1.1",
     "pg": "^8.5.1"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/adapter-knex"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/adapter-knex"
 }
