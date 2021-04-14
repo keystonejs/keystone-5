@@ -3,7 +3,7 @@
   "description": "Adapters for handling storage of the File type",
   "version": "7.1.0",
   "main": "index.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/file-adapters",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/file-adapters",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "author": "The Keystone Development Team",
   "license": "MIT",

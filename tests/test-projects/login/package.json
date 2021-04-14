@@ -41,5 +41,5 @@
     "pino-colada": "^2.1.0",
     "start-server-and-test": "^1.12.1"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/tests/test-projects/login"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/tests/test-projects/login"
 }

@@ -25,5 +25,5 @@
     "react-scrolllock": "^5.0.1"
   },
   "module": "dist/dialog.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/dialog"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/dialog"
 }

@@ -10,5 +10,5 @@
     "@babel/runtime": "^7.13.10"
   },
   "module": "dist/theme.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/theme"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/theme"
 }

@@ -11,5 +11,5 @@
     "@keystonejs/fields": "^22.1.0",
     "@keystonejs/fields-authed-relationship": "^1.1.0"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/list-plugins"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/list-plugins"
 }

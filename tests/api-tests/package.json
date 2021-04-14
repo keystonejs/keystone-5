@@ -8,7 +8,7 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/tests/api-tests",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/tests/api-tests",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "devDependencies": {
     "@keystonejs/adapter-knex": "*",

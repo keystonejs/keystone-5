@@ -22,5 +22,5 @@
     "mongodb-memory-server-core": "^6.9.6",
     "supertest-light": "^1.0.3"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/test-utils"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/test-utils"
 }

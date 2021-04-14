@@ -22,5 +22,5 @@
     "@keystonejs/keystone": "^19.2.1",
     "cross-env": "^7.0.3"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/examples/todo"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/examples/todo"
 }

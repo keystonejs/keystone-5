@@ -4,7 +4,7 @@
   "version": "2.2.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-cloudinary-image",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-cloudinary-image",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
     "node": ">=10.0.0"

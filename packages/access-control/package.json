@@ -12,5 +12,5 @@
   "dependencies": {
     "@keystonejs/utils": "^6.1.0"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/access-control"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/access-control"
 }

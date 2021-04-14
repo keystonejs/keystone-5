@@ -2,7 +2,7 @@
   "name": "@keystonejs/fields-wysiwyg-tinymce",
   "description": "KeystoneJS WYSIWYG HTML Field Type, powered by TinyMCE",
   "homepage": "https://github.com/keystonejs/keystone-5",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-wysiwyg-tinymce",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-wysiwyg-tinymce",
   "version": "5.4.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
