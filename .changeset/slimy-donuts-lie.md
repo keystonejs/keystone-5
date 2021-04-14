@@ -87,4 +87,4 @@
 '@keystonejs/website': patch
 ---
 
-Renamed branch `master` to `main.`
+Renamed branch `master` to `main`.
