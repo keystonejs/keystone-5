@@ -1,5 +1,26 @@
 # @keystonejs/demo-project-meetup
 
+## 7.0.2
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/adapter-mongoose@11.2.1
+  - @keystonejs/app-admin-ui@7.5.1
+  - @keystonejs/app-graphql@6.3.1
+  - @keystonejs/app-next@6.1.1
+  - @keystonejs/auth-password@6.1.1
+  - @keystonejs/email@5.3.1
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/fields-cloudinary-image@2.2.1
+  - @keystonejs/fields-wysiwyg-tinymce@5.4.1
+  - @keystonejs/file-adapters@7.1.1
+  - @keystonejs/keystone@19.3.2
+  - @keystonejs/server-side-graphql-client@2.1.1
+  - @keystonejs/session@8.3.1
+
 ## 7.0.1
 
 ### Patch Changes

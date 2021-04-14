@@ -1,5 +1,23 @@
 # @keystonejs/demo-custom-fields
 
+## 2.0.2
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/adapter-mongoose@11.2.1
+  - @keystonejs/app-admin-ui@7.5.1
+  - @keystonejs/app-graphql@6.3.1
+  - @keystonejs/app-static@5.2.1
+  - @arch-ui/controls@0.1.11
+  - @arch-ui/fields@3.0.7
+  - @arch-ui/lozenge@0.0.19
+  - @arch-ui/theme@0.0.13
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/keystone@19.3.2
+
 ## 2.0.1
 
 ### Patch Changes
