@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "cypress": "^5.6.0",
-    "cypress-multi-reporters": "^1.4.0",
+    "cypress-multi-reporters": "^1.5.0",
     "dotenv-safe": "^8.2.0",
     "execa": "^5.0.0",
     "mocha": "^8.3.2",

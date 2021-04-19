@@ -8722,10 +8722,10 @@ cypress-file-upload@^5.0.5:
   resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-5.0.5.tgz#06aeaec4fd30ed807a6752a6313d6ed08be05617"
   integrity sha512-OPV1PEKSZ0QiqNHd28UCghMpo3BU2/ZfvP/QmF6d5FRJu2DDgxhFTknYFvZfW6jHpMYwh5Jy+3MudVG1iMT3AQ==
 
-cypress-multi-reporters@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/cypress-multi-reporters/-/cypress-multi-reporters-1.4.0.tgz#5f1d0484a20959cfe782f1bf65ad16c6ad804da7"
-  integrity sha512-CjpQduW43KVzY45hhKC/qf8MSebRpx6JyEz6py8F+0GrYS8rE5TZ8wXv9dPUs/PaT6w+dR8KIgLSMr967Om7iA==
+cypress-multi-reporters@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/cypress-multi-reporters/-/cypress-multi-reporters-1.5.0.tgz#fff2758c082b49e8b91fed39f9650c70bc06de0d"
+  integrity sha512-6rJ1rk1RpjZwTeydCDc8r3iOmWj2ZEYo++oDTJHNEu7eetb3W1cYDNo5CdxF/r0bo7TLQsOEpBHOCYBZfPVt/g==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.15"
