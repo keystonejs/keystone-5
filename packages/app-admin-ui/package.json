@@ -8,7 +8,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.14",
+    "@apollo/client": "^3.3.15",
     "@arch-ui/alert": "^0.0.20",
     "@arch-ui/badge": "^0.0.19",
     "@arch-ui/button": "^0.0.24",
@@ -52,7 +52,7 @@
     "clipboard-copy": "^4.0.1",
     "compression": "^1.7.4",
     "cross-fetch": "^3.1.4",
-    "css-loader": "^5.2.1",
+    "css-loader": "^5.2.4",
     "express": "^4.17.1",
     "express-history-api-fallback": "^2.2.1",
     "falsey": "^1.0.0",
@@ -64,7 +64,7 @@
     "lodash.throttle": "^4.1.1",
     "memoize-one": "^5.1.1",
     "prop-types": "^15.7.2",
-    "raf-schd": "^4.0.2",
+    "raf-schd": "^4.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-prop-toggle": "^1.0.2",
