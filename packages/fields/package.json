@@ -30,7 +30,7 @@
     "@arch-ui/theme": "^0.0.13",
     "@arch-ui/tooltip": "^0.1.16",
     "@arch-ui/typography": "^0.0.20",
-    "@babel/runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.17",
     "@emotion/core": "^10.1.1",
     "@keystonejs/access-control": "^7.1.1",
     "@keystonejs/adapter-knex": "^13.3.1",
@@ -62,7 +62,7 @@
     "react-dom": "^17.0.2",
     "react-image": "^4.0.3",
     "react-select": "^3.2.0",
-    "react-toast-notifications": "^2.4.3"
+    "react-toast-notifications": "^2.4.4"
   },
   "devDependencies": {
     "@keystonejs/app-static": "*",
