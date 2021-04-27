@@ -7,7 +7,7 @@
   "main": "dist/theme.cjs.js",
   "dependencies": {
     "@arch-ui/color-utils": "0.0.4",
-    "@babel/runtime": "^7.13.10"
+    "@babel/runtime": "^7.13.17"
   },
   "module": "dist/theme.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/theme"

@@ -11,7 +11,7 @@
     "@arch-ui/button": "^0.0.24",
     "@arch-ui/fields": "^3.0.7",
     "@arch-ui/popout": "^0.0.25",
-    "@babel/runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.17",
     "@emotion/core": "^10.1.1",
     "@keystonejs/fields": "^22.1.2",
     "react-color": "^2.19.3"

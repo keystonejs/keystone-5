@@ -21,7 +21,7 @@
     "@sindresorhus/slugify": "^1.1.2",
     "arg": "^5.0.0",
     "cfonts": "^2.9.1",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
     "execa": "^5.0.0",
     "fs-extra": "^9.1.0",
     "got": "^11.8.2",
