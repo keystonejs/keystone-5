@@ -62,7 +62,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.set": "^4.3.2",
     "lodash.throttle": "^4.1.1",
-    "memoize-one": "^5.1.1",
+    "memoize-one": "^5.2.1",
     "prop-types": "^15.7.2",
     "raf-schd": "^4.0.3",
     "react": "^17.0.2",
