@@ -27,7 +27,7 @@
     "immutable": "^4.0.0-rc.12",
     "is-hotkey": "^0.2.0",
     "lodash.get": "^4.4.2",
-    "memoize-one": "^5.1.1",
+    "memoize-one": "^5.2.1",
     "nanoassert": "^2.0.0",
     "p-is-promise": "^3.0.0",
     "react": "^17.0.2",

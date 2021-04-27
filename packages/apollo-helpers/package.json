@@ -21,7 +21,7 @@
     "graphql-tag": "^2.11.0",
     "hoist-non-react-statics": "^3.3.2",
     "lodash.mapvalues": "^4.6.0",
-    "memoize-one": "^5.1.1",
+    "memoize-one": "^5.2.1",
     "react-adopt": "^0.6.0"
   },
   "peerDependencies": {
