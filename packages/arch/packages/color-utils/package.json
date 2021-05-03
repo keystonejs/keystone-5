@@ -1,10 +1,10 @@
 {
   "name": "@arch-ui/color-utils",
   "description": "Color Utilities used throughout @arch-ui components & @keystonejs Admin UI.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/color-utils.cjs.js",
   "module": "dist/color-utils.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/color-utils"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/color-utils"
 }

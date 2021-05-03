@@ -1,19 +1,19 @@
 {
   "name": "@keystonejs/fields-auto-increment",
   "description": "KeystoneJS AutoIncrement Field Type",
-  "version": "8.2.0",
+  "version": "8.2.1",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/fields-auto-increment",
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-auto-increment",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.13.10",
-    "@keystonejs/adapter-knex": "^13.2.0",
-    "@keystonejs/adapter-prisma": "^3.2.0",
-    "@keystonejs/fields": "^22.1.0"
+    "@babel/runtime": "^7.14.0",
+    "@keystonejs/adapter-knex": "^13.3.1",
+    "@keystonejs/adapter-prisma": "^3.2.1",
+    "@keystonejs/fields": "^22.1.2"
   },
   "devDependencies": {
     "@keystonejs/server-side-graphql-client": "*"

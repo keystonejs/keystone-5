@@ -1,4 +1,30 @@
-# create-keystone-app
+# create-keystone-5-app
+
+## 4.0.1
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/adapter-knex@13.3.1
+  - @keystonejs/adapter-mongoose@11.2.1
+  - @keystonejs/adapter-prisma@3.2.1
+
+## 4.0.0
+
+### Major Changes
+
+- [#82](https://github.com/keystonejs/keystone-5/pull/82) [`a5afc00d9`](https://github.com/keystonejs/keystone-5/commit/a5afc00d98b1dff831e2648a0cbba0a11187a61e) Thanks [@bladey](https://github.com/bladey)! - Renaming create-keystone-app to create-keystone-5-app to make name available for Keystone Next to use in the near future.
+
+## 3.5.2
+
+### Patch Changes
+
+- [#67](https://github.com/keystonejs/keystone-5/pull/67) [`28a3585e3`](https://github.com/keystonejs/keystone-5/commit/28a3585e3aebf606da7585b25b54bb2842489dcd) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependency `nuxt` to `^2.15.3`.
+
+- Updated dependencies [[`1419336eb`](https://github.com/keystonejs/keystone-5/commit/1419336ebf6ebd0778c109c700ac92a882c46233)]:
+  - @keystonejs/adapter-knex@13.3.0
 
 ## 3.5.1
 

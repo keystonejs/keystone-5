@@ -1,7 +1,7 @@
 {
   "name": "@arch-ui/lozenge",
   "description": "Lozenge component as used in @keystonejs Admin UI.",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/lozenge.cjs.js",
@@ -12,11 +12,11 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@arch-ui/theme": "0.0.12",
-    "@babel/runtime": "^7.13.10",
+    "@arch-ui/theme": "0.0.13",
+    "@babel/runtime": "^7.14.0",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27"
   },
   "module": "dist/lozenge.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/lozenge"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/lozenge"
 }

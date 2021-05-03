@@ -1,7 +1,7 @@
 {
   "name": "@arch-ui/dialog",
   "description": "Dialog Component as used in @keystonejs Admin UI.",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/dialog.cjs.js",
@@ -14,16 +14,16 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@arch-ui/color-utils": "^0.0.3",
-    "@arch-ui/modal-utils": "^1.0.14",
-    "@arch-ui/theme": "^0.0.12",
-    "@arch-ui/typography": "^0.0.19",
-    "@babel/runtime": "^7.13.10",
+    "@arch-ui/color-utils": "^0.0.4",
+    "@arch-ui/modal-utils": "^1.0.15",
+    "@arch-ui/theme": "^0.0.13",
+    "@arch-ui/typography": "^0.0.20",
+    "@babel/runtime": "^7.14.0",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "focus-trap-react": "^8.4.2",
+    "focus-trap-react": "^8.5.0",
     "react-scrolllock": "^5.0.1"
   },
   "module": "dist/dialog.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/dialog"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/dialog"
 }

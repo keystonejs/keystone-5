@@ -1,7 +1,7 @@
 {
   "name": "@keystonejs/app-static",
   "description": "KeystoneJS Static File App.",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {
@@ -17,5 +17,5 @@
   "devDependencies": {
     "express": "^4.17.1"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/app-static"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-static"
 }

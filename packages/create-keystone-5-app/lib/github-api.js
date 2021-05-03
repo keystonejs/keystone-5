@@ -15,7 +15,7 @@ const getLatestVersionCommit = async () => {
       .json();
     if (!commits.length) {
       throw new Error(
-        'No commits that release keystone were found. Try updating create-keystone-app and if this problem persists, please open an issue on GitHub.'
+        'No commits that release keystone were found. Try updating create-keystone-5-app and if this problem persists, please open an issue on GitHub.'
       );
     }
     cachedLatestVersionCommit = commits[0].sha;
@@ -48,26 +48,26 @@ const getExampleProjects = async () => {
   let latestVersionCommit = await getLatestVersionCommit();
   try {
     let { body: rawConfig } = await got.get(
-      `https://raw.githubusercontent.com/keystonejs/keystone-5/${latestVersionCommit}/packages/create-keystone-app/example-projects/examples.json`
+      `https://raw.githubusercontent.com/keystonejs/keystone-5/${latestVersionCommit}/packages/create-keystone-5-app/example-projects/examples.json`
     );
     let parsedConfig;
     try {
       parsedConfig = JSON.parse(rawConfig);
     } catch (err) {
       throw new Error(
-        'The examples file from GitHub could not be parsed. Try updating create-keystone-app and if this problem persists, please open an issue on GitHub.'
+        'The examples file from GitHub could not be parsed. Try updating create-keystone-5-app and if this problem persists, please open an issue on GitHub.'
       );
     }
     if (parsedConfig.version !== 1) {
       throw new Error(
-        "The version of the examples file from GitHub conflicts with create-keystone-app's version. Try updating create-keystone-app and if this problem persists, please open an issue on GitHub."
+        "The version of the examples file from GitHub conflicts with create-keystone-5-app's version. Try updating create-keystone-5-app and if this problem persists, please open an issue on GitHub."
       );
     }
     return parsedConfig.projects;
   } catch (err) {
     if (err instanceof got.HTTPError) {
       throw new Error(
-        'The examples file from GitHub could not be found. Try updating create-keystone-app and if this problem persists, please open an issue on GitHub.'
+        'The examples file from GitHub could not be found. Try updating create-keystone-5-app and if this problem persists, please open an issue on GitHub.'
       );
     }
     throw err;

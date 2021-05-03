@@ -46,7 +46,7 @@ We believe it's the ideal back-end for rich React / Vue / Angular applications, 
 To get up and running with a basic project template, run the following commands.
 
 ```shell
-yarn create keystone-app my-app
+yarn create keystone-5-app my-app
 cd my-app
 yarn start
 ```

@@ -1,5 +1,25 @@
 # @keystonejs/cypress-project-facebook-login
 
+## 6.0.4
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/adapter-prisma@3.2.1
+  - @keystonejs/app-admin-ui@7.5.1
+  - @keystonejs/app-graphql@6.3.1
+  - @keystonejs/app-static@5.2.1
+  - @arch-ui/fields@3.0.7
+  - @arch-ui/input@0.1.13
+  - @keystonejs/auth-passport@6.1.1
+  - @keystonejs/auth-password@6.1.1
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/file-adapters@7.1.1
+  - @keystonejs/keystone@19.3.2
+  - @keystonejs/server-side-graphql-client@2.1.1
+
 ## 6.0.3
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@keystonejs/email",
   "description": "Easily send emails from a KeystoneJS application",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {
@@ -10,7 +10,7 @@
   "dependencies": {
     "express-react-views": "^0.11.0",
     "keystone-email": "^1.1.0",
-    "memoize-one": "^5.1.1",
+    "memoize-one": "^5.2.1",
     "mjml": "^4.8.2",
     "pify": "^5.0.0"
   },
@@ -25,5 +25,5 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/email"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/email"
 }

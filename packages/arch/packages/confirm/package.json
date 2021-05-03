@@ -1,7 +1,7 @@
 {
   "name": "@arch-ui/confirm",
   "description": "Confirmation UI as used in @keystonejs Admin UI.",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/confirm.cjs.js",
@@ -14,14 +14,14 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@arch-ui/modal-utils": "^1.0.14",
-    "@arch-ui/theme": "^0.0.12",
-    "@babel/runtime": "^7.13.10",
+    "@arch-ui/modal-utils": "^1.0.15",
+    "@arch-ui/theme": "^0.0.13",
+    "@babel/runtime": "^7.14.0",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "focus-trap-react": "^8.4.2",
+    "focus-trap-react": "^8.5.0",
     "react-scrolllock": "^5.0.1"
   },
   "module": "dist/confirm.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/confirm"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/confirm"
 }

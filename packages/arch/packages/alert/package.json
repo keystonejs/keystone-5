@@ -1,7 +1,7 @@
 {
   "name": "@arch-ui/alert",
   "description": "Alert component as used in @keystonejs Admin UI.",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/alert.cjs.js",
@@ -12,10 +12,10 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@arch-ui/theme": "^0.0.12",
+    "@arch-ui/theme": "^0.0.13",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27"
   },
   "module": "dist/alert.esm.js",
-  "repository": "https://github.com/keystonejs/keystone-5/tree/master/packages/arch/packages/alert"
+  "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/alert"
 }

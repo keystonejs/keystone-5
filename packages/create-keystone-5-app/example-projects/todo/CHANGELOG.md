@@ -1,6 +1,26 @@
-# @keystonejs/example-projects-starter
+# @keystonejs/example-projects-todo
 
-## 6.0.1
+## 5.0.28
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`a890b0576`](https://github.com/keystonejs/keystone-5/commit/a890b057628b60c2d1870cc3f5afd8e87b03f7df)]:
+  - @keystonejs/adapter-mongoose@11.2.1
+  - @keystonejs/app-admin-ui@7.5.1
+  - @keystonejs/app-graphql@6.3.1
+  - @keystonejs/app-static@5.2.1
+  - @keystonejs/fields@22.1.2
+  - @keystonejs/keystone@19.3.2
+
+## 5.0.27
+
+### Patch Changes
+
+- [#82](https://github.com/keystonejs/keystone-5/pull/82) [`a5afc00d9`](https://github.com/keystonejs/keystone-5/commit/a5afc00d98b1dff831e2648a0cbba0a11187a61e) Thanks [@bladey](https://github.com/bladey)! - Renaming create-keystone-app to create-keystone-5-app to make name available for Keystone Next to use in the near future.
+
+## 5.0.26
 
 ### Patch Changes
 
@@ -10,15 +30,11 @@
   - @keystonejs/adapter-mongoose@11.1.0
   - @keystonejs/app-admin-ui@7.4.1
   - @keystonejs/app-graphql@6.2.2
-  - @keystonejs/auth-password@6.0.2
+  - @keystonejs/app-static@5.1.4
   - @keystonejs/fields@22.0.1
   - @keystonejs/keystone@19.2.1
 
-## 6.0.0
-
-### Major Changes
-
-- [`8d0be8a89`](https://github.com/keystonejs/keystone-5/commit/8d0be8a89e2d9b89826365f81f47b8d8863b93d0) [#4815](https://github.com/keystonejs/keystone-5/pull/4815) Thanks [@timleslie](https://github.com/timleslie)! - Added a `.sudo()` method to `context` objects, which is equivalent to the common operation `context.createContext({ skipAccessControl: true })`.
+## 5.0.25
 
 ### Patch Changes
 
@@ -27,7 +43,6 @@
   - @keystonejs/adapter-mongoose@11.0.1
   - @keystonejs/app-admin-ui@7.4.0
   - @keystonejs/keystone@19.2.0
-  - @keystonejs/auth-password@6.0.1
 
 ## 5.0.24
 
@@ -42,13 +57,10 @@
 
 ### Patch Changes
 
-- [`0dfb63414`](https://github.com/keystonejs/keystone-5/commit/0dfb6341412c3c7ae60f069d37fa96e0c9adc900) [#4304](https://github.com/keystonejs/keystone-5/pull/4304) Thanks [@timleslie](https://github.com/timleslie)! - Updated `protectIdenties` from the default `false` to `process.env.NODE_ENV === 'production'`, to provide a better balance of protection and convenience.
-
-- Updated dependencies [[`1200c3562`](https://github.com/keystonejs/keystone-5/commit/1200c356272ae8deea9da4267ce62c1449498e95), [`cf2819544`](https://github.com/keystonejs/keystone-5/commit/cf2819544426def260ada5eb18fdc9b8a01e9438), [`1200c3562`](https://github.com/keystonejs/keystone-5/commit/1200c356272ae8deea9da4267ce62c1449498e95), [`0dfb63414`](https://github.com/keystonejs/keystone-5/commit/0dfb6341412c3c7ae60f069d37fa96e0c9adc900)]:
+- Updated dependencies [[`1200c3562`](https://github.com/keystonejs/keystone-5/commit/1200c356272ae8deea9da4267ce62c1449498e95), [`cf2819544`](https://github.com/keystonejs/keystone-5/commit/cf2819544426def260ada5eb18fdc9b8a01e9438), [`1200c3562`](https://github.com/keystonejs/keystone-5/commit/1200c356272ae8deea9da4267ce62c1449498e95)]:
   - @keystonejs/keystone@18.0.0
   - @keystonejs/app-graphql@6.2.0
   - @keystonejs/adapter-mongoose@10.1.1
-  - @keystonejs/auth-password@6.0.0
 
 ## 5.0.22
 
@@ -58,7 +70,6 @@
   - @keystonejs/adapter-mongoose@10.1.0
   - @keystonejs/fields@21.0.0
   - @keystonejs/app-admin-ui@7.3.12
-  - @keystonejs/auth-password@5.1.18
 
 ## 5.0.21
 
@@ -69,7 +80,6 @@
   - @keystonejs/adapter-mongoose@10.0.1
   - @keystonejs/keystone@17.1.1
   - @keystonejs/app-admin-ui@7.3.9
-  - @keystonejs/auth-password@5.1.17
 
 ## 5.0.20
 
@@ -79,7 +89,6 @@
   - @keystonejs/adapter-mongoose@10.0.0
   - @keystonejs/fields@19.0.0
   - @keystonejs/app-admin-ui@7.3.8
-  - @keystonejs/auth-password@5.1.16
 
 ## 5.0.19
 
@@ -90,7 +99,6 @@
   - @keystonejs/fields@18.0.0
   - @keystonejs/adapter-mongoose@9.0.8
   - @keystonejs/keystone@17.0.0
-  - @keystonejs/auth-password@5.1.15
 
 ## 5.0.18
 
@@ -106,6 +114,8 @@
 ## 5.0.17
 
 ### Patch Changes
+
+- [`4f6883dc3`](https://github.com/keystonejs/keystone-5/commit/4f6883dc38962805f96256f9fdf42fb77bb3326a) [#3610](https://github.com/keystonejs/keystone-5/pull/3610) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependency `prettier` to `^2.1.1`.
 
 - Updated dependencies [[`4f6883dc3`](https://github.com/keystonejs/keystone-5/commit/4f6883dc38962805f96256f9fdf42fb77bb3326a), [`dd49d2c04`](https://github.com/keystonejs/keystone-5/commit/dd49d2c040ea8fb8dfc36d2e556be88ca1b74b15), [`d7eac6629`](https://github.com/keystonejs/keystone-5/commit/d7eac662956fc2dffd9ea5cfedf60e51ecc1b80d), [`8bd44758a`](https://github.com/keystonejs/keystone-5/commit/8bd44758ac742c95f42151c9fbc16700b698e8e4), [`8cae7cff5`](https://github.com/keystonejs/keystone-5/commit/8cae7cff513187ec6e740c4b17afb2b753fe625a), [`77aa2d7d1`](https://github.com/keystonejs/keystone-5/commit/77aa2d7d156a83759a7f3c26e8c5bd019966b054), [`c08200087`](https://github.com/keystonejs/keystone-5/commit/c082000871947eb0a2415ac7355c89bc7b277383), [`d07f6bfb6`](https://github.com/keystonejs/keystone-5/commit/d07f6bfb6b3bd65036c2030d2758abdf4eca1a9e), [`fe054e53e`](https://github.com/keystonejs/keystone-5/commit/fe054e53e71f13a69af1d6dd2a1cd8c68bb31059), [`379c78240`](https://github.com/keystonejs/keystone-5/commit/379c78240d788875d97642e1f53120818ad64aff)]:
   - @keystonejs/app-admin-ui@7.3.5
@@ -123,6 +133,7 @@
 
 - Updated dependencies [[`6cb4476ff`](https://github.com/keystonejs/keystone-5/commit/6cb4476ff15923933862c1cd7d4b1ade794106c6), [`5935b89f8`](https://github.com/keystonejs/keystone-5/commit/5935b89f8862b36f14d09da68f056f759a860f3e), [`ac44568f9`](https://github.com/keystonejs/keystone-5/commit/ac44568f91fd54ccbc39accf83bcfb3276ce1a72), [`64d745013`](https://github.com/keystonejs/keystone-5/commit/64d745013fd2cccc1fb14c4f02ac84778b5c9abc), [`877a5a90d`](https://github.com/keystonejs/keystone-5/commit/877a5a90d608f0a13b6c0ea103cb96e3ac2caacc), [`483b20ec5`](https://github.com/keystonejs/keystone-5/commit/483b20ec53ff89f1d026c0495fdae5df60a7cf59), [`0fc878fa9`](https://github.com/keystonejs/keystone-5/commit/0fc878fa918c3196196f943f195ffaa62fce504b), [`ea367f759`](https://github.com/keystonejs/keystone-5/commit/ea367f7594f47efc3528d9917cce010b3a16bf4d), [`69d627813`](https://github.com/keystonejs/keystone-5/commit/69d627813adfc10d29707f5c882ca15621de12a5), [`dc689f9ac`](https://github.com/keystonejs/keystone-5/commit/dc689f9ac8e213137dfed9e81992bbe4318b44ae), [`7f04d9dd2`](https://github.com/keystonejs/keystone-5/commit/7f04d9dd21ad792b540d9e0a5d83356c091597ad), [`0153168d7`](https://github.com/keystonejs/keystone-5/commit/0153168d73ce8cd7ede4eb9c8518e5e2bf859709)]:
   - @keystonejs/adapter-mongoose@9.0.4
+  - @keystonejs/app-static@5.1.3
   - @keystonejs/fields@17.1.0
   - @keystonejs/keystone@14.0.1
   - @keystonejs/app-admin-ui@7.3.3
@@ -137,7 +148,6 @@
   - @keystonejs/fields@17.0.0
   - @keystonejs/app-admin-ui@7.3.2
   - @keystonejs/adapter-mongoose@9.0.3
-  - @keystonejs/auth-password@5.1.14
 
 ## 5.0.14
 
@@ -147,7 +157,6 @@
   - @keystonejs/fields@16.0.0
   - @keystonejs/keystone@13.1.0
   - @keystonejs/app-admin-ui@7.3.0
-  - @keystonejs/auth-password@5.1.13
 
 ## 5.0.13
 
@@ -158,7 +167,6 @@
   - @keystonejs/keystone@13.0.0
   - @keystonejs/app-admin-ui@7.2.0
   - @keystonejs/app-graphql@6.1.0
-  - @keystonejs/auth-password@5.1.12
   - @keystonejs/adapter-mongoose@9.0.1
 
 ## 5.0.12
@@ -171,7 +179,6 @@
   - @keystonejs/fields@14.0.0
   - @keystonejs/adapter-mongoose@9.0.0
   - @keystonejs/app-graphql@6.0.0
-  - @keystonejs/auth-password@5.1.11
 
 ## 5.0.11
 
@@ -181,7 +188,6 @@
   - @keystonejs/fields@13.0.0
   - @keystonejs/keystone@11.1.0
   - @keystonejs/app-admin-ui@7.0.3
-  - @keystonejs/auth-password@5.1.10
 
 ## 5.0.10
 
@@ -196,11 +202,10 @@
 
 ### Patch Changes
 
-- Updated dependencies [[`4104e1f15`](https://github.com/keystonejs/keystone-5/commit/4104e1f15c545c05f680e8d16413862e875ca57a), [`c2ebb51c7`](https://github.com/keystonejs/keystone-5/commit/c2ebb51c786297879fe9fac2007804055631e9e2), [`c3faeeff4`](https://github.com/keystonejs/keystone-5/commit/c3faeeff41f9b29a9fc31ca4e7778b596fcb20b9), [`f493eecc3`](https://github.com/keystonejs/keystone-5/commit/f493eecc34a0f1a6ba9f8eea1c34882784c1b5fe), [`b61987552`](https://github.com/keystonejs/keystone-5/commit/b619875520aa3b10d104794140f7977ffaebfbf0), [`397982096`](https://github.com/keystonejs/keystone-5/commit/39798209642571d3ba698e11410f5161cd1943bb), [`538378e4e`](https://github.com/keystonejs/keystone-5/commit/538378e4eb143dbe6e7a943408e0af302eb86b85), [`b5f89b305`](https://github.com/keystonejs/keystone-5/commit/b5f89b305eb8aaf63c3afc9f45f7aa7e4ce3f7b7), [`9f67e0e91`](https://github.com/keystonejs/keystone-5/commit/9f67e0e912b4f7dcb90fcb07c4b30bd6c45de464), [`ea9608342`](https://github.com/keystonejs/keystone-5/commit/ea960834262cec66f52fa39c1b3b07b702b3cd4d), [`8fddd97b2`](https://github.com/keystonejs/keystone-5/commit/8fddd97b20f1928ff7306d5d0dcc96e58ffe55fb), [`c1e6e6ff3`](https://github.com/keystonejs/keystone-5/commit/c1e6e6ff374fbac71535da0cc2badde0c13569e2), [`fdfb01417`](https://github.com/keystonejs/keystone-5/commit/fdfb01417b6d330342f4b6c326767c9567e35ca5), [`83548d43d`](https://github.com/keystonejs/keystone-5/commit/83548d43d661959a34a6de475994430ee1de3a1d), [`5ea313461`](https://github.com/keystonejs/keystone-5/commit/5ea313461aa2cba310b2634cc87780092c84b5be), [`cbfc67470`](https://github.com/keystonejs/keystone-5/commit/cbfc6747011329f7210e79ebe228f44ed8607321), [`aacc4a7f8`](https://github.com/keystonejs/keystone-5/commit/aacc4a7f8f88c242ae4bd784330d25056842d3fb), [`3204ae785`](https://github.com/keystonejs/keystone-5/commit/3204ae78576b0ab5649d5f5ae9cfbb1def347af1), [`da8ca8835`](https://github.com/keystonejs/keystone-5/commit/da8ca8835a910cc9b2f53e12ddaef88ffc194695), [`04c57fa78`](https://github.com/keystonejs/keystone-5/commit/04c57fa7840714d3413e093d468b78d740c95c9a), [`fd4e9100a`](https://github.com/keystonejs/keystone-5/commit/fd4e9100a636e0654db45d2471ce47a19b753647), [`f33388b50`](https://github.com/keystonejs/keystone-5/commit/f33388b5061d59747ab46e238f43e9b08f52bd1e), [`4b06157be`](https://github.com/keystonejs/keystone-5/commit/4b06157be6cffde2d88969823f7c410fefd82317), [`649017fbd`](https://github.com/keystonejs/keystone-5/commit/649017fbd5ea17c36e8c49d44836e1f2bcae2692), [`6ab523476`](https://github.com/keystonejs/keystone-5/commit/6ab523476ceca5ad57e7833ebd172b2da6c0b5fd), [`839666e25`](https://github.com/keystonejs/keystone-5/commit/839666e25d8bffefd034e6344e11d72dd43b925b), [`9ca0733e5`](https://github.com/keystonejs/keystone-5/commit/9ca0733e57b525a7efdfdedfb7c80364e186994e), [`7203c5889`](https://github.com/keystonejs/keystone-5/commit/7203c588901c46fae1550f3596cab43a1dd5052a), [`d2390b703`](https://github.com/keystonejs/keystone-5/commit/d2390b703d30e0b4264ab6ed9b1ba4d7bb9fca6c), [`34a9816d3`](https://github.com/keystonejs/keystone-5/commit/34a9816d3c40a35409be735e748cea2c6d5aa895), [`64c0d68ac`](https://github.com/keystonejs/keystone-5/commit/64c0d68acb1ee969097a8fe59b5c296473790c5c), [`60db743aa`](https://github.com/keystonejs/keystone-5/commit/60db743aa79f6590d6a3ebb0169021f1c36f64cc), [`326242533`](https://github.com/keystonejs/keystone-5/commit/3262425335de5eee6979e38ebb45f19a22c1ee1a), [`b15221ac2`](https://github.com/keystonejs/keystone-5/commit/b15221ac21746b1380ddb31395cdd386d52920a9), [`16649fa55`](https://github.com/keystonejs/keystone-5/commit/16649fa556ae3723ca97eb0752653259ccae4bc2), [`ba363d9a8`](https://github.com/keystonejs/keystone-5/commit/ba363d9a82d3ca3ec464547a5d9e38354bc2a172), [`170faf568`](https://github.com/keystonejs/keystone-5/commit/170faf568fef5b74147791476b466dc7a25c7d6f), [`927150d81`](https://github.com/keystonejs/keystone-5/commit/927150d81e297fdb5c8ccad087ea255b861dfe32), [`c7599a46f`](https://github.com/keystonejs/keystone-5/commit/c7599a46f05108b10b3a805a20b77b4d834e616d), [`b696b2acb`](https://github.com/keystonejs/keystone-5/commit/b696b2acbf7def8dba41f46ccef5ff852703b95a), [`d970580e1`](https://github.com/keystonejs/keystone-5/commit/d970580e14904ba2f2ac5e969257e71f77ab67d7), [`1cc3deaf0`](https://github.com/keystonejs/keystone-5/commit/1cc3deaf0b0a48aecb0f0f2454f4fe2634e1da5f), [`070519dbe`](https://github.com/keystonejs/keystone-5/commit/070519dbec289b759759343d084bc5d2de9d4b37), [`10babad4b`](https://github.com/keystonejs/keystone-5/commit/10babad4b4135738bc0633b113e5c96d3ddb9e9f), [`24f5ab51c`](https://github.com/keystonejs/keystone-5/commit/24f5ab51c69d744fb0e1f47a0723c2cc70492010), [`de27d2c16`](https://github.com/keystonejs/keystone-5/commit/de27d2c16b520ae5126a74efb85c70ae88ae6b60), [`c35f9cd1c`](https://github.com/keystonejs/keystone-5/commit/c35f9cd1cba5bf27eb9cf7cc1a113716bc4a50ef)]:
+- Updated dependencies [[`4104e1f15`](https://github.com/keystonejs/keystone-5/commit/4104e1f15c545c05f680e8d16413862e875ca57a), [`c2ebb51c7`](https://github.com/keystonejs/keystone-5/commit/c2ebb51c786297879fe9fac2007804055631e9e2), [`c3faeeff4`](https://github.com/keystonejs/keystone-5/commit/c3faeeff41f9b29a9fc31ca4e7778b596fcb20b9), [`f493eecc3`](https://github.com/keystonejs/keystone-5/commit/f493eecc34a0f1a6ba9f8eea1c34882784c1b5fe), [`b61987552`](https://github.com/keystonejs/keystone-5/commit/b619875520aa3b10d104794140f7977ffaebfbf0), [`397982096`](https://github.com/keystonejs/keystone-5/commit/39798209642571d3ba698e11410f5161cd1943bb), [`538378e4e`](https://github.com/keystonejs/keystone-5/commit/538378e4eb143dbe6e7a943408e0af302eb86b85), [`9f67e0e91`](https://github.com/keystonejs/keystone-5/commit/9f67e0e912b4f7dcb90fcb07c4b30bd6c45de464), [`ea9608342`](https://github.com/keystonejs/keystone-5/commit/ea960834262cec66f52fa39c1b3b07b702b3cd4d), [`8fddd97b2`](https://github.com/keystonejs/keystone-5/commit/8fddd97b20f1928ff7306d5d0dcc96e58ffe55fb), [`fdfb01417`](https://github.com/keystonejs/keystone-5/commit/fdfb01417b6d330342f4b6c326767c9567e35ca5), [`83548d43d`](https://github.com/keystonejs/keystone-5/commit/83548d43d661959a34a6de475994430ee1de3a1d), [`5ea313461`](https://github.com/keystonejs/keystone-5/commit/5ea313461aa2cba310b2634cc87780092c84b5be), [`cbfc67470`](https://github.com/keystonejs/keystone-5/commit/cbfc6747011329f7210e79ebe228f44ed8607321), [`aacc4a7f8`](https://github.com/keystonejs/keystone-5/commit/aacc4a7f8f88c242ae4bd784330d25056842d3fb), [`3204ae785`](https://github.com/keystonejs/keystone-5/commit/3204ae78576b0ab5649d5f5ae9cfbb1def347af1), [`da8ca8835`](https://github.com/keystonejs/keystone-5/commit/da8ca8835a910cc9b2f53e12ddaef88ffc194695), [`04c57fa78`](https://github.com/keystonejs/keystone-5/commit/04c57fa7840714d3413e093d468b78d740c95c9a), [`fd4e9100a`](https://github.com/keystonejs/keystone-5/commit/fd4e9100a636e0654db45d2471ce47a19b753647), [`f33388b50`](https://github.com/keystonejs/keystone-5/commit/f33388b5061d59747ab46e238f43e9b08f52bd1e), [`4b06157be`](https://github.com/keystonejs/keystone-5/commit/4b06157be6cffde2d88969823f7c410fefd82317), [`649017fbd`](https://github.com/keystonejs/keystone-5/commit/649017fbd5ea17c36e8c49d44836e1f2bcae2692), [`6ab523476`](https://github.com/keystonejs/keystone-5/commit/6ab523476ceca5ad57e7833ebd172b2da6c0b5fd), [`839666e25`](https://github.com/keystonejs/keystone-5/commit/839666e25d8bffefd034e6344e11d72dd43b925b), [`9ca0733e5`](https://github.com/keystonejs/keystone-5/commit/9ca0733e57b525a7efdfdedfb7c80364e186994e), [`7203c5889`](https://github.com/keystonejs/keystone-5/commit/7203c588901c46fae1550f3596cab43a1dd5052a), [`d2390b703`](https://github.com/keystonejs/keystone-5/commit/d2390b703d30e0b4264ab6ed9b1ba4d7bb9fca6c), [`34a9816d3`](https://github.com/keystonejs/keystone-5/commit/34a9816d3c40a35409be735e748cea2c6d5aa895), [`64c0d68ac`](https://github.com/keystonejs/keystone-5/commit/64c0d68acb1ee969097a8fe59b5c296473790c5c), [`60db743aa`](https://github.com/keystonejs/keystone-5/commit/60db743aa79f6590d6a3ebb0169021f1c36f64cc), [`326242533`](https://github.com/keystonejs/keystone-5/commit/3262425335de5eee6979e38ebb45f19a22c1ee1a), [`b15221ac2`](https://github.com/keystonejs/keystone-5/commit/b15221ac21746b1380ddb31395cdd386d52920a9), [`16649fa55`](https://github.com/keystonejs/keystone-5/commit/16649fa556ae3723ca97eb0752653259ccae4bc2), [`ba363d9a8`](https://github.com/keystonejs/keystone-5/commit/ba363d9a82d3ca3ec464547a5d9e38354bc2a172), [`170faf568`](https://github.com/keystonejs/keystone-5/commit/170faf568fef5b74147791476b466dc7a25c7d6f), [`927150d81`](https://github.com/keystonejs/keystone-5/commit/927150d81e297fdb5c8ccad087ea255b861dfe32), [`c7599a46f`](https://github.com/keystonejs/keystone-5/commit/c7599a46f05108b10b3a805a20b77b4d834e616d), [`b696b2acb`](https://github.com/keystonejs/keystone-5/commit/b696b2acbf7def8dba41f46ccef5ff852703b95a), [`d970580e1`](https://github.com/keystonejs/keystone-5/commit/d970580e14904ba2f2ac5e969257e71f77ab67d7), [`1cc3deaf0`](https://github.com/keystonejs/keystone-5/commit/1cc3deaf0b0a48aecb0f0f2454f4fe2634e1da5f), [`070519dbe`](https://github.com/keystonejs/keystone-5/commit/070519dbec289b759759343d084bc5d2de9d4b37), [`10babad4b`](https://github.com/keystonejs/keystone-5/commit/10babad4b4135738bc0633b113e5c96d3ddb9e9f), [`24f5ab51c`](https://github.com/keystonejs/keystone-5/commit/24f5ab51c69d744fb0e1f47a0723c2cc70492010), [`de27d2c16`](https://github.com/keystonejs/keystone-5/commit/de27d2c16b520ae5126a74efb85c70ae88ae6b60), [`c35f9cd1c`](https://github.com/keystonejs/keystone-5/commit/c35f9cd1cba5bf27eb9cf7cc1a113716bc4a50ef)]:
   - @keystonejs/keystone@10.0.0
   - @keystonejs/app-admin-ui@7.0.0
   - @keystonejs/fields@12.0.0
-  - @keystonejs/auth-password@5.1.9
   - @keystonejs/app-graphql@5.1.8
   - @keystonejs/adapter-mongoose@8.1.2
 
@@ -211,7 +216,6 @@
 - Updated dependencies [[`2b0f6441`](https://github.com/keystonejs/keystone-5/commit/2b0f6441e50787a4a82f417b573078717b39e9be), [`a124417f`](https://github.com/keystonejs/keystone-5/commit/a124417fddc75889db5e4e8e0d5625fb4af12590), [`54931d75`](https://github.com/keystonejs/keystone-5/commit/54931d75d3f26f4f300c2c4c3ee65ed3183b4a6a), [`f9604621`](https://github.com/keystonejs/keystone-5/commit/f9604621048afceb071a43c7b8d36d944555487f), [`3e5a8962`](https://github.com/keystonejs/keystone-5/commit/3e5a8962cc982765574464537904008be975b446), [`5a58bde6`](https://github.com/keystonejs/keystone-5/commit/5a58bde636f551f2d241086d47781d3c88852b99), [`e9a0de2c`](https://github.com/keystonejs/keystone-5/commit/e9a0de2cc03c211beca01ec206244105bdca6afc), [`3b0f4137`](https://github.com/keystonejs/keystone-5/commit/3b0f4137df4112c79e6db57ae68fe04ad338da4c), [`15c57317`](https://github.com/keystonejs/keystone-5/commit/15c573178fa056912503f3ed83efeccceabba3ec), [`d60e2ca9`](https://github.com/keystonejs/keystone-5/commit/d60e2ca91ab4a7dd815e030bcc92991c3380fa7e), [`94d55b8f`](https://github.com/keystonejs/keystone-5/commit/94d55b8fc3a334a556c19765063e9efb594b41a7), [`59ed6310`](https://github.com/keystonejs/keystone-5/commit/59ed6310bacc76f571639de048689becbedbeac5), [`2709a6b5`](https://github.com/keystonejs/keystone-5/commit/2709a6b512fe636d979837599b67bdb17b2517b1)]:
   - @keystonejs/app-admin-ui@6.0.1
   - @keystonejs/fields@11.0.0
-  - @keystonejs/auth-password@5.1.8
   - @keystonejs/keystone@9.0.1
 
 ## 5.0.7
@@ -222,7 +226,6 @@
   - @keystonejs/app-admin-ui@6.0.0
   - @keystonejs/fields@10.0.0
   - @keystonejs/keystone@9.0.0
-  - @keystonejs/auth-password@5.1.7
   - @keystonejs/adapter-mongoose@8.1.0
   - @keystonejs/app-graphql@5.1.7
 
@@ -235,7 +238,6 @@
   - @keystonejs/fields@9.0.0
   - @keystonejs/keystone@8.0.0
   - @keystonejs/app-admin-ui@5.9.5
-  - @keystonejs/auth-password@5.1.5
 
 ## 5.0.5
 
@@ -247,7 +249,7 @@
   - @keystonejs/keystone@7.1.0
   - @keystonejs/adapter-mongoose@7.0.0
   - @keystonejs/app-graphql@5.1.5
-  - @keystonejs/auth-password@5.1.4
+  - @keystonejs/app-static@5.1.2
 
 ## 5.0.4
 
@@ -259,7 +261,6 @@
   - @keystonejs/app-graphql@5.1.4
   - @keystonejs/adapter-mongoose@6.0.0
   - @keystonejs/fields@7.0.2
-  - @keystonejs/auth-password@5.1.3
 
 ## 5.0.3
 
@@ -268,7 +269,6 @@
 - Updated dependencies [[`161bf3e5`](https://github.com/keystonejs/keystone-5/commit/161bf3e57acb1b3d88a0836507d4c8dd4935f260)]:
   - @keystonejs/fields@7.0.0
   - @keystonejs/app-admin-ui@5.9.2
-  - @keystonejs/auth-password@5.1.2
   - @keystonejs/keystone@6.0.1
 
 ## 5.0.2
@@ -281,7 +281,7 @@
   - @keystonejs/app-admin-ui@5.9.1
   - @keystonejs/fields@6.3.2
   - @keystonejs/adapter-mongoose@5.2.1
-  - @keystonejs/auth-password@5.1.1
+  - @keystonejs/app-static@5.1.1
 
 ## 5.0.1
 
@@ -293,7 +293,6 @@
   - @keystonejs/app-admin-ui@5.3.0
   - @keystonejs/adapter-mongoose@5.1.3
   - @keystonejs/app-graphql@5.0.1
-  - @keystonejs/auth-password@5.0.1
 
 ## 5.0.0
 
@@ -311,11 +310,11 @@
   - @keystonejs/adapter-mongoose@5.0.0
   - @keystonejs/app-admin-ui@5.0.0
   - @keystonejs/app-graphql@5.0.0
-  - @keystonejs/auth-password@5.0.0
+  - @keystonejs/app-static@5.0.0
   - @keystonejs/fields@5.0.0
   - @keystonejs/keystone@5.0.0
 
-# @keystone-alpha/example-projects-starter
+# @keystone-alpha/example-projects-todo
 
 ## 1.1.15
 
@@ -327,7 +326,6 @@
   - @keystone-alpha/adapter-mongoose@6.0.1
   - @keystone-alpha/app-admin-ui@5.10.3
   - @keystone-alpha/fields@15.0.0
-  - @keystone-alpha/auth-password@1.0.6
 
 ## 1.1.14
 
@@ -338,14 +336,12 @@
   - @keystone-alpha/fields@14.0.0
   - @keystone-alpha/keystone@16.0.0
   - @keystone-alpha/app-admin-ui@5.10.2
-  - @keystone-alpha/auth-password@1.0.5
 
 ## 1.1.13
 
 - Updated dependencies [4e6a574d](https://github.com/keystonejs/keystone-5/commit/4e6a574d):
 - Updated dependencies [b96a3a58](https://github.com/keystonejs/keystone-5/commit/b96a3a58):
   - @keystone-alpha/app-admin-ui@5.10.0
-  - @keystone-alpha/auth-password@1.0.4
   - @keystone-alpha/keystone@15.3.1
   - @keystone-alpha/fields@13.0.0
   - @keystone-alpha/adapter-mongoose@5.0.0
@@ -364,7 +360,6 @@
   - @keystone-alpha/adapter-mongoose@4.0.6
   - @keystone-alpha/keystone@15.0.0
   - @keystone-alpha/app-admin-ui@5.8.1
-  - @keystone-alpha/auth-password@1.0.2
   - @keystone-alpha/fields@12.0.0
 
 ## 1.1.10
@@ -377,7 +372,6 @@
   - @keystone-alpha/adapter-mongoose@4.0.5
   - @keystone-alpha/keystone@14.0.0
   - @keystone-alpha/app-admin-ui@5.8.0
-  - @keystone-alpha/auth-password@1.0.1
   - @keystone-alpha/fields@11.0.0
   - @keystone-alpha/app-graphql@8.0.0
 

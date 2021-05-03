@@ -77,7 +77,7 @@ Commit you app and push it to Heroku
 ```sh
 git add .
 git commit -am "initial commit"
-git push heroku master
+git push heroku main
 ```
 
 Your KeystoneJS project is now pushed to Heroku and the build process is started. The Overview page for your Heroku app shows real-time status of the current build.

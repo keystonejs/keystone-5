@@ -1,4 +1,4 @@
-// the release-count file is used by create-keystone-app to get the last commit that where a release happened
+// the release-count file is used by create-keystone-5-app to get the last commit that where a release happened
 
 const fs = require('fs');
 const path = require('path');
