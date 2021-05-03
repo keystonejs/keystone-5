@@ -15,7 +15,8 @@
         "gatsby",
         "remark",
         "babel-plugin-remove-graphql-queries",
-        "react-day-picker"
+        "react-day-picker",
+        "mjml"
       ],
       "enabled": false
     },
