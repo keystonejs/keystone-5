@@ -1,4 +1,7 @@
 /** @jsx jsx */
+
+import React from 'react';
+
 import { jsx } from '@emotion/core';
 import Link from 'next/link';
 
@@ -32,7 +35,7 @@ const Input = styled.input({
 });
 
 const ADD_POST = gql`
-  mutation AddPost($title: String!, $body: String!, $posted: DateTime!, $image: Upload!) {
+  mutation AddPost($title: String!, $body: String!, $posted: DateTime!, $image: Upload) {
     createPost(data: { title: $title, body: $body, posted: $posted, image: $image }) {
       id
       slug
@@ -43,7 +46,7 @@ const ADD_POST = gql`
 export default withApollo(() => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState();
   const [slug, setSlug] = useState('');
 
   const { data, loading: userLoading, error: userError } = useQuery(gql`

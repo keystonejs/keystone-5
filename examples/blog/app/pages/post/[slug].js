@@ -1,3 +1,7 @@
+/** @jsx jsx */
+
+import React from 'react';
+
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -11,8 +15,6 @@ import Layout from '../../templates/layout';
 import Header from '../../components/header';
 import { Banner } from '../../components/banner';
 import { withApollo } from '../../lib/apollo';
-
-/** @jsx jsx */
 
 const ADD_COMMENT = gql`
   mutation AddComment($body: String!, $postId: ID!, $posted: DateTime!) {
