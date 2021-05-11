@@ -1,7 +1,7 @@
+/** @jsx jsx */
+
 import Link from 'next/link';
 import { jsx } from '@emotion/core';
-
-/** @jsx jsx */
 
 const Header = () => (
   <header
