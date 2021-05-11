@@ -1,3 +1,5 @@
+/** @jsx jsx */
+
 import Link from 'next/link';
 
 import { gql, useQuery } from '@apollo/client';
@@ -8,8 +10,6 @@ import { format, parseISO } from 'date-fns';
 import Layout from '../templates/layout';
 import Header from '../components/header';
 import { withApollo } from '../lib/apollo';
-
-/** @jsx jsx */
 
 const Post = ({ post }) => {
   return (

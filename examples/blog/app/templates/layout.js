@@ -1,9 +1,9 @@
+/** @jsx jsx */
+
 import React from 'react';
 
 import Head from 'next/head';
 import { jsx, Global } from '@emotion/core';
-
-/** @jsx jsx */
 
 const Layout = ({ children }) => (
   <>
