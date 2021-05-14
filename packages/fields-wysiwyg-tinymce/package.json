@@ -17,7 +17,7 @@
     "@emotion/core": "^10.1.1",
     "@keystonejs/fields": "^22.1.2",
     "@primer/octicons-react": "^11.3.0",
-    "@tinymce/tinymce-react": "^3.12.3",
+    "@tinymce/tinymce-react": "^3.12.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "tinymce": "^5.8.0"
