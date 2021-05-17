@@ -7,7 +7,7 @@
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/fields-auto-increment",
   "homepage": "https://github.com/keystonejs/keystone-5",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v14.17.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.14.0",
