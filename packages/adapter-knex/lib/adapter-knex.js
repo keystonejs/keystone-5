@@ -317,8 +317,13 @@ class KnexListAdapter extends BaseListAdapter {
           ({ value, adapter: { rel } }) =>
             rel.cardinality === '1:1' && rel.tableName === this.tableName && value !== null
         )
-        .map(({ value, adapter: { rel: { tableName, columnName } } }) =>
-          this._setNullByValue({ tableName, columnName, value })
+        .map(
+          ({
+            value,
+            adapter: {
+              rel: { tableName, columnName },
+            },
+          }) => this._setNullByValue({ tableName, columnName, value })
         )
     );
   }
@@ -333,8 +338,12 @@ class KnexListAdapter extends BaseListAdapter {
         .filter(
           ({ adapter: { rel } }) => rel.cardinality === '1:1' && rel.tableName !== this.tableName
         )
-        .map(({ adapter: { rel: { tableName, columnName } } }) =>
-          this._setNullByValue({ tableName, columnName, value: id })
+        .map(
+          ({
+            adapter: {
+              rel: { tableName, columnName },
+            },
+          }) => this._setNullByValue({ tableName, columnName, value: id })
         )
     );
   }

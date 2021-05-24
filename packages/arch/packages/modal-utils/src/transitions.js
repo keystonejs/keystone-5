@@ -15,17 +15,19 @@ export const TransitionProvider = ({ children, isOpen, ...props }) => (
   </TransitionGroup>
 );
 
-export const withTransitionState = Comp => ({
-  isOpen,
+export const withTransitionState =
+  Comp =>
+  ({
+    isOpen,
 
-  ...props
-}) => {
-  return (
-    <TransitionProvider isOpen={Boolean(isOpen)}>
-      {state => <Comp transitionState={state} {...props} />}
-    </TransitionProvider>
-  );
-};
+    ...props
+  }) => {
+    return (
+      <TransitionProvider isOpen={Boolean(isOpen)}>
+        {state => <Comp transitionState={state} {...props} />}
+      </TransitionProvider>
+    );
+  };
 
 // ==============================
 // Transitions
