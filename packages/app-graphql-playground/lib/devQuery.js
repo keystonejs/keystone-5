@@ -16,51 +16,48 @@ const buildGraphiqlQueryParams = ({ query, variables }) =>
     variables: JSON.stringify(variables),
   });
 
-const graphiqlDevQueryMiddleware = (graphiqlPath, devQueryPath, devQueryLog) => (
-  req,
-  res,
-  next
-) => {
-  if (
-    // Skip requests from graphiql itself
-    (req.headers.referer && req.headers.referer.includes(graphiqlPath)) ||
-    // Skip multipart form requests (ie; when using the Upload type)
-    !req.body.query
-  ) {
-    return next();
-  }
+const graphiqlDevQueryMiddleware =
+  (graphiqlPath, devQueryPath, devQueryLog) => (req, res, next) => {
+    if (
+      // Skip requests from graphiql itself
+      (req.headers.referer && req.headers.referer.includes(graphiqlPath)) ||
+      // Skip multipart form requests (ie; when using the Upload type)
+      !req.body.query
+    ) {
+      return next();
+    }
 
-  // hash query into id so that identical queries occupy
-  // the same space in the devQueryLog map.
-  const id = hash({ query: req.body.query, variables: req.body.variables });
+    // hash query into id so that identical queries occupy
+    // the same space in the devQueryLog map.
+    const id = hash({ query: req.body.query, variables: req.body.variables });
 
-  // Store the loadable GraphiQL URL against that id
-  const queryParams = buildGraphiqlQueryParams(req.body);
-  devQueryLog[id] = `${graphiqlPath}?${queryParams}`;
+    // Store the loadable GraphiQL URL against that id
+    const queryParams = buildGraphiqlQueryParams(req.body);
+    devQueryLog[id] = `${graphiqlPath}?${queryParams}`;
 
-  const ast = gql(req.body.query);
+    const ast = gql(req.body.query);
 
-  const operations = ast.definitions.map(
-    def => `${def.operation} ${def.name ? `${def.name.value} ` : ''}{ .. }`
-  );
+    const operations = ast.definitions.map(
+      def => `${def.operation} ${def.name ? `${def.name.value} ` : ''}{ .. }`
+    );
 
-  // Make the queries clickable in the terminal where supported
-  console.log(
-    terminalLink(
-      `${chalk.blue(operations.map(op => chalkColour.bold(op)).join(', '))}${
-        terminalLink.isSupported ? ` (👈 click to view)` : ''
-      }`,
-      `${req.protocol}://${req.get('host')}${devQueryPath}?id=${id}`,
-      {
-        // Otherwise, show the link on a new line
-        fallback: (text, url) => `${text}\n${chalkColour.gray(` ⤷ inspect @ ${url}`)}`,
-      }
-    )
-  );
+    // Make the queries clickable in the terminal where supported
+    console.log(
+      terminalLink(
+        `${chalk.blue(operations.map(op => chalkColour.bold(op)).join(', '))}${
+          terminalLink.isSupported ? ` (👈 click to view)` : ''
+        }`,
+        `${req.protocol}://${req.get('host')}${devQueryPath}?id=${id}`,
+        {
+          // Otherwise, show the link on a new line
+          fallback: (text, url) => `${text}\n${chalkColour.gray(` ⤷ inspect @ ${url}`)}`,
+        }
+      )
+    );
 
-  // finally pass requests to the actual graphql endpoint
-  next();
-};
+    // finally pass requests to the actual graphql endpoint
+    next();
+  };
 
 const graphiqlDevQueryRedirector = (graphiqlPath, devQueryLog) => (req, res) => {
   const { id } = req.query;

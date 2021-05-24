@@ -64,7 +64,8 @@ const ALL_QUERIES = gql`
   }
 `;
 
-const imagePlaceholder = name => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width="100" height="100">
+const imagePlaceholder =
+  name => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width="100" height="100">
 <rect width="100" height="100" fill="hsl(200,20%,50%)" />
 <text text-anchor="middle" x="50" y="67" fill="white" style="font-size: 50px; font-family: 'Rubik', sans-serif;">
 ${name.charAt(0)}</text></svg>`;
@@ -112,7 +113,11 @@ const Comments = ({ data }) => (
 const AddComments = ({ post }) => {
   let [comment, setComment] = useState('');
 
-  const { data, loading: userLoading, error: userError } = useQuery(gql`
+  const {
+    data,
+    loading: userLoading,
+    error: userError,
+  } = useQuery(gql`
     query {
       authenticatedUser {
         id

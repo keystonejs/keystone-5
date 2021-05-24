@@ -155,8 +155,10 @@ export const zipObj = <V, T extends Record<string, V[]>>(obj: T) =>
   );
 
 // compose([f, g, h])(o) = h(g(f(o)))
-export const compose = <T>(fns: ((a: T) => T)[]) => (o: T): T =>
-  fns.reduce((acc, fn) => fn(acc), o);
+export const compose =
+  <T>(fns: ((a: T) => T)[]) =>
+  (o: T): T =>
+    fns.reduce((acc, fn) => fn(acc), o);
 
 export const mergeWhereClause = (
   queryArgs: Record<string, any>,
