@@ -49,7 +49,11 @@ export default withApollo(() => {
   const [image, setImage] = useState();
   const [slug, setSlug] = useState('');
 
-  const { data, loading: userLoading, error: userError } = useQuery(gql`
+  const {
+    data,
+    loading: userLoading,
+    error: userError,
+  } = useQuery(gql`
     query {
       authenticatedUser {
         id

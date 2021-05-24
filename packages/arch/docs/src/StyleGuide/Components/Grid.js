@@ -13,13 +13,14 @@ const GridBox = styled.div({
   height: 40,
 });
 
-const makeRow = width => (c, i, a) => (
-  <Cell width={width} key={i}>
-    <GridBox>
-      {i + 1}/{a.length}
-    </GridBox>
-  </Cell>
-);
+const makeRow = width => (c, i, a) =>
+  (
+    <Cell width={width} key={i}>
+      <GridBox>
+        {i + 1}/{a.length}
+      </GridBox>
+    </Cell>
+  );
 
 const GridGuide = () => {
   const twelfths = new Array(12).fill('');
