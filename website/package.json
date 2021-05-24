@@ -59,6 +59,6 @@
     "react-github-btn": "^1.2.0",
     "react-helmet": "^6.1.0",
     "unist-util-visit": "^2.0.3",
-    "use-clipboard-copy": "^0.1.2"
+    "use-clipboard-copy": "^0.2.0"
   }
 }
