@@ -1,7 +1,7 @@
 {
   "name": "@keystonejs/app-version",
   "description": "KeystoneJS App Version Plugin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "main": "dist/app-version.cjs.js",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.0",
-    "@keystonejs/access-control": "^7.1.1",
+    "@keystonejs/access-control": "^7.1.2",
     "express": "^4.17.1"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-version"
