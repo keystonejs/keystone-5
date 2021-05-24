@@ -51,10 +51,8 @@ export const ListProvider = ({ children, list, skipQuery = false }) => {
 
   // Organize the data for easier use.
   // TODO: consider doing this at the query level with an alias
-  const {
-    error,
-    data: { [listQueryName]: items, [listQueryMetaName]: { count } = {} } = {},
-  } = query;
+  const { error, data: { [listQueryName]: items, [listQueryMetaName]: { count } = {} } = {} } =
+    query;
   const [selectedItems, setSelectedItems] = useListSelect(items);
   return (
     <ListContext.Provider
