@@ -3587,12 +3587,12 @@
   dependencies:
     object-assign "^4.1.1"
 
-"@prisma/client@2.16.1":
-  version "2.16.1"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.16.1.tgz#3aed1506f4090734735d1036bfdaee997032e793"
-  integrity sha512-g4zXwC9PRtlrad/CBu+lXHRhvkEz4QW9tDn7bJGwCVNeLi+gLzSbEHjo3xLZgI3+Jp+40flOzrJrYP0bkNCpdQ==
+"@prisma/client@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.23.0.tgz#4bf16ab19b140873ba79bd159da86842b1746e0a"
+  integrity sha512-xsHdo3+wIH0hJVGfKHYTEKtifStjKH0b5t8t7hV32Fypq6+3uxhAi3F25yxuI4XSHXg21nb7Ha82lNwU/0TERA==
   dependencies:
-    "@prisma/engines-version" "2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03"
+    "@prisma/engines-version" "2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b"
 
 "@prisma/debug@2.16.1":
   version "2.16.1"
@@ -3620,15 +3620,20 @@
     terminal-link "^2.1.1"
     undici "3.2.0"
 
-"@prisma/engines-version@2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03":
-  version "2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03"
-  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03.tgz#52c026a05f6c109dd642c1edcc60ca45b01021ca"
-  integrity sha512-BkqxSWOc9aNYXjtmRtaLy2fKIeJ3+NKimRL1gKWXMjtxhKS5E3wvyxwZamtfIpEaZELGAO3x5+gqwoR9kS2oZA==
+"@prisma/engines-version@2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b":
+  version "2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b"
+  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b.tgz#c813279bbea48dedad039b0bc3b044117d2dbaa1"
+  integrity sha512-VNgnOe+oPQKmy3HOtWi/Q1fvcKZUQkf1OfTD1pzrLBx9tJPejyxt1Mq54L+OOAuYvfrua6bmfojFVLh7uXuWVw==
 
 "@prisma/engines@2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03":
   version "2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03"
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03.tgz#38f64337f6ad2ab9e13e7e2bac54286a79d2edfa"
   integrity sha512-GZ1huP5KC6TPf9u8pYGFklUkGVTKFel6k4wL4iMr8AQ6MeSV4GDJX3lEtEJLb0ayj6je/hDEyQG9iMp/BysFYg==
+
+"@prisma/engines@2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b":
+  version "2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b.tgz#440abe0ebef44b6e1bdaf2b4d14fcde9fe74f18c"
+  integrity sha512-Tgk3kggO5B9IT6mimJAw6HSxbFoDAuDKL3sHHSS41EnQm76j/nf4uhGZFPzOQwZWOLeT5ZLO2khr4/FCA9Nkhw==
 
 "@prisma/fetch-engine@2.16.1":
   version "2.16.1"
@@ -20903,12 +20908,12 @@ prism-react-renderer@^1.2.0:
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.0.tgz#5ad4f90c3e447069426c8a53a0eafde60909cdf4"
   integrity sha512-GHqzxLYImx1iKN1jJURcuRoA/0ygCcNhfGw1IT8nPIMzarmKQ3Nc+JcG0gi8JXQzuh0C5ShE4npMIoqNin40hg==
 
-prisma@2.16.1:
-  version "2.16.1"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.16.1.tgz#cf73322e5426aabcd084a42dac89866006f5823f"
-  integrity sha512-TniTihl4xwWY7Hy+1UUpZ6jxHyriRDUW4i7TChZNBZM88IG8kvR5cSX+/JY/lzWGMUR4ZDBzoIuNcdPx/7eWag==
+prisma@2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.23.0.tgz#6464cca0e085ed23b1815013a67c868eff07a7d2"
+  integrity sha512-3c/lmDy8nsPcEsfCufvCTJUEuwmAcTPbeGg9fL1qjlvS314duLUA/k2nm3n1rq4ImKqzeC5uaKfvI2IoAfwrJA==
   dependencies:
-    "@prisma/engines" "2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03"
+    "@prisma/engines" "2.23.0-36.adf5e8cba3daf12d456d911d72b6e9418681b28b"
 
 prismjs@~1.23.0:
   version "1.23.0"
@@ -26430,10 +26435,8 @@ watchpack@^1.5.0, watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
