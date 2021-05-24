@@ -18,9 +18,11 @@ const { publicRuntimeConfig } = getConfig();
 export default function About() {
   const { meetup } = publicRuntimeConfig;
 
-  const { data: { allOrganisers: organiserData = [] } = {}, loading, error } = useQuery(
-    GET_ORGANISERS
-  );
+  const {
+    data: { allOrganisers: organiserData = [] } = {},
+    loading,
+    error,
+  } = useQuery(GET_ORGANISERS);
 
   const hasOrganisers = Boolean(organiserData && organiserData.length);
   const allOrganisers = organiserData.filter(o => o.user).map(o => o.user);
