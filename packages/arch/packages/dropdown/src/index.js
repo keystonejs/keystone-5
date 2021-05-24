@@ -99,11 +99,13 @@ class Dropdown extends Component {
     document.removeEventListener('keydown', this.handleKeyDown, false);
   }
 
-  handleItemClick = ({ onClick, ...data }) => event => {
-    const { close, selectClosesMenu } = this.props;
-    if (selectClosesMenu) close(event);
-    if (onClick) onClick({ event, data });
-  };
+  handleItemClick =
+    ({ onClick, ...data }) =>
+    event => {
+      const { close, selectClosesMenu } = this.props;
+      if (selectClosesMenu) close(event);
+      if (onClick) onClick({ event, data });
+    };
   handleKeyDown = event => {
     const { key, target } = event;
 

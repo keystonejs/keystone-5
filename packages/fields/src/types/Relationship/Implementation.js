@@ -215,7 +215,11 @@ export class Relationship extends Implementation {
 
     // Collect the IDs to be connected and disconnected. This step may trigger
     // createMutation calls in order to obtain these IDs if required.
-    const { create = [], connect = [], disconnect = [] } = await resolveNested({
+    const {
+      create = [],
+      connect = [],
+      disconnect = [],
+    } = await resolveNested({
       input: operations,
       currentValue,
       listInfo,
@@ -423,8 +427,7 @@ export class KnexRelationshipInterface extends KnexFieldAdapter {
 
   getQueryConditions(dbPath) {
     return {
-      [`${this.path}_is_null`]: value => b =>
-        value ? b.whereNull(dbPath) : b.whereNotNull(dbPath),
+      [`${this.path}_is_null`]: value => b => value ? b.whereNull(dbPath) : b.whereNotNull(dbPath),
     };
   }
 }

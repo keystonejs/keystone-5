@@ -229,9 +229,12 @@ module.exports = class Keystone {
   }
 
   createAuthStrategy(options) {
-    const { type: StrategyType, list: listKey, config, hooks } = composePlugins(
-      options.plugins || []
-    )(options, { keystone: this });
+    const {
+      type: StrategyType,
+      list: listKey,
+      config,
+      hooks,
+    } = composePlugins(options.plugins || [])(options, { keystone: this });
     const { authType } = StrategyType;
     if (!this.auth[listKey]) {
       this.auth[listKey] = {};

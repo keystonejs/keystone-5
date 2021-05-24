@@ -374,7 +374,7 @@ const PaginationButton = ({ align = 'left', ...props }) => (
 
 // To my chagrin and fury, context is spread on to the available query options.
 export const pageQuery = graphql`
-  query($mdPageId: String!) {
+  query ($mdPageId: String!) {
     mdx(id: { eq: $mdPageId }) {
       body
       headings {
