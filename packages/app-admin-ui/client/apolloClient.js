@@ -1,5 +1,6 @@
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+// eslint-disable-next-line
 import { onError } from '@apollo/client/link/error';
 
 import fetch from 'cross-fetch';
