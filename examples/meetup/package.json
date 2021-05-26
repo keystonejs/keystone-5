@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=production keystone start"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.18",
+    "@apollo/client": "^3.3.19",
     "@emotion/core": "^10.1.1",
     "@keystonejs/adapter-mongoose": "^11.2.1",
     "@keystonejs/app-admin-ui": "^7.5.1",
@@ -40,7 +40,7 @@
     "graphql": "^15.5.0",
     "isomorphic-unfetch": "^3.1.0",
     "lodash.uniqby": "^4.7.0",
-    "next": "10.2.0",
+    "next": "10.2.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
