@@ -1,5 +1,19 @@
 # @keystonejs/fields-markdown
 
+## 5.3.2
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4)]:
+  - @arch-ui/fields@3.0.8
+  - @arch-ui/input@0.1.14
+  - @arch-ui/theme@0.0.14
+  - @arch-ui/tooltip@0.1.17
+  - @arch-ui/typography@0.0.21
+  - @keystonejs/fields@22.1.3
+
 ## 5.3.1
 
 ### Patch Changes
