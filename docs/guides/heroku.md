@@ -49,7 +49,7 @@ Heroku CLI is used to push the app to Heroku.
 
 ### Setup your database connection
 
-KeystoneJS automatically fetches the database connection string from an environment variable. And as Heroku apps also can handle environment variables we use that to provide our database connection string to the KeystonJS app.
+KeystoneJS automatically fetches the database connection string from an environment variable. And as Heroku apps also can handle environment variables we use that to provide our database connection string to the KeystoneJS app.
 
 - Go to your Heroku app in the dashboard, select Settings and press [Reveal config vars].
 
