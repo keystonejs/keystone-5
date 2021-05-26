@@ -1,5 +1,14 @@
 # @keystonejs/app-version
 
+## 2.1.2
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4)]:
+  - @keystonejs/access-control@7.1.2
+
 ## 2.1.1
 
 ### Patch Changes
