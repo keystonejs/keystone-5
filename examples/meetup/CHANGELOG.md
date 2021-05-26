@@ -1,5 +1,28 @@
 # @keystonejs/demo-project-meetup
 
+## 7.0.3
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+* [#126](https://github.com/keystonejs/keystone-5/pull/126) [`28a719b9b`](https://github.com/keystonejs/keystone-5/commit/28a719b9b243e1a3f5d76d10dbfa31fcbaf83ce3) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependency Next.js to `^10.2.0`.
+
+* Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4), [`28a719b9b`](https://github.com/keystonejs/keystone-5/commit/28a719b9b243e1a3f5d76d10dbfa31fcbaf83ce3), [`77bc54f3c`](https://github.com/keystonejs/keystone-5/commit/77bc54f3c4786b1c2d3ec7b6c017a6ad60cb749e)]:
+  - @keystonejs/adapter-mongoose@11.2.2
+  - @keystonejs/app-admin-ui@7.5.2
+  - @keystonejs/app-graphql@6.3.2
+  - @keystonejs/app-next@6.1.2
+  - @keystonejs/auth-password@6.1.2
+  - @keystonejs/email@5.3.2
+  - @keystonejs/fields@22.1.3
+  - @keystonejs/fields-cloudinary-image@2.2.2
+  - @keystonejs/fields-wysiwyg-tinymce@5.4.2
+  - @keystonejs/file-adapters@7.1.2
+  - @keystonejs/keystone@19.3.3
+  - @keystonejs/server-side-graphql-client@2.1.2
+  - @keystonejs/session@8.3.2
+
 ## 7.0.2
 
 ### Patch Changes
