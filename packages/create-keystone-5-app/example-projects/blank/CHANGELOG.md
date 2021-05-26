@@ -1,5 +1,17 @@
 # @keystonejs/example-projects-blank
 
+## 5.0.21
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4)]:
+  - @keystonejs/adapter-mongoose@11.2.2
+  - @keystonejs/app-admin-ui@7.5.2
+  - @keystonejs/app-graphql@6.3.2
+  - @keystonejs/keystone@19.3.3
+
 ## 5.0.20
 
 ### Patch Changes

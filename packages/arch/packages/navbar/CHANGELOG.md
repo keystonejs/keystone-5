@@ -1,5 +1,15 @@
 # @arch-ui/navbar
 
+## 0.1.15
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4)]:
+  - @arch-ui/color-utils@0.0.5
+  - @arch-ui/theme@0.0.14
+
 ## 0.1.14
 
 ### Patch Changes

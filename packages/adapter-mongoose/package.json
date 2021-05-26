@@ -1,16 +1,16 @@
 {
   "name": "@keystonejs/adapter-mongoose",
   "description": "KeystoneJS Mongoose Database adapter.",
-  "version": "11.2.1",
+  "version": "11.2.2",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@keystonejs/fields-mongoid": "^9.2.1",
-    "@keystonejs/keystone": "^19.3.2",
-    "@keystonejs/utils": "^6.1.1",
+    "@keystonejs/fields-mongoid": "^9.2.2",
+    "@keystonejs/keystone": "^19.3.3",
+    "@keystonejs/utils": "^6.1.2",
     "cuid": "^2.1.8",
     "mongoose": "^5.12.11",
     "p-settle": "^4.1.1"

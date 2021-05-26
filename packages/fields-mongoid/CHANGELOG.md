@@ -1,5 +1,18 @@
 # @keystonejs/fields-mongoid
 
+## 9.2.2
+
+### Patch Changes
+
+- [#95](https://github.com/keystonejs/keystone-5/pull/95) [`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4) Thanks [@bladey](https://github.com/bladey)! - Renamed branch `master` to `main`.
+
+- Updated dependencies [[`c8ff78b95`](https://github.com/keystonejs/keystone-5/commit/c8ff78b95af5d56d44bbc11c51e7cf28b81323b4)]:
+  - @keystonejs/adapter-knex@13.3.2
+  - @keystonejs/adapter-mongoose@11.2.2
+  - @keystonejs/adapter-prisma@3.2.2
+  - @arch-ui/input@0.1.14
+  - @keystonejs/fields@22.1.3
+
 ## 9.2.1
 
 ### Patch Changes
