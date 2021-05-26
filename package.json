@@ -93,7 +93,7 @@
     "mongodb": "^3.6.8",
     "p-is-promise": "^3.0.0",
     "pino-colada": "^2.1.0",
-    "postcss": "^8.2.15",
+    "postcss": "^8.3.0",
     "prettier": "^2.3.0",
     "rehype-highlight": "^4.1.0",
     "remark-cli": "^6.0.1",
