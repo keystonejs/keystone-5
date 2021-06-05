@@ -16,7 +16,7 @@
     "chalk": "^4.1.1",
     "falsey": "^1.0.0",
     "graphql-tag": "^2.12.4",
-    "object-hash": "^2.1.1",
+    "object-hash": "^2.2.0",
     "terminal-link": "^2.1.1"
   },
   "peerDependencies": {
