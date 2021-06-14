@@ -35,7 +35,7 @@
     "dotenv-safe": "^8.2.0",
     "execa": "^5.1.1",
     "inflection": "^1.13.1",
-    "mocha": "^8.4.0",
+    "mocha": "^9.0.0",
     "mocha-junit-reporter": "^2.0.0",
     "pino-colada": "^2.1.0",
     "start-server-and-test": "^1.12.5"
