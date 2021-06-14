@@ -16,7 +16,7 @@
   },
   "module": "dist/icons.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.14.0"
+    "@babel/runtime": "^7.14.6"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/icons"
 }
