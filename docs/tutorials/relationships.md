@@ -6,7 +6,7 @@ order: 4
 
 # Creating relationships
 
-This chapter assumes that that the reader has the code that was created in the
+This chapter assumes that the reader has the code that was created in the
 previous tutorials:
 
 1. [Creating a new project](/docs/tutorials/new-project.md)
