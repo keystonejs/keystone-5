@@ -19,7 +19,7 @@
     "@types/keystonejs__adapter-mongoose": "^5.1.2",
     "@types/keystonejs__keystone": "^7.0.1",
     "express": "^4.17.1",
-    "mongodb-memory-server-core": "^6.9.6",
+    "mongodb-memory-server-core": "^7.1.0",
     "supertest-light": "^1.0.3"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/test-utils"
