@@ -39,7 +39,7 @@
     "date-fns": "^2.22.1",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "isomorphic-unfetch": "^3.1.0",
     "next": "10.2.3",
     "react": "^17.0.2",
