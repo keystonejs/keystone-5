@@ -27,7 +27,7 @@
     "got": "^11.8.2",
     "kleur": "^4.1.4",
     "prompts": "^2.4.1",
-    "terminal-link": "^2.1.1"
+    "terminal-link": "^3.0.0"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/create-keystone-5-app"
 }

@@ -17,7 +17,7 @@
     "falsey": "^1.0.0",
     "graphql-tag": "^2.11.0",
     "object-hash": "^2.2.0",
-    "terminal-link": "^2.1.1"
+    "terminal-link": "^3.0.0"
   },
   "peerDependencies": {
     "express": "^4.17.1"

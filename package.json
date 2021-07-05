@@ -105,7 +105,7 @@
     "start-server-and-test": "^1.12.5",
     "supertest-light": "^1.0.3",
     "tailwindcss": "^2.1.4",
-    "terminal-link": "^2.1.1",
+    "terminal-link": "^3.0.0",
     "terminal-link-cli": "^2.0.0",
     "testcheck": "^1.0.0-rc.2",
     "tinymce": "^5.8.1",
