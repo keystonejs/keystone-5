@@ -15,8 +15,8 @@
     "@arch-ui/common": "0.0.15",
     "@arch-ui/theme": "0.0.14",
     "@babel/runtime": "^7.14.6",
-    "@emotion/core": "^10.1.1",
-    "@emotion/styled": "^10.0.27"
+    "@emotion/core": "^11.0.0",
+    "@emotion/styled": "^11.3.0"
   },
   "module": "dist/layout.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/layout"
