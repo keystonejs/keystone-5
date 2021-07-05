@@ -3823,13 +3823,13 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@mapbox/rehype-prism@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/rehype-prism/-/rehype-prism-0.6.0.tgz#3d8a860870951d4354257d0ba908d11545bd5ed5"
-  integrity sha512-/0Ev/PB4fXdKPT6VDzVpnAPxGpWFIc4Yz3mf/DzLEMxlpIPZpZlCzaFk4V4NGFofQXPc41+GpEcZtWP3VuFWVA==
+"@mapbox/rehype-prism@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/rehype-prism/-/rehype-prism-0.7.0.tgz#38077bda08bbb9a0acd6ed23111a126fcc5f2b06"
+  integrity sha512-zSG46selA6v+3THhCatTyOt9DuTzxTIVTxTbcj15kFmxPDtjzZ5VoFVCLZfjWFouYa9PiXxcbMLLhJoVzCxh9w==
   dependencies:
     hast-util-to-string "^1.0.4"
-    refractor "^3.3.1"
+    refractor "^3.4.0"
     unist-util-visit "^2.0.3"
 
 "@mdx-js/mdx@^1.6.22":
@@ -8640,15 +8640,6 @@ clipboard-copy@^4.0.1:
   resolved "https://registry.yarnpkg.com/clipboard-copy/-/clipboard-copy-4.0.1.tgz#326ef9726d4ffe72d9a82a7bbe19379de692017d"
   integrity sha512-wOlqdqziE/NNTUJsfSgXmBMIrYmfd5V0HCGsR8uAKHcg+h9NENWINcfRjtWGU77wDHC8B8ijV4hMTGYbrKovng==
 
-clipboard@^2.0.0:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.7.tgz#da927f817b1859426df39212ac81feb07dbaeadc"
-  integrity sha512-8M8WEZcIvs0hgOma+wAPkrUxpv0PMY1L6VsAJh/2DOKARIMpyWe6ZLcEoe1qktl6/ced5ceYHs+oGedSbgZ3sg==
-  dependencies:
-    good-listener "^1.2.2"
-    select "^1.1.2"
-    tiny-emitter "^2.0.0"
-
 clipboardy@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/clipboardy/-/clipboardy-1.2.3.tgz#0526361bf78724c1f20be248d428e365433c07ef"
@@ -10342,11 +10333,6 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
-
-delegate@^3.1.2:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
-  integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -13663,13 +13649,6 @@ globby@^9.2.0:
     ignore "^4.0.3"
     pify "^4.0.1"
     slash "^2.0.0"
-
-good-listener@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
-  integrity sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=
-  dependencies:
-    delegate "^3.1.2"
 
 google-maps-react@^2.0.6:
   version "2.0.6"
@@ -21874,12 +21853,10 @@ prisma@2.16.1:
   dependencies:
     "@prisma/engines" "2.16.1-1.8b74ad57aaf2cc6c155f382a18a8e3ba95aceb03"
 
-prismjs@~1.23.0:
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.23.0.tgz#d3b3967f7d72440690497652a9d40ff046067f33"
-  integrity sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==
-  optionalDependencies:
-    clipboard "^2.0.0"
+prismjs@~1.24.0:
+  version "1.24.1"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.24.1.tgz#c4d7895c4d6500289482fa8936d9cdd192684036"
+  integrity sha512-mNPsedLuk90RVJioIky8ANZEwYm5w9LcvCXrxHlwf4fNVSn8jEipMybMkWUyyF0JhnC+C4VcOVSBuHRKs1L5Ow==
 
 probe-image-size@^4.0.0, probe-image-size@^4.1.1:
   version "4.1.1"
@@ -23129,14 +23106,14 @@ redux@^4.0.0:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-refractor@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/refractor/-/refractor-3.3.1.tgz#ebbc04b427ea81dc25ad333f7f67a0b5f4f0be3a"
-  integrity sha512-vaN6R56kLMuBszHSWlwTpcZ8KTMG6aUCok4GrxYDT20UIOXxOc5o6oDc8tNTzSlH3m2sI+Eu9Jo2kVdDcUTWYw==
+refractor@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/refractor/-/refractor-3.4.0.tgz#62bd274b06c942041f390c371b676eb67cb0a678"
+  integrity sha512-dBeD02lC5eytm9Gld2Mx0cMcnR+zhSnsTfPpWqFaMgUMJfC9A6bcN3Br/NaXrnBJcuxnLFR90k1jrkaSyV8umg==
   dependencies:
     hastscript "^6.0.0"
     parse-entities "^2.0.0"
-    prismjs "~1.23.0"
+    prismjs "~1.24.0"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
@@ -23992,11 +23969,6 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
-
-select@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
-  integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
 
 selection-is-backward@^1.0.0:
   version "1.0.0"
@@ -25924,11 +25896,6 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
-
-tiny-emitter@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
-  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
 tiny-invariant@^1.0.1, tiny-invariant@^1.0.2:
   version "1.1.0"
