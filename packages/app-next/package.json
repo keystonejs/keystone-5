@@ -8,7 +8,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "next": "10.2.3"
+    "next": "11.0.1"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-next"
 }
