@@ -17,7 +17,7 @@
     "@babel/runtime": "^7.14.6",
     "@emotion/core": "^10.1.1",
     "@primer/octicons-react": "^11.3.0",
-    "react-select": "^3.2.0"
+    "react-select": "^4.3.1"
   },
   "module": "dist/options.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/options"

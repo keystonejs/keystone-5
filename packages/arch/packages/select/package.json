@@ -14,7 +14,7 @@
   "dependencies": {
     "@arch-ui/theme": "^0.0.14",
     "@babel/runtime": "^7.14.6",
-    "react-select": "^3.2.0"
+    "react-select": "^4.3.1"
   },
   "module": "dist/select.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/select"
