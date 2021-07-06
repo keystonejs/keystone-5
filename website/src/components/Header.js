@@ -78,7 +78,7 @@ export const Header = forwardRef(({ toggleMenu, showSearch = true, ...props }, r
               },
             }}
           >
-            {showSearch && <Search />}
+            {/* {showSearch && <Search />} */}
           </div>
           <div
             css={{
