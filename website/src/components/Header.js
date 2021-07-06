@@ -6,13 +6,13 @@ import { jsx } from '@emotion/core';
 import { colors, gridSize } from '@arch-ui/theme';
 
 import logosvg from '../assets/logo.svg';
-import { Container, SocialIconsNav, Search } from '../components';
+import { Container, SocialIconsNav } from '../components';
 import { SIDEBAR_WIDTH } from '../components/Sidebar';
 import { media, mediaMax, mq } from '../utils/media';
 
 export const HEADER_HEIGHT = 60;
 
-export const Header = forwardRef(({ toggleMenu, showSearch = true, ...props }, ref) => (
+export const Header = forwardRef(({ toggleMenu, ...props }, ref) => (
   <header
     ref={ref}
     css={{
