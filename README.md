@@ -20,7 +20,7 @@
 <br>
 
 ![CI](https://github.com/keystonejs/keystone-5/workflows/CI/badge.svg)
-[![slack](https://keystone-community.now.sh//badge.svg)](https://keystone-community.now.sh/)
+[![slack](https://img.shields.io/badge/chat-on%20slack-blue.svg)](https://community.keystonejs.com/)
 [![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=react-select)
 
 ## Contents
@@ -35,11 +35,11 @@
 
 ## What's new?
 
-Keystone 5 is a complete re-imagining of KeystoneJS for the future. It builds on the lessons we learned over the last 5 years of the KeystoneJS' history and focuses on the things we believe are the most powerful features for modern web and mobile applications.
+Keystone 5 is a complete re-imagining of older versions It builds on the lessons we learned over the last 5 years of the KeystoneJS' history and focuses on the things we believe are the most powerful features for modern web and mobile applications.
 
 This means less focus on hand-holding Node.js template-driven websites and more focus on flexible architecture, a powerful GraphQL API with deep authentication & access control features, an extensible Admin UI and plugins for rich field types, file and database adapters, and session management.
 
-We believe it's the ideal back-end for rich React / Vue / Angular applications, Gatsby and Next.js websites, Mobile applications and more. It also makes a great Headless CMS.
+We believe it's a powerful backend for rich React / Vue / Angular applications, Gatsby and Next.js websites, Mobile applications and more. It also makes a great Headless CMS.
 
 ## Getting Started
 
@@ -52,14 +52,14 @@ yarn start
 ```
 
 For more details and system requirements, check out the [5 Minute Quick Start
-Guide](https://keystonejs.com/quick-start/).
+Guide](https://v5.keystonejs.com/quick-start/).
 
 ## Documentation
 
-The [API documentation](https://www.keystonejs.com/keystonejs/keystone/) contains a reference for all KeystoneJS packages.
+The [Keystone 5 API documentation](https://v5.keystonejs.com/api) contains a reference for all KeystoneJS packages.
 
-For walk-throughs and discussions, see the [Guides
-documentation](https://www.keystonejs.com/guides/).
+For walk-throughs and discussions, see the [Keystone 5 Guides
+documentation](https://v5.keystonejs.com/guides).
 
 ## Version control
 
