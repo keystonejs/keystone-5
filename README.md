@@ -20,7 +20,7 @@
 <br>
 
 ![CI](https://github.com/keystonejs/keystone-5/workflows/CI/badge.svg)
-[![slack](https://keystone-community.now.sh//badge.svg)](https://community.keystonejs.com/)
+[![slack](https://img.shields.io/badge/chat-on%20slack-blue.svg)](https://community.keystonejs.com/)
 [![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=react-select)
 
 ## Contents
