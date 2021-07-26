@@ -85,7 +85,7 @@
     "jest-junit": "^12.2.0",
     "jest-resolve": "^26.6.2",
     "knex": "^0.95.6",
-    "luxon": "^1.27.0",
+    "luxon": "^1.28.0",
     "mdast-util-to-string": "^2.0.0",
     "memoize-one": "^5.2.1",
     "mocha": "^8.4.0",
