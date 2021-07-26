@@ -23,7 +23,7 @@
     "mongoose": "^5.12.13",
     "node-fetch": "^2.6.1",
     "react": "^17.0.2",
-    "react-toast-notifications": "^2.4.4"
+    "react-toast-notifications": "^2.5.1"
   },
   "devDependencies": {
     "dotenv": "^8.6.0"
