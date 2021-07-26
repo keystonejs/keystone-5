@@ -19,8 +19,8 @@
     "@arch-ui/theme": "^0.0.14",
     "@arch-ui/typography": "^0.0.21",
     "@babel/runtime": "^7.14.6",
-    "@emotion/core": "^10.1.1",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/core": "^11.0.0",
+    "@emotion/styled": "^11.3.0",
     "focus-trap-react": "^8.5.1",
     "react-scrolllock": "^5.0.1"
   },

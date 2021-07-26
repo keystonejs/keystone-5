@@ -14,7 +14,7 @@
     "@arch-ui/fields": "^3.0.8",
     "@arch-ui/input": "^0.1.14",
     "@babel/runtime": "^7.14.6",
-    "@emotion/core": "^10.1.1",
+    "@emotion/core": "^11.0.0",
     "@keystonejs/adapter-knex": "^13.3.2",
     "@keystonejs/adapter-mongoose": "^11.2.2",
     "@keystonejs/adapter-prisma": "^3.2.2",

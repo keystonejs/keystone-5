@@ -15,8 +15,8 @@
     "@arch-ui/lozenge": "^0.0.20",
     "@arch-ui/theme": "^0.0.14",
     "@babel/runtime": "^7.14.6",
-    "@emotion/core": "^10.1.1",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/core": "^11.0.0",
+    "@emotion/styled": "^11.3.0",
     "@primer/octicons-react": "^11.3.0"
   },
   "module": "dist/fields.esm.js",
