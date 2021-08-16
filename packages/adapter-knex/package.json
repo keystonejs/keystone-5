@@ -12,7 +12,7 @@
     "@keystonejs/keystone": "^19.3.3",
     "@keystonejs/utils": "^6.1.2",
     "knex": "^0.95.6",
-    "p-settle": "^4.1.1",
+    "p-settle": "^5.0.0",
     "pg": "^8.6.0"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/adapter-knex"

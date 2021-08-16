@@ -55,7 +55,7 @@
     "lodash.isequal": "^4.5.0",
     "luxon": "^1.27.0",
     "mongoose": "^5.12.13",
-    "p-settle": "^4.1.1",
+    "p-settle": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-day-picker": "8.0.0-beta.3",
