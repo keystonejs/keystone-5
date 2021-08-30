@@ -68,7 +68,7 @@
     "@keystonejs/app-static": "*",
     "@keystonejs/file-adapters": "*",
     "@keystonejs/test-utils": "*",
-    "globby": "^11.0.3",
+    "globby": "^12.0.2",
     "graphql-upload": "^11.0.0",
     "mime": "^2.5.2"
   },
