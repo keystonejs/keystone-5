@@ -18828,10 +18828,10 @@ mongodb@^3.6.2:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^3.6.9:
-  version "3.6.9"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.9.tgz#4889cf529724267d393a18275d6cf19d71905b1d"
-  integrity sha512-1nSCKgSunzn/CXwgOWgbPHUWOO5OfERcuOWISmqd610jn0s8BU9K4879iJVabqgpPPbA6hO7rG48eq+fGED3Mg==
+mongodb@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.7.0.tgz#a2e1d086b72e06f9af685d9ac863aeb3e80a41b8"
+  integrity sha512-JOAYjT9WYeRFkIP6XtDidAr3qvpfLRJhT2iokRWWH0tgqCQr9kmSfOJBZ3Ry0E5A3EqKxVPVhN3MV8Gn03o7pA==
   dependencies:
     bl "^2.2.1"
     bson "^1.1.4"
