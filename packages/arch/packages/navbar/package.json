@@ -17,7 +17,7 @@
     "@babel/runtime": "^7.14.6",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "react-router-dom": "5.2.0"
+    "react-router-dom": "5.3.0"
   },
   "module": "dist/navbar.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/navbar"
