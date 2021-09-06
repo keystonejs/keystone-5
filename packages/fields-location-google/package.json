@@ -21,7 +21,7 @@
     "cuid": "^2.1.8",
     "google-maps-react": "^2.0.6",
     "mongoose": "^5.12.13",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "react": "^17.0.2",
     "react-toast-notifications": "^2.4.4"
   },
