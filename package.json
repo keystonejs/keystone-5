@@ -102,7 +102,7 @@
     "rimraf": "^3.0.2",
     "split": "^1.0.1",
     "stack-utils": "^2.0.3",
-    "start-server-and-test": "^1.12.5",
+    "start-server-and-test": "^1.14.0",
     "supertest-light": "^1.0.3",
     "tailwindcss": "^2.1.4",
     "terminal-link": "^2.1.1",
