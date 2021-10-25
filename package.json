@@ -87,7 +87,7 @@
     "knex": "^0.95.6",
     "luxon": "^1.27.0",
     "mdast-util-to-string": "^2.0.0",
-    "memoize-one": "^5.2.1",
+    "memoize-one": "^6.0.0",
     "mocha": "^8.4.0",
     "mocha-junit-reporter": "^2.0.0",
     "mongodb": "^3.6.9",
