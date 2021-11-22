@@ -89,8 +89,8 @@ const ClassicDocs = () => (
       v4
     </a>{' '}
     or{' '}
-    <a css={{ color: colors.N80 }} href="http://next.keystonejs.com/">
-      Keystone Next
+    <a css={{ color: colors.N80 }} href="http://keystonejs.com/">
+      Keystone 6
     </a>{' '}
     docs ?
   </p>
