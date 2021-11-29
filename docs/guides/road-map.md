@@ -6,4 +6,5 @@ order: 1
 
 # Roadmap
 
-> **Warning:** Keystone 5 has officially moved into active maintenance mode, but you can still use it in production. Checkout our [roadmap](http://keystonejs.com/roadmap) for the latest Keystone to see where we’re heading.
+> **Warning:** Keystone 5 has officially moved to maintenance only. 
+For the latest release of Keystone please visit the [Keystone website](http://next.keystonejs.com/).
