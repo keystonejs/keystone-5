@@ -5,7 +5,7 @@
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=v16.13.1"
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
