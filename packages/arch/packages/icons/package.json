@@ -9,7 +9,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@primer/octicons": "^12.1.0",
+    "@primer/octicons": "^16.2.0",
     "fs-extra": "^9.1.0",
     "react": "^17.0.2",
     "to-pascal-case": "^1.0.0"
