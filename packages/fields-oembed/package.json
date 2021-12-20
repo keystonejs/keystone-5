@@ -14,7 +14,7 @@
     "@arch-ui/fields": "^3.0.8",
     "@arch-ui/input": "^0.1.14",
     "@arch-ui/theme": "^0.0.14",
-    "@babel/runtime": "^7.14.6",
+    "@babel/runtime": "^7.16.5",
     "@emotion/core": "^10.1.1",
     "@iframely/embed.js": "^1.3.2",
     "@keystonejs/adapter-knex": "^13.3.2",

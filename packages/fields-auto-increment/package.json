@@ -10,7 +10,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.14.6",
+    "@babel/runtime": "^7.16.5",
     "@keystonejs/adapter-knex": "^13.3.2",
     "@keystonejs/adapter-prisma": "^3.2.2",
     "@keystonejs/fields": "^22.1.3"
