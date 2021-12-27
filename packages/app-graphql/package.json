@@ -11,15 +11,15 @@
     "@keystonejs/app-graphql-playground": "^5.2.2",
     "@keystonejs/session": "^8.3.2",
     "@keystonejs/utils": "^6.1.2",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.3",
     "graphql-upload": "^11.0.0",
     "nanoassert": "^2.0.0"
   },
   "peerDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-graphql"
 }

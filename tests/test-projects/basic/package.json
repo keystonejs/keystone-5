@@ -37,20 +37,20 @@
     "@keystonejs/server-side-graphql-client": "^2.1.2",
     "cross-env": "^7.0.3",
     "date-fns": "^2.22.1",
-    "express": "^4.17.1",
-    "graphql": "^15.5.0",
+    "express": "^4.17.2",
+    "graphql": "^15.5.3",
     "react": "^17.0.2"
   },
   "devDependencies": {
     "cypress": "^5.6.0",
-    "cypress-file-upload": "^5.0.7",
+    "cypress-file-upload": "^5.0.8",
     "cypress-multi-reporters": "^1.5.0",
     "dotenv-safe": "^8.2.0",
     "execa": "^5.1.1",
     "mocha": "^8.4.0",
-    "mocha-junit-reporter": "^2.0.0",
-    "pino-colada": "^2.2.0",
-    "start-server-and-test": "^1.12.5"
+    "mocha-junit-reporter": "^2.0.2",
+    "pino-colada": "^2.2.2",
+    "start-server-and-test": "^1.12.6"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/tests/test-projects/basic"
 }

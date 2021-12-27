@@ -17,10 +17,10 @@
     "@arch-ui/color-utils": "^0.0.5",
     "@arch-ui/modal-utils": "^1.0.16",
     "@arch-ui/theme": "^0.0.14",
-    "@babel/runtime": "^7.14.6",
+    "@babel/runtime": "^7.14.8",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.9.3",
     "focus-trap-react": "^8.5.1",
     "react-popper": "^2.2.5"
   },

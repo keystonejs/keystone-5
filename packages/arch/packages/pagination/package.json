@@ -16,11 +16,11 @@
     "@arch-ui/layout": "^0.2.17",
     "@arch-ui/loading": "^0.0.21",
     "@arch-ui/theme": "^0.0.14",
-    "@babel/runtime": "^7.14.6",
+    "@babel/runtime": "^7.14.8",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
     "@primer/octicons-react": "^11.3.0",
-    "react-router-dom": "5.2.0"
+    "react-router-dom": "5.2.1"
   },
   "module": "dist/pagination.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/pagination"

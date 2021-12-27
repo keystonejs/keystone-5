@@ -12,11 +12,11 @@
     "@keystonejs/keystone": "^19.3.3",
     "@keystonejs/utils": "^6.1.2",
     "cuid": "^2.1.8",
-    "mongoose": "^5.12.13",
+    "mongoose": "^5.12.15",
     "p-settle": "^4.1.1"
   },
   "devDependencies": {
-    "mongodb": "^3.6.9",
+    "mongodb": "^3.6.12",
     "mongodb-memory-server-core": "^6.9.6",
     "pluralize": "^8.0.0"
   },

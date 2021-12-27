@@ -11,7 +11,7 @@
     "@keystonejs/fields-auto-increment": "^8.2.2",
     "@keystonejs/keystone": "^19.3.3",
     "@keystonejs/utils": "^6.1.2",
-    "knex": "^0.95.6",
+    "knex": "^0.95.15",
     "p-settle": "^4.1.1",
     "pg": "^8.6.0"
   },

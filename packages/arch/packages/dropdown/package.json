@@ -16,11 +16,11 @@
   "dependencies": {
     "@arch-ui/modal-utils": "^1.0.16",
     "@arch-ui/theme": "^0.0.14",
-    "@babel/runtime": "^7.14.6",
+    "@babel/runtime": "^7.14.8",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
     "focus-trap-react": "^8.5.1",
-    "react-router-dom": "5.2.0"
+    "react-router-dom": "5.2.1"
   },
   "module": "dist/dropdown.esm.js",
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/arch/packages/dropdown"

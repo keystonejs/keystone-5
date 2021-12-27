@@ -27,14 +27,14 @@
     "@keystonejs/file-adapters": "^7.1.2",
     "@keystonejs/keystone": "^19.3.3",
     "@keystonejs/server-side-graphql-client": "^2.1.2",
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
     "passport-wordpress": "^0.0.4",
     "react": "^17.0.2"
   },
   "devDependencies": {
     "dotenv-safe": "^8.2.0",
-    "pino-colada": "^2.2.0"
+    "pino-colada": "^2.2.2"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/tests/test-projects/social-login"
 }

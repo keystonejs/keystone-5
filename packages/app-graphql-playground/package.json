@@ -9,21 +9,21 @@
   },
   "dependencies": {
     "@apollographql/graphql-playground-html": "^1.6.29",
-    "@apollographql/graphql-playground-react": "^1.7.41",
+    "@apollographql/graphql-playground-react": "^1.7.42",
     "@keystonejs/session": "^8.3.2",
     "@keystonejs/utils": "^6.1.2",
-    "body-parser": "^1.19.0",
-    "chalk": "^4.1.1",
+    "body-parser": "^1.19.1",
+    "chalk": "^4.1.2",
     "falsey": "^1.0.0",
     "graphql-tag": "^2.11.0",
     "object-hash": "^2.2.0",
     "terminal-link": "^2.1.1"
   },
   "peerDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-graphql-playground"
 }

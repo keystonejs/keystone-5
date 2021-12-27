@@ -8,8 +8,8 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "nuxt": "^2.15.7"
+    "express": "^4.17.2",
+    "nuxt": "^2.15.8"
   },
   "repository": "https://github.com/keystonejs/keystone-5/tree/main/packages/app-nuxt"
 }
