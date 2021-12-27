@@ -56,7 +56,7 @@
     "luxon": "^1.27.0",
     "mongoose": "^5.12.13",
     "p-settle": "^4.1.1",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.0",
     "react": "^17.0.2",
     "react-day-picker": "8.0.0-beta.3",
     "react-dom": "^17.0.2",
