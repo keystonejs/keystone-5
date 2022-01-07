@@ -6,7 +6,7 @@ author: The Keystone Team
 order: 0.3
 [meta]-->
 
-Keystone 5 has officially moved into active maintenance mode as we push towards the next major new version of KeystoneJS.
+> **This article is now out of date**. If you're returning to this article from an earlier time, Keystone 6 has achieved a [general availability](https://keystonejs.com/updates/general-availability) release, and Keystone 5 is now in **maintenance** mode. We now recommend you use Keystone 6 for all new projects going forward..
 
 ## What is Keystone Next?
 

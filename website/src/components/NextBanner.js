@@ -18,19 +18,13 @@ const bannerStyles = {
   },
 };
 
-const codeStyles = {
-  fontSize: '90%',
-  padding: 4,
-  fontWeight: 'bold',
-};
-
 export const NextBanner = () => (
   <div>
-    <a css={bannerStyles} href="https://next.keystonejs.com">
+    <a css={bannerStyles} href="https://keystonejs.com">
       👋🏻{' '}
       <span>
-        We're working on the next generation of KeystoneJS! If you're using the{' '}
-        <code css={codeStyles}>@keystone-next</code> packages, click here to learn more
+        Keystone 5 has officially moved to maintenance only. For the latest release of Keystone
+        please visit the Keystone website.
       </span>
     </a>
   </div>
