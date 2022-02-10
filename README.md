@@ -1,6 +1,8 @@
 <div align="center">
   <h1>⚠️ Maintenance Mode</h1>
   <p>Keystone 5 has moved into maintenance mode!</p>
+  <p>We recommend starting any new projects using <a href="https://keystonejs.com/" target="_blank">Keystone 6</a></p>
+  <p>Information on upgrading an existing keystone 5 project to keystone 6 can be found <a href="https://github.com/keystonejs/keystone-5/discussions/categories/upgrading-to-keystone-6" target="_blank">here</a></p>
   <p>For more information please read our <a href="https://github.com/keystonejs/keystone-5/issues/21">Keystone 5 and beyond</a> post.</p>
   <br>
 </div>
