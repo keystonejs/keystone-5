@@ -128,37 +128,44 @@
 
       function checkAndSetStatus() {
         let cancelled = false;
-        fetch('/', { headers: { Accept: 'application/json' } })
-          .then(result => result.json())
-          .catch(error => {
-            // We can get back an error "Cannot parse JSON" when a HTML
-            // response is returned, so we assume the server is ready
-            onReady();
+        if (!ready) {
+          fetch(window.location.href.replace(window.location.origin, ''), {
+            headers: { Accept: 'application/json' },
           })
-          .then(({ loading, status } = {}) => {
-            if (!loading) {
-              onReady();
-              return;
-            }
-            if (cancelled) {
-              return;
-            }
-            switch (status) {
-              case 'init-keystone': {
-                statusEl.innerHTML = 'initialising...';
-                break;
+            .then(result => {
+              // Will get back HTTP status 425 while still loading
+              if (result.status === 425) {
+                return result.json();
+              } else {
+                // Anything else; 200, 404, etc, means the server is alive
+                return { loading: false };
               }
-              case 'db-connect': {
-                statusEl.innerHTML = 'connecting to the database...';
-                break;
+            })
+            .then(({ loading, status } = {}) => {
+              if (cancelled) {
+                return;
               }
-              case 'start-server':
-              default: {
-                statusEl.innerHTML = 'loading...';
-                break;
+              if (!loading) {
+                onReady();
+                return;
               }
-            }
-          });
+              switch (status) {
+                case 'init-keystone': {
+                  statusEl.innerHTML = 'initialising...';
+                  break;
+                }
+                case 'db-connect': {
+                  statusEl.innerHTML = 'connecting to the database...';
+                  break;
+                }
+                case 'start-server':
+                default: {
+                  statusEl.innerHTML = 'loading...';
+                  break;
+                }
+              }
+            });
+        }
         return () => {
           cancelled = true;
         };
@@ -172,7 +179,7 @@
           return;
         }
         cancelLastCall = checkAndSetStatus();
-      }, 500);
+      }, 1000);
     </script>
   </body>
 </html>
