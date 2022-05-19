@@ -1,5 +1,11 @@
 # @keystonejs/keystone
 
+## 19.3.4
+
+### Patch Changes
+
+- [#395](https://github.com/keystonejs/keystone-5/pull/395) [`c31b1f179`](https://github.com/keystonejs/keystone-5/commit/c31b1f179007e76f076ed97c0f570e3ecdec35cb) Thanks [@jesstelford](https://github.com/jesstelford)! - Return HTTP 425 while Keystone is booting
+
 ## 19.3.3
 
 ### Patch Changes
