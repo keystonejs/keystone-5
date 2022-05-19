@@ -107,9 +107,9 @@ async function executeDefaultServer(args, entryFile, distDir, spinner) {
       next();
     } else {
       res.format({
-        default: () => res.sendFile(path.resolve(__dirname, './loading.html')),
-        'text/html': () => res.sendFile(path.resolve(__dirname, './loading.html')),
-        'application/json': () => res.json({ loading: true, status }),
+        default: () => res.status(425).sendFile(path.resolve(__dirname, './loading.html')),
+        'text/html': () => res.status(425).sendFile(path.resolve(__dirname, './loading.html')),
+        'application/json': () => res.status(425).json({ loading: true, status }),
       });
     }
   });
