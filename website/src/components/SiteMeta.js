@@ -29,6 +29,8 @@ export const SiteMeta = ({ pathname }) => (
             name="viewport"
             content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
           />
+          <meta name="robots" content="noindex" />
+          <meta name="robots" content="nofollow" />
 
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32X32.png" />
