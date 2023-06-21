@@ -19,10 +19,13 @@ class SchemaRouterApp {
 
     return express
       .Router()
-      .use(this.apiPath, (req, res, next) => {
-        req.routerId = this.routerFn(req, res);
-        next();
-      }, ...conditionalApps);
+      .use(this.apiPath, [
+        (req, res, next) => {
+          req.routerId = this.routerFn(req, res);
+          next();
+        }, 
+        ...conditionalApps
+      ]);
   }
 
   /**
