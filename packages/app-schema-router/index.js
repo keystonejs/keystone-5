@@ -22,7 +22,7 @@ class SchemaRouterApp {
         req.routerId = this.routerFn(req, res);
         next();
       }),
-      ...conditionalApps
+      ...conditionalApps,
     ];
   }
 
