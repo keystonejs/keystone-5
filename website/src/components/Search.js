@@ -47,15 +47,15 @@ export const Search = () => {
           apiKey: '211e94c001e6b4c6744ae72fb252eaba',
           indexName: 'keystonejs',
           inputSelector: `#${searchId}`,
-          handleSelected: (input, e, suggestion) => {
-            e.preventDefault();
-            input.setVal('');
-            input.close();
-            inputRef.current.blur();
-            navigate(suggestion.url);
-          },
           algoliaOptions: {
             facetFilters: ['tags:v5'],
+          },
+          transformData: (results) => {
+            if (window.location.hostname == 'v5.keystonejs.com') return results;
+            return results.map((result) => {
+              result.url = result.url.replace('https://v5.keystonejs.com', window.location.origin);
+              navigate(result.url);
+            });
           },
         });
       } else {
