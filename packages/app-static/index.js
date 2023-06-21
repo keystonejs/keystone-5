@@ -22,7 +22,7 @@ class StaticApp {
   }
 
   prepareMiddleware({ dev, distDir }) {
-    const app = express();
+    const app = express.Router();
     const folderToServe = dev ? this._src : getDistDir(this._src, distDir);
     app.use(this._path, express.static(folderToServe));
     if (this._fallback) {

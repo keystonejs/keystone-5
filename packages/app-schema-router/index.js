@@ -11,18 +11,21 @@ class SchemaRouterApp {
    * @return Array<middlewares>
    */
   prepareMiddleware({ keystone, dev }) {
-    const attachRouterId = express().use(this.apiPath, (req, res, next) => {
-      req.routerId = this.routerFn(req, res);
-      next();
-    });
-
     const conditionalApps = [
       Object.entries(this.apps).map(([routerId, app]) =>
         conditionalMiddleware({ routerId, middleware: app.prepareMiddleware({ keystone, dev }) })
       ),
     ];
 
-    return [attachRouterId, ...conditionalApps];
+    return express
+      .Router()
+      .use(this.apiPath, [
+        (req, res, next) => {
+          req.routerId = this.routerFn(req, res);
+          next();
+        },
+        ...conditionalApps
+      ]);
   }
 
   /**

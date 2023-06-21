@@ -33,7 +33,7 @@ class GraphQLApp {
     });
     const apiPath = this._apiPath;
     const graphiqlPath = this._graphiqlPath;
-    const app = express();
+    const app = express.Router();
 
     if (dev && graphiqlPath) {
       // This is a convenience to make the out of the box experience slightly simpler.
