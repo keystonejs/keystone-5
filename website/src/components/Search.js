@@ -55,6 +55,9 @@ export const Search = () => {
             const url = suggestion.url.replace(/https*:\/\/[www.]*keystonejs\.com/, '');
             navigate(url);
           },
+          algoliaOptions: {
+            facetFilters: ['tags:v5'],
+          },
         });
       } else {
         // eslint-disable-next-line no-console
