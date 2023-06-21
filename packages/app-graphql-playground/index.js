@@ -16,7 +16,7 @@ class GraphQLPlaygroundApp {
   prepareMiddleware({ dev }) {
     const graphiqlPath = this._graphiqlPath;
     const apiPath = this._apiPath;
-    const app = express();
+    const app = express.Router();
     if (dev && falsey(process.env.DISABLE_LOGGING)) {
       // NOTE: Must come before we setup the GraphQL API
       const devQueryPath = `${graphiqlPath}/go`;
