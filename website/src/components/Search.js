@@ -52,8 +52,7 @@ export const Search = () => {
             input.setVal('');
             input.close();
             inputRef.current.blur();
-            const url = suggestion.url.replace(/https*:\/\/[www.]*keystonejs\.com/, '');
-            navigate(url);
+            navigate(suggestion.url);
           },
           algoliaOptions: {
             facetFilters: ['tags:v5'],
