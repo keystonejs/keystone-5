@@ -16,7 +16,7 @@
   <p><code>schema => ({ GraphQL, AdminUI })</code></p>
   <br>
   <p>Keystone comes with first-class GraphQL support, a highly extensible architecture, and a wonderful Admin UI.</p>
-  <sub>Looking for Keystone v4.x / Keystone Classic? Head over to <a href="https://github.com/keystonejs/keystone-5-classic"><code>keystone-classic</code></a>.</sub>
+  <sub>Looking for Keystone v4.x / Keystone Classic? Head over to <a href="https://github.com/keystonejs/keystone-classic"><code>keystone-classic</code></a>.</sub>
   <br>
 </div>
 <br>
