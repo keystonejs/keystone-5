@@ -1,5 +1,14 @@
 # @keystonejs/app-graphql
 
+## 6.3.3
+
+### Patch Changes
+
+- [`e24e4dfce`](https://github.com/keystonejs/keystone-5/commit/e24e4dfce997810b459066b2f2fca0c9ac22a5dd) Thanks [@dcousens](https://github.com/dcousens)! - Fixes express.Router() usage to fix inheriting of express application settings
+
+- Updated dependencies [[`e24e4dfce`](https://github.com/keystonejs/keystone-5/commit/e24e4dfce997810b459066b2f2fca0c9ac22a5dd)]:
+  - @keystonejs/app-graphql-playground@5.2.3
+
 ## 6.3.2
 
 ### Patch Changes
