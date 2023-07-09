@@ -31,7 +31,7 @@
     "globby": "^11.0.3",
     "graphql": "^15.5.0",
     "graphql-type-json": "^0.3.2",
-    "graphql-upload": "^11.0.0",
+    "graphql-upload": "^15.0.2",
     "lodash.flattendeep": "^4.4.0",
     "micro-memoize": "^4.0.9",
     "ora": "^5.4.1",
