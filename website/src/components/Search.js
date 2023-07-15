@@ -57,6 +57,9 @@ export const Search = () => {
               navigate(result.url);
             });
           },
+          algoliaOptions: {
+            facetFilters: ['tags:v5'],
+          },
         });
       } else {
         // eslint-disable-next-line no-console
