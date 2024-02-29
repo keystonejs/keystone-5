@@ -17,6 +17,7 @@ type ListAccessArgs = {
   originalInput?: any;
   itemId?: any;
   itemIds?: any;
+  args?: any;
 };
 type FieldAccessArgs = {
   operation: keyof FieldAccess<FieldAccessArgs>;
@@ -329,6 +330,7 @@ export async function validateListAccessControl({
   itemId,
   itemIds,
   context,
+  args,
 }: { access: ListAccess<ListAccessArgs> } & ListAccessArgs) {
   // Either a boolean or an object describing a where clause
   let result: Static | Declarative = false;
@@ -345,6 +347,7 @@ export async function validateListAccessControl({
       itemId,
       itemIds,
       context,
+      args,
     });
   }
 
