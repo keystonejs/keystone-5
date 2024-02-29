@@ -66,6 +66,7 @@ interface AccessInput {
   gqlName?: string;
   itemId?: string;
   itemIds?: [string];
+  args?: {}
 }
 
 type StaticAccess = boolean;
@@ -91,7 +92,7 @@ the list `User` it would match the input type `UserWhereInput`.
 `AccessInput` has the following properties:
 
 | Property                 | Description                                                                                   |
-| ------------------------ | --------------------------------------------------------------------------------------------- |
+|--------------------------|-----------------------------------------------------------------------------------------------|
 | `authentication`         | The currently authenticated user.                                                             |
 | `authentication.item`    | The details of the current user. Will be `undefined` for anonymous users.                     |
 | `authentication.listKey` | The list key of the currently authenticated user. Will be `undefined` for anonymous users.    |
@@ -102,6 +103,7 @@ the list `User` it would match the input type `UserWhereInput`.
 | `itemId`                 | The `id` of the item being updated/deleted in singular `update` and `delete` operations.      |
 | `itemIds`                | The `ids` of the items being updated/deleted in multiple `update` and `delete` operations.    |
 | `context`                | The `context` of the originating GraphQL operation.                                           |
+| `args`                   | Arguments of GraphQL operation                                                                |
 
 When resolving `StaticAccess`:
 
