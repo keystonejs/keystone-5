@@ -45,7 +45,7 @@
     "@keystonejs/file-adapters": "*",
     "cloudinary": "^1.27.0",
     "dotenv": "^8.6.0",
-    "graphql-upload": "^11.0.0",
+    "graphql-upload": "^15.0.2",
     "mime": "^2.5.2"
   }
 }
