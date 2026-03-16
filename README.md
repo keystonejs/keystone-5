@@ -1,60 +1,10 @@
 <div align="center">
-  <h1>⚠️ Maintenance Mode</h1>
-  <p>Keystone 5 has moved into maintenance mode!</p>
-  <p>We recommend starting any new projects using <a href="https://keystonejs.com/" target="_blank">Keystone 6</a></p>
-  <p>Information on upgrading an existing keystone 5 project to keystone 6 can be found <a href="https://github.com/keystonejs/keystone-5/discussions/categories/upgrading-to-keystone-6" target="_blank">here</a></p>
-  <p>For more information please read our <a href="https://github.com/keystonejs/keystone-5/issues/21">Keystone 5 and beyond</a> post.</p>
+  <h1>:warning: Archived :warning:</h1>
+  <p>Keystone classic is not receiving any new updates.</p>
+    <p>We recommend using <a href="https://github.com/keystonejs/keystone" target="_blank">Keystone 6</a> for new projects.</p>
   <br>
 </div>
 <br>
-
-<div align="center">
-  <img src="website/static/readme-header.png" width="557">
-  <h1>KeystoneJS</h1>
-  <br>
-  <p><b>A scalable platform and CMS to build Node.js applications.</b></p>
-  <p><code>schema => ({ GraphQL, AdminUI })</code></p>
-  <br>
-  <p>Keystone comes with first-class GraphQL support, a highly extensible architecture, and a wonderful Admin UI.</p>
-  <sub>Looking for Keystone v4.x / Keystone Classic? Head over to <a href="https://github.com/keystonejs/keystone-classic"><code>keystone-classic</code></a>.</sub>
-  <br>
-</div>
-<br>
-
-![CI](https://github.com/keystonejs/keystone-5/workflows/CI/badge.svg)
-[![slack](https://img.shields.io/badge/chat-on%20slack-blue.svg)](https://community.keystonejs.com/)
-[![Supported by Thinkmill](https://thinkmill.github.io/badge/heart.svg)](http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=react-select)
-
-## Contents
-
-- [What's new](#whats-new)
-- [Getting Started](#getting-started)
-- [Documentation](#documentation)
-- [Version Control](#version-control)
-- [Contributing](#contributing)
-- [Code of Conduct](#code-of-conduct)
-- [License](#license)
-
-## What's new?
-
-Keystone 5 is a complete re-imagining of older versions It builds on the lessons we learned over the last 5 years of the KeystoneJS' history and focuses on the things we believe are the most powerful features for modern web and mobile applications.
-
-This means less focus on hand-holding Node.js template-driven websites and more focus on flexible architecture, a powerful GraphQL API with deep authentication & access control features, an extensible Admin UI and plugins for rich field types, file and database adapters, and session management.
-
-We believe it's a powerful backend for rich React / Vue / Angular applications, Gatsby and Next.js websites, Mobile applications and more. It also makes a great Headless CMS.
-
-## Getting Started
-
-To get up and running with a basic project template, run the following commands.
-
-```shell
-yarn create keystone-5-app my-app
-cd my-app
-yarn start
-```
-
-For more details and system requirements, check out the [5 Minute Quick Start
-Guide](https://v5.keystonejs.com/quick-start/).
 
 ## Documentation
 
