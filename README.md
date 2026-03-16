@@ -1,6 +1,6 @@
 <div align="center">
   <h1>:warning: Archived :warning:</h1>
-  <p>Keystone classic is not receiving any new updates.</p>
+  <p>Keystone 5 is not receiving any new updates.</p>
     <p>We recommend using <a href="https://github.com/keystonejs/keystone" target="_blank">Keystone 6</a> for new projects.</p>
   <br>
 </div>
