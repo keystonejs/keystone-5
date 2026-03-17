@@ -483,7 +483,7 @@ module.exports = class List {
   }
 
   async listQuery(args, context, gqlName, info, from) {
-    const access = await this.checkListAccess(context, undefined, 'read', { gqlName });
+    const access = await this.checkListAccess(context, undefined, 'read', { gqlName, args });
 
     return this._itemsQuery(mergeWhereClause(args, access), { context, info, from });
   }
@@ -494,7 +494,7 @@ module.exports = class List {
       // on what the user requested
       // Evaluation takes place in ../Keystone/index.js
       getCount: async () => {
-        const access = await this.checkListAccess(context, undefined, 'read', { gqlName });
+        const access = await this.checkListAccess(context, undefined, 'read', { gqlName, args });
 
         const { count } = await this._itemsQuery(mergeWhereClause(args, access), {
           meta: true,

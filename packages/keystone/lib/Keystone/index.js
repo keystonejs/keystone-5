@@ -119,7 +119,7 @@ module.exports = class Keystone {
         listKey,
         originalInput,
         operation,
-        { gqlName, itemId, itemIds, context } = {}
+        { gqlName, itemId, itemIds, context, args } = {}
       ) => {
         return validateListAccessControl({
           access: access[schemaName],
@@ -131,6 +131,7 @@ module.exports = class Keystone {
           itemId,
           itemIds,
           context,
+          args,
         });
       },
       { isPromise: true }
