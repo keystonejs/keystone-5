@@ -49,6 +49,7 @@ module.exports = {
 | `schemaName`         | `String`   | `public`      |                                                                            |
 | `isAccessAllowed`    | `Function` | `true`        | Controls which users have access to the Admin UI.                          |
 | `adminMeta`          | `Object`   | `{}`          | Provides additional `adminMeta`. Useful for Hooks and other customizations |
+| `showDashboardCounts`| `Bool`     | `true`        | Switch for dashboard list count display and loading                        |
 | `defaultPageSize`    | `Integer`  | 50            | The default number of list items to show at once.                          |
 | `maximumPageSize`    | `Integer`  | 1000          | The maximum number of list items to show at once.                          |
 

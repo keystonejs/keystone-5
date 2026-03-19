@@ -24,6 +24,7 @@ class AdminUIApp {
     adminMeta = {},
     defaultPageSize = 50,
     maximumPageSize = 1000,
+    showDashboardCounts = true,
   } = {}) {
     if (adminPath === '/') {
       throw new Error("Admin path cannot be the root path. Try; '/admin'");
@@ -56,6 +57,7 @@ class AdminUIApp {
       signinPath: `${this.adminPath}/signin`,
       signoutPath: `${this.adminPath}/signout`,
     };
+    this.showDashboardCounts = showDashboardCounts;
   }
 
   isAccessAllowed(req) {
@@ -111,7 +113,7 @@ class AdminUIApp {
 
   getAdminUIMeta(keystone) {
     // This is exposed as the global `KEYSTONE_ADMIN_META` in the client.
-    const { name, adminPath, apiPath, graphiqlPath, pages, hooks } = this;
+    const { name, adminPath, apiPath, graphiqlPath, pages, hooks, showDashboardCounts } = this;
     const { signinPath, signoutPath } = this.routes;
     const { lists } = keystone.getAdminMeta({ schemaName: this._schemaName });
     const authStrategy = this.authStrategy ? this.authStrategy.getAdminMeta() : undefined;
@@ -149,6 +151,7 @@ class AdminUIApp {
       authStrategy,
       lists,
       name,
+      showDashboardCounts,
       ...this._adminMeta,
     };
   }

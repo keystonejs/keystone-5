@@ -25,7 +25,7 @@ const getCountQuery = lists => {
 };
 
 const Homepage = () => {
-  const { getListByKey, listKeys, adminPath } = useAdminMeta();
+  const { getListByKey, listKeys, adminPath, showDashboardCounts } = useAdminMeta();
 
   // TODO: A permission query to limit which lists are visible
   const lists = listKeys.map(key => getListByKey(key));
@@ -33,6 +33,7 @@ const Homepage = () => {
   const { data, error } = useQuery(getCountQuery(lists), {
     fetchPolicy: 'cache-and-network',
     errorPolicy: 'all',
+    skip: !showDashboardCounts,
   });
 
   const [cellWidth, setCellWidth] = useState(3);
